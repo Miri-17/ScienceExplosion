@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 722347709}
   - component: {fileID: 722347708}
   m_Layer: 0
-  m_Name: SkeletonGraphic (Black_Start_B)
+  m_Name: Black_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

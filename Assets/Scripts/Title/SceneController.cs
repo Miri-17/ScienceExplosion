@@ -6,26 +6,31 @@ using UnityEngine.SceneManagement;
 
 namespace Title {
     public class SceneController : MonoBehaviour {
-        [SerializeField] private SkeletonGraphic _skeletonGraphic;
-        [SerializeField] private Text text;
-        [SerializeField] private Image whiteImage;
-        [SerializeField] private GameObject explosionImage;
+        #region
+        [SerializeField] private SkeletonGraphic[] _skeletonGraphic;
+        [SerializeField] private Text _text;
+        [SerializeField] private Image _whiteImage;
+        [SerializeField] private GameObject _explosionImage;
+        #endregion
+
+        private bool _isTapped = false;
 
         private void Update() {
-            if (Input.GetMouseButtonDown(0)) {
+            if (!_isTapped && Input.GetMouseButtonDown(0)) {
+                _isTapped = true;
                 StartCoroutine(GoToNextScene());
             }
         }
 
         private IEnumerator GoToNextScene() {
-            whiteImage.enabled = true;
-            text.enabled = false;
-            _skeletonGraphic.color = new Color(100f, 100f, 100f);
+            _whiteImage.enabled = true;
+            _text.enabled = false;
+            _skeletonGraphic[0].color = new Color(100f, 100f, 100f);
 
             yield return new WaitForSeconds(0.1f);
 
-            whiteImage.enabled = false;
-            explosionImage.SetActive(true);
+            _whiteImage.enabled = false;
+            _explosionImage.SetActive(true);
 
             yield return new WaitForSeconds(0.4f);
             
