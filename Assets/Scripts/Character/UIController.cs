@@ -32,7 +32,7 @@ namespace ScienceExplosion.Character {
         }
         
         private void OnCharacterSelectionButtonClicked(int index) {
-            Debug.Log("push" + index);
+            // Debug.Log("push" + index);
             _nameText.text = _characterNames[index];
         }
 
