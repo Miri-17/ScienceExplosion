@@ -1,41 +1,31 @@
 using System.Collections;
-using Spine.Unity;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
-namespace Title {
-    public class SceneController : MonoBehaviour {
+namespace ScienceExplosion.Title {
+    public class SceneController : MonoBehaviour
+    {
         #region
-        [SerializeField] private SkeletonGraphic[] _skeletonGraphic;
         [SerializeField] private Text _text;
         [SerializeField] private Image _whiteImage;
-        [SerializeField] private GameObject _explosionImage;
+        [SerializeField] private Image _fadeImage;
         #endregion
 
-        private bool _isTapped = false;
-
-        private void Update() {
-            if (!_isTapped && Input.GetMouseButtonDown(0)) {
-                _isTapped = true;
-                StartCoroutine(GoToNextScene());
-            }
-        }
-
-        private IEnumerator GoToNextScene() {
+        public IEnumerator GoToNextScene() {
             _whiteImage.enabled = true;
             _text.enabled = false;
-            _skeletonGraphic[0].color = new Color(100f, 100f, 100f);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
 
             _whiteImage.enabled = false;
-            _explosionImage.SetActive(true);
+            _fadeImage.DOFade(1f, 0.8f);
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.8f);
             
-            Debug.Log("Go to ModeSelection");
-            SceneManager.LoadScene("ModeSelection");
+            Debug.Log("Go to Menu");
+            SceneManager.LoadScene("Menu");
         }
     }
 }

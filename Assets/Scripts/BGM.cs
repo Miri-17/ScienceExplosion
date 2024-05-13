@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace ScienceExplosion {
     public class BGM : MonoBehaviour {
-        [HideInInspector] public static BGM Instance { get; private set;}
+        [HideInInspector] public static BGM Instance { get; private set; }
 
-        [SerializeField] private AudioClip[] audioClips;
+        [SerializeField] private AudioClip[] _audioClips;
 
-        private AudioSource audioSource;
+        private AudioSource _audioSource;
 
         private void Awake() {
             // BGMがすでにロードされていたら、自分自身を破棄して終了する.
@@ -23,22 +23,22 @@ namespace ScienceExplosion {
         }
 
         private void Start() {
-            audioSource = this.GetComponent<AudioSource>();
+            _audioSource = this.GetComponent<AudioSource>();
 
             // 本当は↓だけでもいいとは思う. デバッグ用
             // audioSource.clip = audioClips[0];
             switch (SceneManager.GetActiveScene().name) {
                 case "Title":
-                    audioSource.clip = audioClips[0];
+                    _audioSource.clip = _audioClips[0];
                     break;
-                case "ModeSelection":
-                    audioSource.clip = audioClips[1];
+                case "Menu":
+                    _audioSource.clip = _audioClips[1];
                     break;
                 default:
                     break;
             }
 
-            audioSource.Play();
+            _audioSource.Play();
 
             // シーンが切り替わった時に呼ばれるメソッドを登録する.
             SceneManager.activeSceneChanged += ChangedActiveScene;
@@ -49,16 +49,16 @@ namespace ScienceExplosion {
 
             switch (nextScene.name) {
                 case "Title":
-                    audioSource.Stop();
-                    audioSource.clip = audioClips[0];
-                    Debug.Log("audioSource.clip: " + audioSource.clip);
-                    audioSource.Play();
+                    _audioSource.Stop();
+                    _audioSource.clip = _audioClips[0];
+                    Debug.Log("audioSource.clip: " + _audioSource.clip);
+                    _audioSource.Play();
                     break;
-                case "ModeSelection":
-                    audioSource.Stop();
-                    audioSource.clip = audioClips[1];
-                    Debug.Log("audioSource.clip: " + audioSource.clip);
-                    audioSource.Play();
+                case "Menu":
+                    _audioSource.Stop();
+                    _audioSource.clip = _audioClips[1];
+                    Debug.Log("audioSource.clip: " + _audioSource.clip);
+                    _audioSource.Play();
                     break;
                 default:
                     break;

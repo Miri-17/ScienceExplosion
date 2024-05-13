@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace Title {
+namespace ScienceExplosion.Title {
     public class UIController : MonoBehaviour {
         [SerializeField] private Text _text;
 
