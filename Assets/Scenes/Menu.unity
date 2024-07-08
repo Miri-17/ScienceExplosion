@@ -2923,11 +2923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308097253}
   m_CullTransparentMesh: 1
---- !u!95 &1318284101 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8281713065303855884, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
-  m_PrefabInstance: {fileID: 4820321278866567317}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1377706799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,7 +3448,7 @@ MonoBehaviour:
   _soundTrackButton: {fileID: 775045077}
   _settingsButton: {fileID: 398445588}
   _settingsPanel: {fileID: 693413250}
-  _transition: {fileID: 1318284101}
+  _transition: {fileID: 4820321278866567318}
   _transitionTime: 1
 --- !u!1 &1688950129
 GameObject:
@@ -5061,6 +5056,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+--- !u!95 &4820321278866567318 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5802523464337726568, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+  m_PrefabInstance: {fileID: 4820321278866567317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5550638104938710198
 MonoBehaviour:
   m_ObjectHideFlags: 0

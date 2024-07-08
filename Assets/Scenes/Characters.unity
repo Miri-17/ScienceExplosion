@@ -1405,6 +1405,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+--- !u!95 &1246062026 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5802523464337726568, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+  m_PrefabInstance: {fileID: 1246062025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1359829274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,11 +1459,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1483334409 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8281713065303855884, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
-  m_PrefabInstance: {fileID: 1246062025}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1507154105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1784,7 @@ MonoBehaviour:
   - {fileID: 1004888458}
   - {fileID: 1160543547}
   - {fileID: 1994127377}
-  _transition: {fileID: 1483334409}
+  _transition: {fileID: 1246062026}
   _transitionTime: 1
 --- !u!4 &1588570079
 Transform:

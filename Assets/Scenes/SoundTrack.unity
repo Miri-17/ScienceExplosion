@@ -3593,11 +3593,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
---- !u!95 &849947551 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8281713065303855884, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
-  m_PrefabInstance: {fileID: 849947550}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &855328229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3962,6 +3957,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &967860988 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5802523464337726568, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+  m_PrefabInstance: {fileID: 849947550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &979550020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5277,7 +5277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backButton: {fileID: 799408182}
-  _transition: {fileID: 849947551}
+  _transition: {fileID: 967860988}
   _transitionTime: 1
 --- !u!1 &1354770145
 GameObject:

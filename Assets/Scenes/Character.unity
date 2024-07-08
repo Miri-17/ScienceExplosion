@@ -1315,7 +1315,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
 --- !u!95 &677202214 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 8281713065303855884, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5802523464337726568, guid: e63db84d2db19457cb5f8aa17453796c, type: 3}
   m_PrefabInstance: {fileID: 677202213}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &677504788
