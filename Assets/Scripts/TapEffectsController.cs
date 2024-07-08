@@ -12,7 +12,7 @@ namespace ScienceExplosion
         #endregion
 
         public void SpawnEffects() {
-            Vector3 position = _tapEffectsCamera.ScreenToWorldPoint(Input.mousePosition + _tapEffectsCamera.transform.forward * 10);
+            Vector3 position = _tapEffectsCamera.ScreenToWorldPoint(Input.mousePosition + _tapEffectsCamera.transform.forward * 40);
             GameObject prefab = Instantiate(_tapEffectsPrefab);
             prefab.transform.SetParent(this.transform, false);
             prefab.transform.position = position;
