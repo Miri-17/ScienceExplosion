@@ -27,6 +27,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: de0fc07c8fa1d4963ba0befdfa033819, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 461272c190db14654b0ab6d7155c4922, type: 3}
+    - {fileID: 21300000, guid: 461272c190db14654b0ab6d7155c4922, type: 3}
+    - {fileID: 21300000, guid: dbc5aa08e82bc4703a6e1beea5b8e683, type: 3}
     _uniqueColor: {r: 1, g: 0.25882354, b: 0.25882354, a: 1}
   - _name: "\u30DE\u30A4\u30E9\u30FB\u30AD\u30E1\u30E9"
     _profession: "\u518D\u751F\u751F\u547D\u79D1\u5B66\u8005"
@@ -42,6 +44,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: a3e34a0888b6b48349abbfb1ebd13f3f, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 03e17ff196445459fb453a9d258c4983, type: 3}
+    - {fileID: 21300000, guid: 03e17ff196445459fb453a9d258c4983, type: 3}
+    - {fileID: 21300000, guid: 072f1369d478a422da41d0994a868b2f, type: 3}
     _uniqueColor: {r: 0.9294118, g: 0.43137258, b: 0.14117648, a: 1}
   - _name: "\u30AF\u30E9\u30C3\u30AF\u30B9\u30FB\u30AF\u30EB\u30FC"
     _profession: "\u5929\u547D\u661F\u5360\u5B66\u8005"
@@ -57,6 +61,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: 28b269f1177174d6d8636dbc973ac94a, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
+    - {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
+    - {fileID: 21300000, guid: 974d6dc3b5092440ea85e7cc2c447266, type: 3}
     _uniqueColor: {r: 0.9843138, g: 0.9686275, b: 0.5411765, a: 1}
   - _name: "\u30DF\u30BB\u30B9\u30FB\u30B0\u30EA\u30E5\u30FC\u30F3"
     _profession: "\u690D\u7269\u6804\u990A\u5B66\u8005"
@@ -72,6 +78,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: bff5d3d248dcf48ae88c657c67e65d7a, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: d4a94e1b293f240d5837f7c4480ff8ce, type: 3}
+    - {fileID: 21300000, guid: d4a94e1b293f240d5837f7c4480ff8ce, type: 3}
+    - {fileID: 21300000, guid: 68ebf083aadf84ba49e4a52ea35fdf7f, type: 3}
     _uniqueColor: {r: 0.007843138, g: 0.72156864, b: 0.30980393, a: 1}
   - _name: "<sprite=0>\u9752\u96F7"
     _profession: "\u96FB\u8133\u4EA4\u6D41\u5B66\u8005"
@@ -87,6 +95,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: 9465ecb03eeaf43e68a3df7a6bbd329b, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
+    - {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
+    - {fileID: 21300000, guid: 64a50db59148d4fa2ad8c487eee77d12, type: 3}
     _uniqueColor: {r: 0.003921569, g: 0.92549026, b: 0.8431373, a: 1}
   - _name: "\u30CA\u30DF\u30E2\u30ED"
     _profession: "\u60B2\u6D99\u5FC3\u7406\u5B66\u8005"
@@ -102,7 +112,9 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: 075c4757db9f946ba82bfa22028c08b5, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: a80af2a68cb364d538cd96b8a543ac0d, type: 3}
-    _uniqueColor: {r: 0.007843138, g: 0.11764707, b: 0.7137255, a: 1}
+    - {fileID: 21300000, guid: a80af2a68cb364d538cd96b8a543ac0d, type: 3}
+    - {fileID: 21300000, guid: 0b2616fea17164f69a23ca1af46f2cc6, type: 3}
+    _uniqueColor: {r: 0.0627451, g: 0.36862746, b: 0.8470589, a: 1}
   - _name: "\u65B0\u6751\u516B\u96F2"
     _profession: "\u970A\u9B42\u7D71\u5FA1\u5B66\u8005"
     _skill: "\u53CD\u9B42"
@@ -117,6 +129,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: 4918716b6cbca45c08bbf2a7cee21e34, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
+    - {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
+    - {fileID: 21300000, guid: eccf5e5c76fbc4c8f8eec360604f9e9e, type: 3}
     _uniqueColor: {r: 0.80392164, g: 0.61960787, b: 0.89019614, a: 1}
   - _name: "\u30ED\u30B8\u30FC\u30FB\u30D0\u30C3\u30AF\u30D1\u30C3\u30AF"
     _profession: "\u6DF1\u5C64\u30A8\u30CD\u30EB\u30AE\u30FC\u5B66\u8005"
@@ -132,6 +146,8 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: 7e0de78df12904070b2ff0c15c2d7c5b, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: ef50229409f8b4ab39a0eb5dcb1b816e, type: 3}
+    - {fileID: 21300000, guid: ef50229409f8b4ab39a0eb5dcb1b816e, type: 3}
+    - {fileID: 21300000, guid: ceb21fe8a7b75411195aa4afcc01579f, type: 3}
     _uniqueColor: {r: 0.9843138, g: 0.7490196, b: 0.9058824, a: 1}
   - _name: "\u30F4\u30A3\u30AF\u30C8\u30EA\u30A2"
     _profession: "\u4E2D\u592E\u4E2D\u7ACB\u653F\u5E9C"
@@ -147,4 +163,6 @@ MonoBehaviour:
     _nationMark: {fileID: 21300000, guid: ed20da0e2a86e45809eb76f17a24a488, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
+    - {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
+    - {fileID: 21300000, guid: 0a29593587efc4f1bbe9ff7cdc4c9e44, type: 3}
     _uniqueColor: {r: 1, g: 1, b: 1, a: 1}

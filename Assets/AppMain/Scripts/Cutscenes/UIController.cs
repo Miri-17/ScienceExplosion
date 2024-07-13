@@ -4,10 +4,13 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 namespace ScienceExplosion.CutScenes {
     public class UIController : MonoBehaviour {
         #region
+        [SerializeField] private CharacterDatabase _characterDatabase;
+        [SerializeField] private List<Image> _repeatBackgrounds;
         [SerializeField] private RectTransform _background;
         [SerializeField] private Button _backButton;
         [SerializeField] private Button[] _images;
@@ -21,6 +24,9 @@ namespace ScienceExplosion.CutScenes {
         private bool _isChangeScene = false;
 
         private void Start() {
+            var character = _characterDatabase.GetCharacter(GameDirector.Instance.SelectedCharacterIndex);
+            foreach(var repeatBackground in _repeatBackgrounds)
+                repeatBackground.sprite = character.PlaceSprites[2];
             _background.DOAnchorPos(new Vector2(-2500f, 2500), 10f)
                 .SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Restart)
