@@ -418,7 +418,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1884899445}
+  m_Father: {fileID: 1219516912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2655,7 +2655,6 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
-  - {fileID: 286297115}
   - {fileID: 4525993107041131436}
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -3386,7 +3385,6 @@ GameObject:
   - component: {fileID: 1219516911}
   - component: {fileID: 1219516910}
   - component: {fileID: 1219516909}
-  - component: {fileID: 1219516913}
   m_Layer: 5
   m_Name: MenuScene
   m_TagString: Untagged
@@ -3444,7 +3442,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 286297115}
+  m_Camera: {fileID: 917075863}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5566,7 +5564,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 917075864}
-  - {fileID: 2111574194}
   - {fileID: 1219516912}
   - {fileID: 1912728252}
   - {fileID: 2014001431}
