@@ -10,6 +10,8 @@ namespace ScienceExplosion {
         [SerializeField] private AudioClip[] _audioClips;
 
         private AudioSource _audioSource;
+        private int _titleBGMIndex = 0;
+        private int _menuBGMIndex = 1;
 
         private void Awake() {
             // BGMがすでにロードされていたら、自分自身を破棄して終了する.
@@ -29,10 +31,14 @@ namespace ScienceExplosion {
             // audioSource.clip = audioClips[0];
             switch (SceneManager.GetActiveScene().name) {
                 case "Title":
-                    _audioSource.clip = _audioClips[0];
+                    _audioSource.clip = _audioClips[_titleBGMIndex];
                     break;
                 case "Menu":
-                    _audioSource.clip = _audioClips[1];
+                case "Characters":
+                case "Character":
+                case "Cutscenes":
+                case "SoundTrack":
+                    _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
                 default:
                     break;
@@ -45,7 +51,8 @@ namespace ScienceExplosion {
         }
 
         private void ChangedActiveScene (Scene thisScene, Scene nextScene) {
-            Debug.Log(nextScene.name);
+            Debug.Log("This Scene is " + thisScene.name);
+            Debug.Log("Next Scene is " + nextScene.name);
 
             switch (nextScene.name) {
                 case "Title":
@@ -55,6 +62,8 @@ namespace ScienceExplosion {
                     _audioSource.Play();
                     break;
                 case "Menu":
+                    if (_audioSource.clip == _audioClips[1])
+                        break;
                     _audioSource.Stop();
                     _audioSource.clip = _audioClips[1];
                     Debug.Log("audioSource.clip: " + _audioSource.clip);

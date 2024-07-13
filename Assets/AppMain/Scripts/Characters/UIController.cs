@@ -8,7 +8,7 @@ namespace ScienceExplosion.Characters {
     public class UIController : MonoBehaviour {
         #region 
         [SerializeField] private Button _backButton;
-        [SerializeField] private Button[] _images;
+        [SerializeField] private List<Button> _buttons;
         [SerializeField] private Animator _transition;
         [SerializeField] private float _transitionTime = 1.0f;
         #endregion
@@ -17,8 +17,9 @@ namespace ScienceExplosion.Characters {
 
         private void Start() {
             _backButton.onClick.AddListener(() => OnBackButtonClicked());
-            foreach (Button image in _images) {
-                image.onClick.AddListener(() => PushImage());
+            for (var i = 0; i < _buttons.Count; i++) {
+                var index = i;
+                _buttons[i].onClick.AddListener(() => PushImage(index));
             }
         }
 
@@ -29,10 +30,11 @@ namespace ScienceExplosion.Characters {
             StartCoroutine(ChangeScene("Menu"));
         }
 
-        private void PushImage() {
+        private void PushImage(int index) {
             if (_isChangeScene) return;
 
             _isChangeScene = true;
+            GameDirector.Instance.CharactersFirstIndex = index;
             StartCoroutine(ChangeScene("Character"));
         }
 
