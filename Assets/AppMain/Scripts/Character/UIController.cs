@@ -21,7 +21,9 @@ namespace ScienceExplosion.Character {
         [SerializeField] private TextMeshProUGUI _descriptionText;
         
         [SerializeField] private List<Button> _characterButtons;
-        [SerializeField] private Button _settingButton;
+        [SerializeField] private Button _characterSettingButton;
+        [SerializeField] private Button _backgroundSettingButton;
+        // 0 ... キャラ設定前, 1 ... 背景設定前, 2 ... 設定後
         [SerializeField] private List<Sprite> _settingButtonSprites;
         [SerializeField] private Button _backButton;
 
@@ -30,25 +32,33 @@ namespace ScienceExplosion.Character {
         #endregion
 
         private int _currentIndex = 0;
-        private Image _settingButtonImage = null;
+        private Image _characterSettingButtonImage = null;
+        private Image _backgroundSettingButtonImage = null;
         private bool _isChangeScene = false;
 
         private void Start() {
             // UpdateCharacter()より下にするとエラーになるので注意してください
-            _settingButtonImage = _settingButton.GetComponent<Image>();
+            _characterSettingButtonImage = _characterSettingButton.GetComponent<Image>();
+            _backgroundSettingButtonImage = _backgroundSettingButton.GetComponent<Image>();
             UpdateCharacter(GameDirector.Instance.CharactersFirstIndex);
 
             for (var i = 0; i < _characterButtons.Count; i++) {
                 var index = i;
                 _characterButtons[i].onClick.AddListener(() => UpdateCharacter(index));
             }
-            _settingButton.onClick.AddListener(() => SettingCharacter());
+            _characterSettingButton.onClick.AddListener(() => SetCharacter());
+            _backgroundSettingButton.onClick.AddListener(() => SetBackground());
             _backButton.onClick.AddListener(() => OnBackButtonClicked());
         }
         
         private void UpdateCharacter(int index) {
             var character = _characterDatabase.GetCharacter(index);
             
+            // 設定されていたキャラのボタンを押せなくする
+            // if (_currentIndex == 0)
+            //     _characterButtons[GameDirector.Instance].interactable = true;
+            // // 設定されたキャラのボタンを押せなくする
+            // _characterButtons[index].interactable = false;
             _currentIndex = index;
             
             _professionText.text = character.Profession;
@@ -66,18 +76,31 @@ namespace ScienceExplosion.Character {
             _characterSpriteRenderer.sprite = character.CharacterSprites[2];
 
             if (index == GameDirector.Instance.SelectedCharacterIndex) {
-                _settingButtonImage.sprite = _settingButtonSprites[1];
-                _settingButton.enabled = false;
+                _characterSettingButtonImage.sprite = _settingButtonSprites[2];
+                _characterSettingButton.enabled = false;
             } else {
-                _settingButtonImage.sprite = _settingButtonSprites[0];
-                _settingButton.enabled = true;
+                _characterSettingButtonImage.sprite = _settingButtonSprites[0];
+                _characterSettingButton.enabled = true;
+            }
+            if (index == GameDirector.Instance.SelectedBackgroundIndex) {
+                _backgroundSettingButtonImage.sprite = _settingButtonSprites[2];
+                _backgroundSettingButton.enabled = false;
+            } else {
+                _backgroundSettingButtonImage.sprite = _settingButtonSprites[1];
+                _backgroundSettingButton.enabled = true;
             }
         }
 
-        private void SettingCharacter() {
+        private void SetCharacter() {
             GameDirector.Instance.SelectedCharacterIndex = _currentIndex;
-            _settingButtonImage.sprite = _settingButtonSprites[1];
-            _settingButton.enabled = false;
+            _characterSettingButtonImage.sprite = _settingButtonSprites[2];
+            _characterSettingButton.enabled = false;
+        }
+
+        private void SetBackground() {
+            GameDirector.Instance.SelectedBackgroundIndex = _currentIndex;
+            _backgroundSettingButtonImage.sprite = _settingButtonSprites[2];
+            _backgroundSettingButton.enabled = false;
         }
 
         private void OnBackButtonClicked() {

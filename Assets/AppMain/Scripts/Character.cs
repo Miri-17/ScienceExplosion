@@ -17,6 +17,7 @@ public class Character {
     // 0 ... Home, 1 ... Game, 2 ... Cutscene
     [SerializeField] private List<Sprite> _placeSprites = null;
     [SerializeField] private Color _uniqueColor = Color.white;
+    [SerializeField] private AudioClip _uniqueAudioClip = null;
 
     public string Name { get => _name; set => _name = value; }
     public string Profession { get => _profession; set => _profession = value; }
@@ -29,4 +30,5 @@ public class Character {
     public Sprite NationMark { get => _nationMark; set => _nationMark = value; }
     public List<Sprite> PlaceSprites { get => _placeSprites; set => _placeSprites = value; }
     public Color UniqueColor { get => _uniqueColor; set => _uniqueColor = value; }
+    public AudioClip UniqueAudioClip { get => _uniqueAudioClip; set => _uniqueAudioClip = value; }
 }

@@ -23,13 +23,14 @@ namespace ScienceExplosion.Menu {
                 .SetLink(_flaskImage.gameObject);
             
             UpdateCharacter(GameDirector.Instance.SelectedCharacterIndex);
+            var character = _characterDatabase.GetCharacter(GameDirector.Instance.SelectedBackgroundIndex);
+            _background.sprite = character.PlaceSprites[0];
         }
 
         // キャラクターをアップデートするためのクラスを定義し、オーバーライド関数にした方が良いかも
         // CharacterのUIController.csにも使用されている。
         private void UpdateCharacter(int index) {
             var character = _characterDatabase.GetCharacter(index);
-            _background.sprite = character.PlaceSprites[0];
             _nationMark.sprite = character.NationMark;
             _nameText.text = character.Name;
             _placeText.text = character.AffiliationEnglish;

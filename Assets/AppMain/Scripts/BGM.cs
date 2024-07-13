@@ -7,11 +7,14 @@ namespace ScienceExplosion {
     public class BGM : MonoBehaviour {
         [HideInInspector] public static BGM Instance { get; private set; }
 
-        [SerializeField] private AudioClip[] _audioClips;
+        [SerializeField] private List<AudioClip> _audioClips;
 
-        private AudioSource _audioSource;
+        private AudioSource _audioSource = null;
         private int _titleBGMIndex = 0;
         private int _menuBGMIndex = 1;
+
+        public AudioSource AudioSource { get => _audioSource; set => _audioSource = value; }
+        public List<AudioClip> AudioClips { get => _audioClips; set => _audioClips = value; }
 
         private void Awake() {
             // BGMがすでにロードされていたら、自分自身を破棄して終了する.
@@ -37,9 +40,9 @@ namespace ScienceExplosion {
                 case "Characters":
                 case "Character":
                 case "Cutscenes":
-                case "SoundTrack":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
+                case "SoundTrack":
                 default:
                     break;
             }
@@ -68,6 +71,9 @@ namespace ScienceExplosion {
                     _audioSource.clip = _audioClips[1];
                     Debug.Log("audioSource.clip: " + _audioSource.clip);
                     _audioSource.Play();
+                    break;
+                case "SoundTrack":
+                    _audioSource.Stop();
                     break;
                 default:
                     break;
