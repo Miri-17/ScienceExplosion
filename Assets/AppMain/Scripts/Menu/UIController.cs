@@ -29,15 +29,11 @@ namespace ScienceExplosion.Menu {
         // CharacterのUIController.csにも使用されている。
         private void UpdateCharacter(int index) {
             var character = _characterDatabase.GetCharacter(index);
-            _background.sprite = character.PlaceSprite;
+            _background.sprite = character.PlaceSprites[0];
             _nationMark.sprite = character.NationMark;
-            if (index == 8) {
-                _nameText.text = character.Name.Substring(0, 6);
-            } else {
-                _nameText.text = character.Name;
-            }
-            _placeText.text = character.Place;
-            _characterSpriteRenderer.sprite = character.CharacterSprite;
+            _nameText.text = character.Name;
+            _placeText.text = character.AffiliationEnglish;
+            _characterSpriteRenderer.sprite = character.CharacterSprites[0];
         }
     }
 }

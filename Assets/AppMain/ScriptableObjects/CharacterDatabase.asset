@@ -17,71 +17,134 @@ MonoBehaviour:
     _profession: "\u30DD\u30FC\u30B7\u30E7\u30F3\u7814\u7A76\u5B66\u8005"
     _skill: "\u30DD\u30A4\u30BA\u30F3\u30AE\u30D5\u30C8"
     _explosion: "\u30C7\u30C3\u30C9\u30B9\u30E2\u30C3\u30B0\u30A2\u30E9\u30FC\u30C8"
-    _place: House of Perichlor herbs
-    _characterSprite: {fileID: 21300000, guid: ef207da1cc09e4d6faf626c31b3255d6, type: 3}
+    _place: "\u30DD\u30A4\u30BA\u30CB\u30E5\u30FC\u30ED"
+    _affiliationEnglish: House of Perichlor herbs
+    _affiliationJapanese: "\u30DA\u30EA\u30B3\u30ED\u30CF\u30FC\u30D6\u30CF\u30A6\u30B9"
+    _characterSprites:
+    - {fileID: 21300000, guid: ef207da1cc09e4d6faf626c31b3255d6, type: 3}
+    - {fileID: 21300000, guid: d23101e282c154b75b75a835d7ca9234, type: 3}
+    - {fileID: 21300000, guid: 0d3cdd7a21bdb4812b17ec1591189aa6, type: 3}
     _nationMark: {fileID: 21300000, guid: de0fc07c8fa1d4963ba0befdfa033819, type: 3}
-    _placeSprite: {fileID: 21300000, guid: 461272c190db14654b0ab6d7155c4922, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: 461272c190db14654b0ab6d7155c4922, type: 3}
+    _uniqueColor: {r: 1, g: 0.25882354, b: 0.25882354, a: 1}
   - _name: "\u30DE\u30A4\u30E9\u30FB\u30AD\u30E1\u30E9"
     _profession: "\u518D\u751F\u751F\u547D\u79D1\u5B66\u8005"
     _skill: "\u30D0\u30E9\u30D0\u30E9\u5206\u89E3\u5B9F\u9A13"
     _explosion: "\u30DA\u30BF\u30DA\u30BF\u5408\u6210\u691C\u8A3C"
-    _place: THRILLING BIO INSTITUTE
-    _characterSprite: {fileID: 21300000, guid: c5f0f2ab9e8124df09740bf268cbd1f6, type: 3}
+    _place: "\u30CA\u30A4\u30F3\u30E9\u30A4\u30D6\u30B9"
+    _affiliationEnglish: THRILLING BIO INSTITUTE
+    _affiliationJapanese: "\u308F\u304F\u308F\u304F\u3051\u3093\u304D\u3085\u30FC\u3058\u3087"
+    _characterSprites:
+    - {fileID: 21300000, guid: c5f0f2ab9e8124df09740bf268cbd1f6, type: 3}
+    - {fileID: 21300000, guid: fb7e89054d7ac4f469271af10cfb52cb, type: 3}
+    - {fileID: 21300000, guid: e1bae1d3681af4569b9d9e666f3cd2f3, type: 3}
     _nationMark: {fileID: 21300000, guid: a3e34a0888b6b48349abbfb1ebd13f3f, type: 3}
-    _placeSprite: {fileID: 21300000, guid: 03e17ff196445459fb453a9d258c4983, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: 03e17ff196445459fb453a9d258c4983, type: 3}
+    _uniqueColor: {r: 0.9294118, g: 0.43137258, b: 0.14117648, a: 1}
   - _name: "\u30AF\u30E9\u30C3\u30AF\u30B9\u30FB\u30AF\u30EB\u30FC"
     _profession: "\u5929\u547D\u661F\u5360\u5B66\u8005"
     _skill: "\u30A6\u30EB\u30C8\u30E9\u30B7\u30E5\u30FC\u30C6\u30A3\u30F3\u30B0\u30C0\u30B9\u30C8"
     _explosion: "\u30E1\u30C6\u30AA\u30D5\u30A9\u30FC\u30EB\u30C6\u30E9\u30A4\u30F3\u30D1\u30AF\u30C8"
-    _place: "Cruise\u2606Ultimate Stellar Star"
-    _characterSprite: {fileID: 21300000, guid: 94d35e756b2b7409183b710db4989309, type: 3}
+    _place: "\u30C6\u30EB\u30FC\u30B8\u30A2"
+    _affiliationEnglish: Cruise<sprite=0>Ultimate Stellar Star
+    _affiliationJapanese: "\u30AF\u30EB\u30FC\u30BA<sprite=3>\u30A2\u30EB\u30C6\u30A3\u30E1\u30C3\u30C8\u30B9\u30C6\u30E9\u30B9\u30BF\u30FC"
+    _characterSprites:
+    - {fileID: 21300000, guid: 94d35e756b2b7409183b710db4989309, type: 3}
+    - {fileID: 21300000, guid: 94d35e756b2b7409183b710db4989309, type: 3}
+    - {fileID: 21300000, guid: 1e409c85be3bf4c92858e6aee2f3dc8e, type: 3}
     _nationMark: {fileID: 21300000, guid: 28b269f1177174d6d8636dbc973ac94a, type: 3}
-    _placeSprite: {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
+    _uniqueColor: {r: 0.9843138, g: 0.9686275, b: 0.5411765, a: 1}
   - _name: "\u30DF\u30BB\u30B9\u30FB\u30B0\u30EA\u30E5\u30FC\u30F3"
     _profession: "\u690D\u7269\u6804\u990A\u5B66\u8005"
     _skill: "\u30A6\u30A3\u30B6\u30FC\u30A6\u30A3\u30FC\u30C9"
     _explosion: "\u30D6\u30EA\u30EA\u30A2\u30F3\u30C8\u30D6\u30EB\u30FC\u30E0"
-    _place: Gynome
-    _characterSprite: {fileID: 21300000, guid: 97e9f3491310e46b1a07db23580303c6, type: 3}
+    _place: "\u30D7\u30E9\u30CD\u30C3\u30BF"
+    _affiliationEnglish: Gynome
+    _affiliationJapanese: "\u30AC\u30A4\u30CE\u30FC\u30E0"
+    _characterSprites:
+    - {fileID: 21300000, guid: 97e9f3491310e46b1a07db23580303c6, type: 3}
+    - {fileID: 21300000, guid: 97e9f3491310e46b1a07db23580303c6, type: 3}
+    - {fileID: 21300000, guid: 41c6df540ab0c4816ae8dda29572ddfb, type: 3}
     _nationMark: {fileID: 21300000, guid: bff5d3d248dcf48ae88c657c67e65d7a, type: 3}
-    _placeSprite: {fileID: 21300000, guid: d4a94e1b293f240d5837f7c4480ff8ce, type: 3}
-  - _name: "<sprite=0, color=#000000>\u9752\u96F7"
+    _placeSprites:
+    - {fileID: 21300000, guid: d4a94e1b293f240d5837f7c4480ff8ce, type: 3}
+    _uniqueColor: {r: 0.007843138, g: 0.72156864, b: 0.30980393, a: 1}
+  - _name: "<sprite=0>\u9752\u96F7"
     _profession: "\u96FB\u8133\u4EA4\u6D41\u5B66\u8005"
-    _skill: <sprite=1, color=#000000><sprite=2, color=#000000>
-    _explosion: "\u4E8C<sprite=0, color=#000000>\u6BBA\u5343"
-    _place: Baoxing skyscraper
-    _characterSprite: {fileID: 21300000, guid: c4a512dc18d954ef3a5ee3e4a86bcf7d, type: 3}
+    _skill: <sprite=1><sprite=2>
+    _explosion: "\u4E8C<sprite=0>\u6BBA\u5343"
+    _place: "\u7279\u6D1B\u4F0A\u6D32"
+    _affiliationEnglish: "B<sprite=1>o x\u012Bng m\xF3ti<sprite=2>n d<sprite=2>l\xF3u"
+    _affiliationJapanese: "\u5B9D\u661F\u6469\u5929\u5927\u697C"
+    _characterSprites:
+    - {fileID: 21300000, guid: c4a512dc18d954ef3a5ee3e4a86bcf7d, type: 3}
+    - {fileID: 21300000, guid: c4a512dc18d954ef3a5ee3e4a86bcf7d, type: 3}
+    - {fileID: 21300000, guid: 572f384ed5b6c4e9cb905b9efdeec591, type: 3}
     _nationMark: {fileID: 21300000, guid: 9465ecb03eeaf43e68a3df7a6bbd329b, type: 3}
-    _placeSprite: {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
+    _uniqueColor: {r: 0.003921569, g: 0.92549026, b: 0.8431373, a: 1}
   - _name: "\u30CA\u30DF\u30E2\u30ED"
     _profession: "\u60B2\u6D99\u5FC3\u7406\u5B66\u8005"
     _skill: De ses yeux
     _explosion: Le soleil dort
-    _place: "Gef\xFChlberg"
-    _characterSprite: {fileID: 21300000, guid: cc4aefef22ea34556ba0721fe1114390, type: 3}
+    _place: "\u30C6\u30E5\u30EC\u30FC\u30CD\u30F3"
+    _affiliationEnglish: "Gef\xFChlberg"
+    _affiliationJapanese: "\u30AC\u30D5\u30FC\u30EB\u30D9\u30EB\u30AF"
+    _characterSprites:
+    - {fileID: 21300000, guid: cc4aefef22ea34556ba0721fe1114390, type: 3}
+    - {fileID: 21300000, guid: cc4aefef22ea34556ba0721fe1114390, type: 3}
+    - {fileID: 21300000, guid: 314dbbef43b9d4b2a9a08ad41a7824d8, type: 3}
     _nationMark: {fileID: 21300000, guid: 075c4757db9f946ba82bfa22028c08b5, type: 3}
-    _placeSprite: {fileID: 21300000, guid: a80af2a68cb364d538cd96b8a543ac0d, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: a80af2a68cb364d538cd96b8a543ac0d, type: 3}
+    _uniqueColor: {r: 0.007843138, g: 0.11764707, b: 0.7137255, a: 1}
   - _name: "\u65B0\u6751\u516B\u96F2"
     _profession: "\u970A\u9B42\u7D71\u5FA1\u5B66\u8005"
     _skill: "\u53CD\u9B42"
     _explosion: "\u8352\u9B42"
-    _place: Kakuriyo no Mori
-    _characterSprite: {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
+    _place: "\u96A0\u308A\u4E16\u306E\u675C"
+    _affiliationEnglish: Kakuriyo no Mori
+    _affiliationJapanese: "\u304B\u305F\u306F\u308C\u9AD8\u697C"
+    _characterSprites:
+    - {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
+    - {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
+    - {fileID: 21300000, guid: bf17de86b0503417ca298a6c8353a58f, type: 3}
     _nationMark: {fileID: 21300000, guid: 4918716b6cbca45c08bbf2a7cee21e34, type: 3}
-    _placeSprite: {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
+    _uniqueColor: {r: 0.80392164, g: 0.61960787, b: 0.89019614, a: 1}
   - _name: "\u30ED\u30B8\u30FC\u30FB\u30D0\u30C3\u30AF\u30D1\u30C3\u30AF"
     _profession: "\u6DF1\u5C64\u30A8\u30CD\u30EB\u30AE\u30FC\u5B66\u8005"
     _skill: "\u30EC\u30C3\u30C4\u30B4\u30FC\uFF01\u3082\u3050\u3089\u968A\uFF01"
     _explosion: "\u30C9\u30C3\u30AB\u30F3\uFF01\u3082\u3050\u3089\u968A\u9577\uFF01"
-    _place: First Base in Wackamor
-    _characterSprite: {fileID: 21300000, guid: 5ae94ed8ef3d844a08562ee859e5ea89, type: 3}
+    _place: "\u30AF\u30EB\u30FC\u30BC\u30C8\u30FC\u30D7"
+    _affiliationEnglish: First Base in Wackamor
+    _affiliationJapanese: "\u30EF\u30C3\u30AF\u30A2\u30E2\u30FC\u30EB\u7B2C\u4E00\u62E0\u70B9"
+    _characterSprites:
+    - {fileID: 21300000, guid: 5ae94ed8ef3d844a08562ee859e5ea89, type: 3}
+    - {fileID: 21300000, guid: 5ae94ed8ef3d844a08562ee859e5ea89, type: 3}
+    - {fileID: 21300000, guid: 534062f1ce3ad45099478fa9ed605366, type: 3}
     _nationMark: {fileID: 21300000, guid: 7e0de78df12904070b2ff0c15c2d7c5b, type: 3}
-    _placeSprite: {fileID: 21300000, guid: ef50229409f8b4ab39a0eb5dcb1b816e, type: 3}
-  - _name: "\u30F4\u30A3\u30AF\u30C8\u30EA\u30A2\u30FBJ\u30FB\u30B0\u30E9\u30F4\u30A3\u30C6\u30A3\u30FC\u30CA"
+    _placeSprites:
+    - {fileID: 21300000, guid: ef50229409f8b4ab39a0eb5dcb1b816e, type: 3}
+    _uniqueColor: {r: 0.9843138, g: 0.7490196, b: 0.9058824, a: 1}
+  - _name: "\u30F4\u30A3\u30AF\u30C8\u30EA\u30A2"
     _profession: "\u4E2D\u592E\u4E2D\u7ACB\u653F\u5E9C"
     _skill: "\u8987\u738B\u306E\u773C\u529B"
     _explosion: "\u6BB2\u6EC5\u306E\u4E00\u523B"
-    _place: Fort of Octagon
-    _characterSprite: {fileID: 21300000, guid: 342a181950a16407ea52267000f3e1fc, type: 3}
+    _place: "\u30BB\u30F3\u30C8\u30E9\u30EB\u30BC\u30ED\u30B7\u30C3\u30AF\u30B9"
+    _affiliationEnglish: Fort of Octagon
+    _affiliationJapanese: "\u30D5\u30A9\u30FC\u30C8\u30AA\u30AF\u30BF\u30B4\u30F3"
+    _characterSprites:
+    - {fileID: 21300000, guid: 342a181950a16407ea52267000f3e1fc, type: 3}
+    - {fileID: 21300000, guid: 342a181950a16407ea52267000f3e1fc, type: 3}
+    - {fileID: 21300000, guid: 9e2910f7045014031aff76d9bdd63dcb, type: 3}
     _nationMark: {fileID: 21300000, guid: ed20da0e2a86e45809eb76f17a24a488, type: 3}
-    _placeSprite: {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
+    _placeSprites:
+    - {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
+    _uniqueColor: {r: 1, g: 1, b: 1, a: 1}
