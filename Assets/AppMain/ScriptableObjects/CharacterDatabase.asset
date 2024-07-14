@@ -58,7 +58,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u30AF\u30EB\u30FC\u30BA<sprite=3>\u30A2\u30EB\u30C6\u30A3\u30E1\u30C3\u30C8\u30B9\u30C6\u30E9\u30B9\u30BF\u30FC"
     _characterSprites:
     - {fileID: 21300000, guid: 94d35e756b2b7409183b710db4989309, type: 3}
-    - {fileID: 21300000, guid: 94d35e756b2b7409183b710db4989309, type: 3}
+    - {fileID: 21300000, guid: 652fe86c26e6e41078586093a7924542, type: 3}
     - {fileID: 21300000, guid: 1e409c85be3bf4c92858e6aee2f3dc8e, type: 3}
     _nationMark: {fileID: 21300000, guid: 28b269f1177174d6d8636dbc973ac94a, type: 3}
     _placeSprites:
@@ -76,7 +76,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u30AC\u30A4\u30CE\u30FC\u30E0"
     _characterSprites:
     - {fileID: 21300000, guid: 97e9f3491310e46b1a07db23580303c6, type: 3}
-    - {fileID: 21300000, guid: 97e9f3491310e46b1a07db23580303c6, type: 3}
+    - {fileID: 21300000, guid: 2ceff76d1a2174e02b4026a8554d22f5, type: 3}
     - {fileID: 21300000, guid: 41c6df540ab0c4816ae8dda29572ddfb, type: 3}
     _nationMark: {fileID: 21300000, guid: bff5d3d248dcf48ae88c657c67e65d7a, type: 3}
     _placeSprites:
@@ -94,7 +94,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u5B9D\u661F\u6469\u5929\u5927\u697C"
     _characterSprites:
     - {fileID: 21300000, guid: c4a512dc18d954ef3a5ee3e4a86bcf7d, type: 3}
-    - {fileID: 21300000, guid: c4a512dc18d954ef3a5ee3e4a86bcf7d, type: 3}
+    - {fileID: 21300000, guid: c3e23da4dce6442dcafce0b41e695ddb, type: 3}
     - {fileID: 21300000, guid: 572f384ed5b6c4e9cb905b9efdeec591, type: 3}
     _nationMark: {fileID: 21300000, guid: 9465ecb03eeaf43e68a3df7a6bbd329b, type: 3}
     _placeSprites:
@@ -112,7 +112,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u30AC\u30D5\u30FC\u30EB\u30D9\u30EB\u30AF"
     _characterSprites:
     - {fileID: 21300000, guid: cc4aefef22ea34556ba0721fe1114390, type: 3}
-    - {fileID: 21300000, guid: cc4aefef22ea34556ba0721fe1114390, type: 3}
+    - {fileID: 21300000, guid: 4a63b665d74024d0dbfb11eab1b56b3f, type: 3}
     - {fileID: 21300000, guid: 314dbbef43b9d4b2a9a08ad41a7824d8, type: 3}
     _nationMark: {fileID: 21300000, guid: 075c4757db9f946ba82bfa22028c08b5, type: 3}
     _placeSprites:
@@ -130,7 +130,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u304B\u305F\u306F\u308C\u9AD8\u697C"
     _characterSprites:
     - {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
-    - {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
+    - {fileID: 21300000, guid: 6eea4e9ace5b94e7092615e5fecefff8, type: 3}
     - {fileID: 21300000, guid: bf17de86b0503417ca298a6c8353a58f, type: 3}
     _nationMark: {fileID: 21300000, guid: 4918716b6cbca45c08bbf2a7cee21e34, type: 3}
     _placeSprites:
@@ -148,7 +148,7 @@ MonoBehaviour:
     _affiliationJapanese: "\u30EF\u30C3\u30AF\u30A2\u30E2\u30FC\u30EB\u7B2C\u4E00\u62E0\u70B9"
     _characterSprites:
     - {fileID: 21300000, guid: 5ae94ed8ef3d844a08562ee859e5ea89, type: 3}
-    - {fileID: 21300000, guid: 5ae94ed8ef3d844a08562ee859e5ea89, type: 3}
+    - {fileID: 21300000, guid: eed2b89e6733248448e52ae2648869f6, type: 3}
     - {fileID: 21300000, guid: 534062f1ce3ad45099478fa9ed605366, type: 3}
     _nationMark: {fileID: 21300000, guid: 7e0de78df12904070b2ff0c15c2d7c5b, type: 3}
     _placeSprites:
@@ -166,12 +166,12 @@ MonoBehaviour:
     _affiliationJapanese: "\u30D5\u30A9\u30FC\u30C8\u30AA\u30AF\u30BF\u30B4\u30F3"
     _characterSprites:
     - {fileID: 21300000, guid: 342a181950a16407ea52267000f3e1fc, type: 3}
-    - {fileID: 21300000, guid: 342a181950a16407ea52267000f3e1fc, type: 3}
+    - {fileID: 21300000, guid: a7459d3a4d5ec40c09011a01f352b4e6, type: 3}
     - {fileID: 21300000, guid: 9e2910f7045014031aff76d9bdd63dcb, type: 3}
     _nationMark: {fileID: 21300000, guid: ed20da0e2a86e45809eb76f17a24a488, type: 3}
     _placeSprites:
     - {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
     - {fileID: 21300000, guid: 51c01d70f6b534eb2886eab586f6c7b0, type: 3}
     - {fileID: 21300000, guid: 0a29593587efc4f1bbe9ff7cdc4c9e44, type: 3}
-    _uniqueColor: {r: 1, g: 1, b: 1, a: 1}
+    _uniqueColor: {r: 0, g: 0, b: 0.019607844, a: 1}
     _uniqueAudioClip: {fileID: 8300000, guid: aeb41246f05a1474e9613fbe4722f29b, type: 3}

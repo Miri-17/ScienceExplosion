@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace ScienceExplosion.ModeSelection {
     public class UIController : MonoBehaviour
     {
         #region 
         [SerializeField] private Button _backButton;
+        [SerializeField] private Button _startPlayButton; // TODO ネットワークのこと学んだら変更あり
         [SerializeField] private Animator _transition;
         [SerializeField] private float _transitionTime = 1.0f;
         #endregion
@@ -16,21 +18,29 @@ namespace ScienceExplosion.ModeSelection {
 
         private void Start() {
             _backButton.onClick.AddListener(() => OnBackButtonClicked());
+            _startPlayButton.onClick.AddListener(() => OnStartPlayButtonClicked());
         }
 
         private void OnBackButtonClicked() {
              if (_isChangeScene) return;
 
             _isChangeScene = true;
-            StartCoroutine(GoBackToScene());
+            StartCoroutine(ChangeScene("Menu"));
         }
 
-        private IEnumerator GoBackToScene() {
+        private void OnStartPlayButtonClicked() {
+             if (_isChangeScene) return;
+
+            _isChangeScene = true;
+            StartCoroutine(ChangeScene("CharacterSelection"));
+        }
+
+        private IEnumerator ChangeScene(string sceneName) {
             _transition.SetTrigger("Start");
 
             yield return new WaitForSeconds(_transitionTime);
 
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

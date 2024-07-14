@@ -14,6 +14,7 @@ namespace ScienceExplosion.Character {
         [SerializeField] private SpriteRenderer _characterSpriteRenderer;
         [SerializeField] private TextMeshProUGUI _professionText;
         [SerializeField] private TextMeshProUGUI _nameText;
+        // [SerializeField] private Image _nameImage;
         [SerializeField] private TextMeshProUGUI _skillText;
         [SerializeField] private TextMeshProUGUI _explosionText;
         [SerializeField] private TextMeshProUGUI _placeText;
@@ -63,7 +64,8 @@ namespace ScienceExplosion.Character {
             
             _professionText.text = character.Profession;
             _nameText.text = character.Name;
-            _nameText.color = character.UniqueColor;
+            // _nameText.color = character.UniqueColor;
+            // _nameImage.color = character.UniqueColor;
             // Dr. Pだけフォントサイズを上げる
             if (index == 0)
                 _nameText.fontSize = 160;

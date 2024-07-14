@@ -13,10 +13,12 @@ public class PageScrollerEditor : ScrollRectEditor {
         // プロパティを取得する
         var pageCount = serializedObject.FindProperty("PageCount");
         var threshold = serializedObject.FindProperty("Threshold");
+        var pageCircles = serializedObject.FindProperty("PageCircles");
 
         // プロパティをインスペクタから編集できるように設定する
         EditorGUILayout.PropertyField(pageCount);
         EditorGUILayout.PropertyField(threshold);
+        EditorGUILayout.PropertyField(pageCircles);
 
         // 内部キャッシュに値を保存する
         serializedObject.ApplyModifiedProperties();

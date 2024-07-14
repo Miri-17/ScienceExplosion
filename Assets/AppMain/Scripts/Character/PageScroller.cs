@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class PageScroller : ScrollRect {
     public int PageCount = 0;
     // 移動量が20%以下なら移動せず、それより大きければ移動する
     public float Threshold = 0.2f;
+    public List<Image> PageCircles = null;
 
     private float _beforePosition = 0;
 
@@ -23,6 +25,9 @@ public class PageScroller : ScrollRect {
         base.OnEndDrag(eventData);
         var nextPageNumber = GetNextPageNumber(_beforePosition, horizontalNormalizedPosition);
         horizontalNormalizedPosition = nextPageNumber / (PageCount - 1);
+        Debug.Log(nextPageNumber);
+        // PageCircles[(int)nextPageNumber].color = new Color(163, 24, 25);
+        // PageCircles[Mathf.Abs((int)nextPageNumber - 1)].color = new Color(91, 16, 16);
     }
 
     private float GetNextPageNumber(float beforePosition, float afterPosition) {
@@ -33,10 +38,15 @@ public class PageScroller : ScrollRect {
             return beforePosition * (PageCount - 1);
         
         // 次ページへ移動
-        if (movement > 0)
+        if (movement > 0) {
+            // PageCircles[1].color = new Color(163, 24, 25);
+            // PageCircles[0].color = new Color(91, 16, 16);
             return Mathf.Ceil(afterPosition * (PageCount - 1));
+        }
         
         // 前ページへ移動
+        // PageCircles[0].color = new Color(163, 24, 25);
+        // PageCircles[1].color = new Color(91, 16, 16);
         return Mathf.Floor(afterPosition * (PageCount - 1));
     }
 }

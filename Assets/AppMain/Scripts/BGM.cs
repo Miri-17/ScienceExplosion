@@ -40,6 +40,8 @@ namespace ScienceExplosion {
                 case "Characters":
                 case "Character":
                 case "Cutscenes":
+                case "ModeSelection":
+                case "CharacterSelection":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
                 case "SoundTrack":
