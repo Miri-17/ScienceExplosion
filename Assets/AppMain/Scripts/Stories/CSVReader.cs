@@ -1,12 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Xml.Linq;
-using TMPro;
-using System.Runtime.CompilerServices;
-using Cysharp.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
 
 // TODO 見てるサイトとは違って、”"で囲んだ値が取得できない←非常に困る
 // SpreadSheet使うものに変更することを考える。

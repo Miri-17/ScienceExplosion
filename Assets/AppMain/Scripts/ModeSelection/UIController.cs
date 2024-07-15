@@ -32,7 +32,8 @@ namespace ScienceExplosion.ModeSelection {
              if (_isChangeScene) return;
 
             _isChangeScene = true;
-            StartCoroutine(ChangeScene("CharacterSelection"));
+            // StartCoroutine(ChangeScene("CharacterSelection"));
+            StartCoroutine(ChangeScene("Netcode"));
         }
 
         private IEnumerator ChangeScene(string sceneName) {

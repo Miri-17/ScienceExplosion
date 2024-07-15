@@ -15,7 +15,7 @@ namespace ScienceExplosion.CharacterSelection {
         [SerializeField] private TextMeshProUGUI _nameText = null;
         [SerializeField] private Image _namePlate = null;
         [SerializeField] private List<Image> _playerTelops = null;
-        [SerializeField] private SpriteRenderer _characterSpriteRenderer = null;
+        // [SerializeField] private SpriteRenderer _characterSpriteRenderer = null;
         [SerializeField] private Button _exitButton = null;
         [SerializeField] private Button _startButton = null;
         [SerializeField] private RectTransform _unmask = null;
@@ -58,7 +58,7 @@ namespace ScienceExplosion.CharacterSelection {
             _playerTelops[_playerIndex].enabled = true;
             
             // TODO マジックナンバーでなくす（enum？）
-            _characterSpriteRenderer.sprite = character.CharacterSprites[2];
+            // _characterSpriteRenderer.sprite = character.CharacterSprites[2];
         }
 
         private void OnExitButtonClicked() {
