@@ -67,7 +67,8 @@ namespace ScienceExplosion {
                     _audioSource.Play();
                     break;
                 case "Menu":
-                    if (_audioSource.clip == _audioClips[1])
+                    // 後ろの条件だけだと、曲選択で何の曲も選択せず戻ると無音
+                    if (_audioSource.isPlaying && _audioSource.clip == _audioClips[1])
                         break;
                     _audioSource.Stop();
                     _audioSource.clip = _audioClips[1];
