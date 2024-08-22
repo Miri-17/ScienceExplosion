@@ -44,6 +44,10 @@ namespace ScienceExplosion {
                 case "CharacterSelection":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
+                // テスト用
+                case "Battle":
+                    _audioSource.clip = _audioClips[_menuBGMIndex];
+                    break;
                 case "SoundTrack":
                 default:
                     break;

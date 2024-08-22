@@ -8,12 +8,16 @@ public class GameDirector : MonoBehaviour {
 
     [SerializeField] private int _selectedCharacterIndex = 0;
     [SerializeField] private int _selectedBackgroundIndex = 0;
+    [SerializeField] private int _battleCharacterIndex = 0;
+    [SerializeField] private int _enemyCharacterIndex = 0;
     // Charactersで選んだキャラを保持するためだけの変数
     // FIXME 他の渡し方ないか模索すること！
     [SerializeField] private int _charactersFirstIndex = 0;
 
     public int SelectedCharacterIndex { get => _selectedCharacterIndex; set => _selectedCharacterIndex = value; }
     public int SelectedBackgroundIndex { get => _selectedBackgroundIndex; set => _selectedBackgroundIndex = value; }
+    public int BattleCharacterIndex { get => _battleCharacterIndex; set => _battleCharacterIndex = value; }
+    public int EnemyCharacterIndex { get => _enemyCharacterIndex; set => _enemyCharacterIndex = value; }
     public int CharactersFirstIndex { get => _charactersFirstIndex; set => _charactersFirstIndex = value; }
     
     private void Awake() {
