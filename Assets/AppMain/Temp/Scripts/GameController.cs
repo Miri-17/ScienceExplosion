@@ -8,25 +8,35 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
+    // ある六角形の中心から右の六角形の中心までの長さ
+    public float _hexagonWidth = 0.74f;
+
+    // Startで  _puzzlesXY = new GameObject[_rowSize, _columnSize]; としたいが
+    // Puzzle.csでも呼び出すため、先に指定
+    [HideInInspector] public GameObject[,] puzzlesXY = new GameObject[17, 7];
+    // ある六角形の中心から上の六角形の中心までの長さ
+    [HideInInspector] public float hexagonHeight = 0;
+    // ある六角形の中心と上の六角形の中心のずれ
+    [HideInInspector] public float adjustmentWidth = 0;
+    
     [SerializeField] private GameObject[] _puzzles = null;
     [SerializeField] private GameObject _puzzleBlack = null;
     [SerializeField] private int _rowSize = 17;
     [SerializeField] private int _columnSize = 7;
-    // ある六角形の中心から右の六角形の中心までの長さ
-    [SerializeField] private float _hexagonWidth = 0.74f;
     // 4つまでしか選択できなくする
     [SerializeField] private int _puzzleDestroyLimit = 4;
     [SerializeField] private LineRenderer _lineRenderer = null;
-    // public LineRenderer _lineRenderer = null;
 
     // 選択中のパズルを保持
     private List<Puzzle> _selectedPuzzles = new List<Puzzle>();
-    private GameObject[,] _puzzlesXY = null;
 
     private void Start() {
         Instance = this;
 
-        _puzzlesXY = new GameObject[_rowSize, _columnSize];
+        hexagonHeight = _hexagonWidth * Mathf.Sin(60.0f * Mathf.Deg2Rad);
+        adjustmentWidth = -_hexagonWidth * Mathf.Cos(60.0f * Mathf.Deg2Rad);
+
+        // _puzzlesXY = new GameObject[_rowSize, _columnSize];
         // ヴィクトリアの時だけ敵のパズル色を無くし、ヴィクトリアのパズルを配置
         if (GameDirector.Instance.BattleCharacterIndex == 8)
             _puzzles[GameDirector.Instance.EnemyCharacterIndex] = _puzzleBlack;
@@ -42,15 +52,14 @@ public class GameController : MonoBehaviour {
             for (int j = 0; j < _columnSize; j++) {
                 int r = Random.Range(0, _puzzles.Length);
                 var puzzlePrefab = Instantiate(_puzzles[r]);
-
-                // ある六角形の中心から上の六角形の中心までの長さ
-                var hexagonHeight = _hexagonWidth * Mathf.Sin(60.0f * Mathf.Deg2Rad);
-                 // ある六角形の中心と上の六角形の中心のずれ
-                var adjustmentWidth = -_hexagonWidth * Mathf.Cos(60.0f * Mathf.Deg2Rad);
                 var x = _hexagonWidth * i + adjustmentWidth * Mathf.Abs(j % 2);
                 var y = hexagonHeight * j;
                 puzzlePrefab.transform.position = new Vector2(x, y);
-                _puzzlesXY[i, j] = puzzlePrefab;
+                puzzlesXY[i, j] = puzzlePrefab;
+
+                Puzzle _puzzle = puzzlePrefab.GetComponent<Puzzle>();
+                _puzzle.Row = i;
+                _puzzle.Column = j;
             }
         }
     }
@@ -88,9 +97,8 @@ public class GameController : MonoBehaviour {
     }
 
     private void DestroyPuzzles(List<Puzzle> puzzles) {
-        foreach (var puzzle in puzzles) {
+        foreach (var puzzle in puzzles)
             Destroy(puzzle.gameObject);
-        }
     }
 
     private void UpdateLineRenderer() {

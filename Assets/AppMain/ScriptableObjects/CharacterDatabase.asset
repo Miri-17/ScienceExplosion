@@ -62,8 +62,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1e409c85be3bf4c92858e6aee2f3dc8e, type: 3}
     _nationMark: {fileID: 21300000, guid: 28b269f1177174d6d8636dbc973ac94a, type: 3}
     _placeSprites:
-    - {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
-    - {fileID: 21300000, guid: 75be7e01a866c4a1082648130ab67a0b, type: 3}
+    - {fileID: 21300000, guid: 4f9179a712ce345b08044b014164173e, type: 3}
+    - {fileID: 21300000, guid: 4f9179a712ce345b08044b014164173e, type: 3}
     - {fileID: 21300000, guid: 974d6dc3b5092440ea85e7cc2c447266, type: 3}
     _uniqueColor: {r: 0.9843138, g: 0.9686275, b: 0.5411765, a: 1}
     _uniqueAudioClip: {fileID: 8300000, guid: bac79f07a47094064a0124d8495a30a7, type: 3}
@@ -98,8 +98,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 572f384ed5b6c4e9cb905b9efdeec591, type: 3}
     _nationMark: {fileID: 21300000, guid: 9465ecb03eeaf43e68a3df7a6bbd329b, type: 3}
     _placeSprites:
-    - {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
-    - {fileID: 21300000, guid: aebac842bfe7e4c159c4e9c5aeec1492, type: 3}
+    - {fileID: 21300000, guid: e261f9bbaae22402699d39a098f272f0, type: 3}
+    - {fileID: 21300000, guid: e261f9bbaae22402699d39a098f272f0, type: 3}
     - {fileID: 21300000, guid: 64a50db59148d4fa2ad8c487eee77d12, type: 3}
     _uniqueColor: {r: 0.003921569, g: 0.92549026, b: 0.8431373, a: 1}
     _uniqueAudioClip: {fileID: 8300000, guid: b4b39a9dbfccd4ae69ee605ae29ee1f9, type: 3}
@@ -134,8 +134,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bf17de86b0503417ca298a6c8353a58f, type: 3}
     _nationMark: {fileID: 21300000, guid: 4918716b6cbca45c08bbf2a7cee21e34, type: 3}
     _placeSprites:
-    - {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
-    - {fileID: 21300000, guid: 39a46f4b6e3bc443d95bb9a2b10f2203, type: 3}
+    - {fileID: 21300000, guid: d28ab0dac89fe4e589212a962b7a6970, type: 3}
+    - {fileID: 21300000, guid: d28ab0dac89fe4e589212a962b7a6970, type: 3}
     - {fileID: 21300000, guid: eccf5e5c76fbc4c8f8eec360604f9e9e, type: 3}
     _uniqueColor: {r: 0.80392164, g: 0.61960787, b: 0.89019614, a: 1}
     _uniqueAudioClip: {fileID: 8300000, guid: b054f7c7c4ae045c2b9ee04222f3711a, type: 3}
