@@ -1041,24 +1041,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1509820688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e692bb595a8640d3861f8dabb46b7d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d33d63c7841745b78ea037060e328a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _puzzles:
-  - {fileID: 8834039417145314183, guid: 63d89085cc6ed42d384e7e816a994bb8, type: 3}
-  - {fileID: 8834039417145314183, guid: 5de0011b3ed834c8aaa48bfb2303336c, type: 3}
-  - {fileID: 8834039417145314183, guid: 55fe5d4423a0a4fa28fd68b6fba866e5, type: 3}
-  - {fileID: 8834039417145314183, guid: e699dd7af232646e494d8bfa73771392, type: 3}
-  - {fileID: 8834039417145314183, guid: 21cb61964cec8451da3ac12542cd34b1, type: 3}
-  - {fileID: 8834039417145314183, guid: e1c8cdd71db2d49eebf3a99b7980e1a5, type: 3}
-  - {fileID: 8834039417145314183, guid: 8197149918b4e436caa749010e28d95b, type: 3}
-  - {fileID: 8834039417145314183, guid: d44f2ca93f6aa4619ada7a65f6d944f0, type: 3}
-  _puzzleBlack: {fileID: 8834039417145314183, guid: a1a248876bb5a46c9a135fd7a23b13d3, type: 3}
+  - {fileID: 8834039417145314183, guid: 2c7790181e45c45d99c1b50c4f1f5d4a, type: 3}
+  - {fileID: 8834039417145314183, guid: 9a2aa7a8fdb24476aa578c096725a4ec, type: 3}
+  - {fileID: 8834039417145314183, guid: 1582253173752476898e8b2e4a3d411a, type: 3}
+  - {fileID: 8834039417145314183, guid: 614f9853d8050463a804e7b720fef291, type: 3}
+  - {fileID: 8834039417145314183, guid: dd16d06a5f4e44fed95101273358c9a9, type: 3}
+  - {fileID: 8834039417145314183, guid: 435a7d99be11a4ae0bc4ae6ffaccc978, type: 3}
+  - {fileID: 8834039417145314183, guid: 2679de7b7890e46c983122443470d3d2, type: 3}
+  - {fileID: 8834039417145314183, guid: 53e25aafb4fcc44d1899c9484a2103eb, type: 3}
+  _puzzleBlack: {fileID: 8834039417145314183, guid: 546e3c82f130a42b0b37883acc44252a, type: 3}
   _rowSize: 17
   _columnSize: 7
-  _hexagonWidth: 0.74
   _puzzleDestroyLimit: 4
   _lineRenderer: {fileID: 2052796206}
+  _hexagonWidth: 0.74
 --- !u!1 &2052796205
 GameObject:
   m_ObjectHideFlags: 0

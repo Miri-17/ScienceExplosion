@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 389902114711420207}
   - component: {fileID: 7541461456738499420}
   - component: {fileID: 3880443769379731191}
-  - component: {fileID: 1468833979263190466}
+  - component: {fileID: 6838920223839825562}
   m_Layer: 7
   m_Name: Puzzle_Yellow
   m_TagString: Untagged
@@ -222,7 +222,7 @@ PolygonCollider2D:
       - {x: 0.43, y: -0.26}
       - {x: 0.43, y: 0.26}
   m_UseDelaunayMesh: 0
---- !u!114 &1468833979263190466
+--- !u!114 &6838920223839825562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,8 +231,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8834039417145314183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626cdcdf510174d0aaa86f61bcc62c15, type: 3}
+  m_Script: {fileID: 11500000, guid: 37df8a1207c4d45f2b8ed2051ac8447f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Yellow
   _selectedSprite: {fileID: 7091896099009480911}
+  _id: Yellow
+  _row: 0
+  _column: 0

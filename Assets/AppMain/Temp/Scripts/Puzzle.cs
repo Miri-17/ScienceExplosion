@@ -3,10 +3,12 @@ using UnityEngine.EventSystems;
 
 public class Puzzle : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler {
     [SerializeField] private SpriteRenderer _selectedSprite = null;
+    [SerializeField] private string _id = "";
     [SerializeField] private int _row = 0;
     [SerializeField] private int _column = 0;
 
     public bool IsSelected { get; private set; }
+    public string ID { get => _id; set => _id = value; }
     public int Row { get => _row; set => _row = value; }
     public int Column { get => _column; set => _column = value; }
 

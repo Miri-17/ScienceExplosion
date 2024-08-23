@@ -17,10 +17,11 @@ public class GameController : MonoBehaviour {
     [SerializeField] private GameObject _puzzleBlack = null;
     [SerializeField] private int _rowSize = 17;
     [SerializeField] private int _columnSize = 7;
-    [SerializeField] private int _puzzleDestroyLimit = 4;
     [SerializeField] private LineRenderer _lineRenderer = null;
     // ある六角形の中心から右の六角形の中心までの長さ
     [SerializeField] private float _hexagonWidth = 0.74f;
+
+    private string _selectID = "";
 
     private void Awake() {
         if (Instance != null) {
@@ -107,26 +108,24 @@ public class GameController : MonoBehaviour {
     public void OnPuzzleDown(Puzzle puzzle) {
         _selectedPuzzles.Add(puzzle);
         puzzle.SetSelection(true);
+        _selectID = puzzle.ID;
 
         UpdateLineRenderer();
     }
 
     public void OnPuzzleEnter(Puzzle puzzle) {
-        if (_selectedPuzzles.Count < 1)
+        if (_selectedPuzzles.Count < 1 || _selectID != puzzle.ID)
             return;
+        
         // Debug.Log(_selectedPuzzles.Count);
 
         if (puzzle.IsSelected) {
             if (_selectedPuzzles.Count >= 2 && _selectedPuzzles[_selectedPuzzles.Count - 2] == puzzle) {
-                // Debug.Log("Hello!");
                 var removedPuzzle = _selectedPuzzles[_selectedPuzzles.Count - 1];
                 removedPuzzle.SetSelection(false);
                 _selectedPuzzles.Remove(removedPuzzle);
             }
         } else {
-            if (_selectedPuzzles.Count >= _puzzleDestroyLimit)
-                return;
-            
             var length = (_selectedPuzzles[_selectedPuzzles.Count - 1].transform.position - puzzle.transform.position).magnitude;
             // Debug.Log("length: " + length);
             if (length < _hexagonWidth + 0.01f) {
