@@ -50,9 +50,11 @@ public class GameController : MonoBehaviour {
                 if (_puzzlesXY[i, j] == null) {
                     int r = Random.Range(0, _puzzles.Length);
                     var puzzlePrefab = Instantiate(_puzzles[r]);
+                    puzzlePrefab.transform.parent = GameObject.Find("Puzzles").transform;
                     var x = _hexagonWidth * i + _adjustmentWidth * Mathf.Abs(j % 2);
                     var y = _hexagonHeight * j;
-                    puzzlePrefab.transform.position = new Vector2(x, y);
+                    // puzzlePrefab.transform.position = new Vector2(x, y);
+                    puzzlePrefab.transform.position = new Vector3(x, y, 80);
                     _puzzlesXY[i, j] = puzzlePrefab;
 
                     Puzzle _puzzle = puzzlePrefab.GetComponent<Puzzle>();
@@ -91,7 +93,8 @@ public class GameController : MonoBehaviour {
         puzzle.Column--;
         var x = _hexagonWidth * puzzle.Row + _adjustmentWidth * Mathf.Abs(puzzle.Column % 2);
         var y = _hexagonHeight * puzzle.Column;
-        puzzle.gameObject.transform.position = new Vector2(x, y);
+        // puzzle.gameObject.transform.position = new Vector2(x, y);
+        puzzle.gameObject.transform.position = new Vector3(x, y, 80);
         _puzzlesXY[row, column - 1] = puzzle.gameObject;
     }
 

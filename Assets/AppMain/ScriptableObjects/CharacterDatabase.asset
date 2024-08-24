@@ -66,7 +66,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 641a8637f068944f0a182ebfac2f89f5, type: 3}
     - {fileID: 21300000, guid: 974d6dc3b5092440ea85e7cc2c447266, type: 3}
     _uniqueColor: {r: 0.9843138, g: 0.9686275, b: 0.5411765, a: 1}
-    _uniqueAudioClip: {fileID: 8300000, guid: bac79f07a47094064a0124d8495a30a7, type: 3}
+    _uniqueAudioClip: {fileID: 8300000, guid: 0d0f7f6b4ecdc4e11a73db22866b1459, type: 3}
   - _name: "\u30DF\u30BB\u30B9\u30FB\u30B0\u30EA\u30E5\u30FC\u30F3"
     _profession: "\u690D\u7269\u6804\u990A\u5B66\u8005"
     _skill: "\u30A6\u30A3\u30B6\u30FC\u30A6\u30A3\u30FC\u30C9"

@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIDisplayer : MonoBehaviour {
-    private float currentTime;
+    private float _currentTime;
+    private bool _isPlaying = true;
     
     [SerializeField] private float timeLimit = 90.0f;
     [SerializeField] private Image mask;
@@ -13,26 +14,38 @@ public class UIDisplayer : MonoBehaviour {
     [SerializeField] private int scorePerPuzzle = 30;
 
     private void Start() {
-        currentTime = timeLimit;
+        _currentTime = timeLimit;
         _scoreText.text  = "0";
     }
 
     private void Update() {
-        currentTime -= Time.deltaTime;
-        if (currentTime <= 60) {
-            //
+        // _currentTime -= Time.deltaTime;
+        // if (_currentTime <= 60) {
+        //     //
+        // }
+        // if (_currentTime <= 30) {
+        //     //
+        // }
+        // if (_currentTime <= 0) {
+            // SceneManager.LoadScene("Result");
+        // }
+        // GetCurrentFill();
+        TimerUpdate();
+    }
+
+    private void TimerUpdate() {
+        if (_isPlaying) {
+            _currentTime -= Time.deltaTime;
+            if (_currentTime <= 0) {
+                _currentTime = 0;
+                _isPlaying = false;
+            }
+            GetCurrentFill();
         }
-        if (currentTime <= 30) {
-            //
-        }
-        if (currentTime <= 0) {
-            SceneManager.LoadScene("Result");
-        }
-        GetCurrentFill();
     }
 
     private void GetCurrentFill() {
-        var fillAmount = currentTime / timeLimit;
+        var fillAmount = _currentTime / timeLimit;
         mask.fillAmount = fillAmount;
     }
 
