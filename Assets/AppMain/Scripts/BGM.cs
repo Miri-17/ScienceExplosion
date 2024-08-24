@@ -12,6 +12,7 @@ namespace ScienceExplosion {
         private AudioSource _audioSource = null;
         private int _titleBGMIndex = 0;
         private int _menuBGMIndex = 1;
+        private int _battleBGMIndex = 2;
 
         public AudioSource AudioSource { get => _audioSource; set => _audioSource = value; }
         public List<AudioClip> AudioClips { get => _audioClips; set => _audioClips = value; }
@@ -42,11 +43,12 @@ namespace ScienceExplosion {
                 case "Cutscenes":
                 case "ModeSelection":
                 case "CharacterSelection":
+                case "Result":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
                 // テスト用
                 case "Battle":
-                    _audioSource.clip = _audioClips[_menuBGMIndex];
+                    _audioSource.clip = _audioClips[_battleBGMIndex + GameDirector.Instance.EnemyCharacterIndex];
                     break;
                 case "SoundTrack":
                 default:
@@ -66,16 +68,25 @@ namespace ScienceExplosion {
             switch (nextScene.name) {
                 case "Title":
                     _audioSource.Stop();
-                    _audioSource.clip = _audioClips[0];
+                    _audioSource.clip = _audioClips[_titleBGMIndex];
                     Debug.Log("audioSource.clip: " + _audioSource.clip);
                     _audioSource.Play();
                     break;
                 case "Menu":
+                case "Result":
                     // 後ろの条件だけだと、曲選択で何の曲も選択せず戻ると無音
-                    if (_audioSource.isPlaying && _audioSource.clip == _audioClips[1])
+                    if (_audioSource.isPlaying && _audioSource.clip == _audioClips[_menuBGMIndex])
                         break;
                     _audioSource.Stop();
-                    _audioSource.clip = _audioClips[1];
+                    _audioSource.clip = _audioClips[_menuBGMIndex];
+                    Debug.Log("audioSource.clip: " + _audioSource.clip);
+                    _audioSource.Play();
+                    break;
+                case "Battle":
+                    if (_audioSource.isPlaying && _audioSource.clip == _audioClips[_battleBGMIndex])
+                        break;
+                    _audioSource.Stop();
+                    _audioSource.clip = _audioClips[_battleBGMIndex + GameDirector.Instance.EnemyCharacterIndex];
                     Debug.Log("audioSource.clip: " + _audioSource.clip);
                     _audioSource.Play();
                     break;

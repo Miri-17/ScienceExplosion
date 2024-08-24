@@ -19,7 +19,7 @@ namespace ScienceExplosion.SoundTrack {
         }
 
         private void OnBackButtonClicked() {
-             if (_isChangeScene) return;
+                if (_isChangeScene) return;
 
             _isChangeScene = true;
             StartCoroutine(GoBackToScene());

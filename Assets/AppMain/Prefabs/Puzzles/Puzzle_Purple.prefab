@@ -235,6 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedSprite: {fileID: 3232351971362187813}
-  _id: Purple
+  _id: 6
   _row: 0
   _column: 0

@@ -27,13 +27,19 @@ EditorBuildSettings:
     path: Assets/AppMain/Scenes/ModeSelection.unity
     guid: 44238f94ee61544c5ba360e6dc43d8ee
   - enabled: 1
+    path: Assets/AppMain/Scenes/CharacterSelection.unity
+    guid: 60421d789aa654bb2bfa5e922b1d50a7
+  - enabled: 1
     path: Assets/AppMain/Scenes/Netcode.unity
     guid: 1541b9e1942054001b74aaf0d506b988
   - enabled: 1
-    path: Assets/AppMain/Scenes/CharacterSelection.unity
+    path: Assets/AppMain/Scenes/CharacterSelection2.unity
     guid: 7233ce4973c484846973b87b9d388e2a
   - enabled: 1
     path: Assets/AppMain/Scenes/Battle.unity
-    guid: 361bfcffd9f4a4153b3999b51e604820
+    guid: de7a2e50f6a194df79cfa8b3fc860902
+  - enabled: 1
+    path: Assets/AppMain/Scenes/Result.unity
+    guid: 2f3589355f646473183a48f960b4fa11
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 14992b47a98774afa9822431fcc95dab, type: 2}
