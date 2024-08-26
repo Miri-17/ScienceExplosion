@@ -17,7 +17,7 @@ namespace ScienceExplosion.CutScenes {
         // SelectedImagePanelのBackgroundをタップすると閉じるようにする.
         [SerializeField] private EventTrigger _eventTrigger;
         [SerializeField] private GameObject _selectedImagePanel;
-        [SerializeField] private Animator _transition;
+        // [SerializeField] private Animator _transition;
         [SerializeField] private float _transitionTime = 1.0f;
         #endregion
 
@@ -65,7 +65,7 @@ namespace ScienceExplosion.CutScenes {
         }
 
         private IEnumerator GoBackToScene() {
-            _transition.SetTrigger("Start");
+            // _transition.SetTrigger("Start");
 
             yield return new WaitForSeconds(_transitionTime);
 

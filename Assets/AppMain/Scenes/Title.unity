@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 561673118}
   - component: {fileID: 561673119}
   m_Layer: 0
-  m_Name: Timeline
+  m_Name: PlayableDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,8 +8,8 @@ using DG.Tweening;
 using UnityEngine.Timeline;
 
 public class CharacterSelectionController : MonoBehaviour {
-    private bool _isChangeScene = false;
-    private bool _isSelectingPlayer = true;
+    private bool _isSceneTransitioning = false;
+    private bool _isPlayerSelectionMode = true;
     private int _previousCharacterIndex = 0;
 
     #region
@@ -35,54 +35,54 @@ public class CharacterSelectionController : MonoBehaviour {
         _characterButtons[GameDirector.Instance.PlayerCharacterIndex].interactable = false;
         _selectedCharacterController.UpdatePlayerCharacter(GameDirector.Instance.PlayerCharacterIndex);
 
-        _playableDirector.Play(_timelineAssets[0]);
+        PlayTimeline(0);
     }
 
     private void OnBackButtonClicked() {
-        if (_isChangeScene) return;
+        if (_isSceneTransitioning) return;
 
-        _isChangeScene = true;
-        StartCoroutine(GoBackToScene(_timelineAssets[1]));
+        _isSceneTransitioning = true;
+        StartCoroutine(GoBackToScene((float)_timelineAssets[1].duration));
     }
 
-    private IEnumerator GoBackToScene(TimelineAsset timelineAsset) {
-        _playableDirector.Play(timelineAsset);
+    private IEnumerator GoBackToScene(float duration) {
+        PlayTimeline(1);
 
-        yield return new WaitForSeconds((float)timelineAsset.duration);
+        yield return new WaitForSeconds(duration);
 
         SceneManager.LoadScene("ModeSelection");
     }
 
     private void OnGoToEnemySelectionButtonClicked() {
-        _isSelectingPlayer = false;
+        _isPlayerSelectionMode = false;
 
         // 前のキャラクターインデックスを今の敵キャラクターにすることで
         // 初めて敵を選択した時に、選択したプレイヤーキャラが選べる状態になるのを防ぐ
         _previousCharacterIndex = GameDirector.Instance.EnemyCharacterIndex;
         _characterButtons[GameDirector.Instance.EnemyCharacterIndex].interactable = false;
-        _playableDirector.Play(_timelineAssets[2]);
+        PlayTimeline(2);
     }
     
     private void OnGoBackToPlayerSelectionButtonClicked() {
-        _isSelectingPlayer = true;
+        _isPlayerSelectionMode = true;
 
         // 前のキャラクターインデックスを今のプレイヤーキャラクターにすることで
         // 初めてプレイヤーを選択した時に、選択していたプレイヤーキャラが選べない状態になるのを防ぐ
         _previousCharacterIndex = GameDirector.Instance.PlayerCharacterIndex;
         _characterButtons[GameDirector.Instance.EnemyCharacterIndex].interactable = true;
-        _playableDirector.Play(_timelineAssets[3]);
+        PlayTimeline(3);
     }
 
-
-     private void OnCharacterButtonClicked(int index) {
-        if (_isSelectingPlayer) {
+    private void OnCharacterButtonClicked(int index) {
+        if (_isPlayerSelectionMode) {
             GameDirector.Instance.PlayerCharacterIndex = index;
 
             _characterButtons[index].interactable = false;
-            if (index == 1) {
-                GameDirector.Instance.EnemyCharacterIndex = 0;
-            } else {
-                GameDirector.Instance.EnemyCharacterIndex = 1;
+            if (index == GameDirector.Instance.EnemyCharacterIndex) {
+                if (index != 0)
+                    GameDirector.Instance.EnemyCharacterIndex = 0;
+                else
+                    GameDirector.Instance.EnemyCharacterIndex = 1;
             }
 
             _selectedCharacterController.UpdateEnemyCharacter(GameDirector.Instance.EnemyCharacterIndex);
@@ -97,5 +97,12 @@ public class CharacterSelectionController : MonoBehaviour {
 
         _characterButtons[_previousCharacterIndex].interactable = true;
         _previousCharacterIndex = index;
+    }
+
+    private void PlayTimeline(int index) {
+        if (index < 0 || index >= _timelineAssets.Count)
+            return;
+        
+        _playableDirector.Play(_timelineAssets[index]);
     }
 }

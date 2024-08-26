@@ -9,7 +9,7 @@ namespace ScienceExplosion.Characters {
         #region 
         [SerializeField] private Button _backButton;
         [SerializeField] private List<Button> _buttons;
-        [SerializeField] private Animator _transition;
+        // [SerializeField] private Animator _transition;
         [SerializeField] private float _transitionTime = 1.0f;
         #endregion
 
@@ -39,7 +39,7 @@ namespace ScienceExplosion.Characters {
         }
 
         private IEnumerator ChangeScene(string sceneName) {
-            _transition.SetTrigger("Start");
+            // _transition.SetTrigger("Start");
 
             yield return new WaitForSeconds(_transitionTime);
 

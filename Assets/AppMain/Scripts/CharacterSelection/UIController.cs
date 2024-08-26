@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace ScienceExplosion.CharacterSelection {
     public class UIController : MonoBehaviour {
         #region 
-        private bool _isChangeScene = false;
+        private bool _isSceneTransitioning = false;
         private readonly float SCALE_DURATION = 0.5f;
         #endregion
 
@@ -42,13 +42,14 @@ namespace ScienceExplosion.CharacterSelection {
             _warningPanel.SetActive(false);
         }
         private void OnYesButtonClicked() {
-            if (_isChangeScene) return;
+            if (_isSceneTransitioning) return;
 
-            _isChangeScene = true;
+            _isSceneTransitioning = true;
             StartCoroutine(GoToBattle());
         }
 
         private IEnumerator GoToBattle() {
+            _warningPanel.SetActive(false);
             IrisOut();
 
             yield return new WaitForSeconds(0.5f);
