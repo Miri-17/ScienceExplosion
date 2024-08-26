@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour {
     [SerializeField] private PlayableDirector _playableDirector;
-    [SerializeField] private float timeLimit = 90.0f;
-    private bool _isPlaying = false;
+    // [SerializeField] private float timeLimit = 90.0f;
+    // private bool _isPlaying = false;
 
     public enum GameState {
         BattleStart,    // バトル開始演出中

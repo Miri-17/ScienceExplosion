@@ -2,10 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public class UIDisplayer : MonoBehaviour {
     private float _currentTime;
     private bool _isPlaying = true;
+
+    // private int _previousScore = 0;
+    // private bool _isCountUp;
+    // カウントアップアニメーション
+    private Sequence _sequence;
     
     [SerializeField] private float timeLimit = 90.0f;
     [SerializeField] private Image mask;
@@ -19,17 +25,10 @@ public class UIDisplayer : MonoBehaviour {
     }
 
     private void Update() {
-        // _currentTime -= Time.deltaTime;
-        // if (_currentTime <= 60) {
-        //     //
+        // if (_isCountUp) {
+            // _scoreText.SetText("{0:}");
+            // _scoreText.PadLeft(10, '0');
         // }
-        // if (_currentTime <= 30) {
-        //     //
-        // }
-        // if (_currentTime <= 0) {
-            // SceneManager.LoadScene("Result");
-        // }
-        // GetCurrentFill();
         TimerUpdate();
     }
 
@@ -50,6 +49,7 @@ public class UIDisplayer : MonoBehaviour {
     }
 
     public void AddScore(int puzzleCount, string id) {
+        // _previousScore = _scoreText;
         // TODO マジックナンバー変更
         if (id == GameDirector.Instance.PlayerCharacterIndex.ToString())
             GameDirector.Instance.Score += (int)(puzzleCount * scorePerPuzzle * 1.2);

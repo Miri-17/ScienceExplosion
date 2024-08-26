@@ -6,6 +6,8 @@ public class StageGenerator : MonoBehaviour {
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private SpriteRenderer _player;
     [SerializeField] private SpriteRenderer _enemy;
+    [SerializeField] private Image _labelImage;
+    [SerializeField] private Image _characterImage;
 
     private void Start() {
         if (GameDirector.Instance != null) {
@@ -14,6 +16,8 @@ public class StageGenerator : MonoBehaviour {
             _player.sprite = playerCharacter.CharacterSprites[1];
             _enemy.sprite = enemyCharacter.CharacterSprites[1];
             _backgroundImage.sprite = enemyCharacter.PlaceSprites[1];
+            _labelImage.color = playerCharacter.UniqueColor;
+            _characterImage.sprite = playerCharacter.CharacterSprites[2];
         } else {
             Debug.Log("GameDirecotr is missing!");
             Destroy(this);
