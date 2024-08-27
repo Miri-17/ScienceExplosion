@@ -15,6 +15,8 @@ namespace ScienceExplosion.Menu {
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _placeText;
         [SerializeField] private SpriteRenderer _characterSpriteRenderer;
+        [SerializeField] private Image _settingsBackground = null;
+        [SerializeField] private List<Color> _settingsColor = null;
 
         private void Start() {
             _flaskImage.DOAnchorPos(new Vector2(-10.1f, 38.0f), 1.0f)
@@ -25,6 +27,8 @@ namespace ScienceExplosion.Menu {
             UpdateCharacter(GameDirector.Instance.SelectedCharacterIndex);
             var character = _characterDatabase.GetCharacter(GameDirector.Instance.SelectedBackgroundIndex);
             _background.sprite = character.PlaceSprites[0];
+
+            _settingsBackground.color = _settingsColor[GameDirector.Instance.SelectedCharacterIndex];
         }
 
         // キャラクターをアップデートするためのクラスを定義し、オーバーライド関数にした方が良いかも

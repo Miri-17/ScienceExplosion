@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.78431374}
+  m_Color: {r: 0.25490198, g: 0, b: 0.039215688, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2178,6 +2178,17 @@ MonoBehaviour:
   _nameText: {fileID: 524417492}
   _placeText: {fileID: 1130227163}
   _characterSpriteRenderer: {fileID: 1912728251}
+  _settingsBackground: {fileID: 328548105}
+  _settingsColor:
+  - {r: 0.25490198, g: 0, b: 0.039215688, a: 0.78431374}
+  - {r: 0.25490198, g: 0.101960786, b: 0, a: 0.78431374}
+  - {r: 0.25490198, g: 0.24705882, b: 0, a: 0.78431374}
+  - {r: 0.07450981, g: 0.25490198, b: 0, a: 0.78431374}
+  - {r: 0, g: 0.25490198, b: 0.22352941, a: 0.78431374}
+  - {r: 0, g: 0.06666667, b: 0.25490198, a: 0.78431374}
+  - {r: 0.15294118, g: 0, b: 0.25490198, a: 0.78431374}
+  - {r: 0.25490198, g: 0, b: 0.22745098, a: 0.78431374}
+  - {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 0.78431374}
 --- !u!1 &614827282
 GameObject:
   m_ObjectHideFlags: 0
