@@ -5,10 +5,14 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.EventSystems;
 using ScienceExplosion;
+using UnityEngine.SceneManagement;
 
 public class BattleController : MonoBehaviour {
     private bool _isPauseCutscene = false;
+    // false <= 初期値, true <= タイマースタート時
     private bool _isBattling = false;
+    private bool _isInFinishDirection = false;
+    private bool _isSceneTransitioning = false;
     // FIXME 上の変数となんか名前が被ってるので変えたい
     // private bool _isFinishBattle = false;
 
@@ -19,6 +23,16 @@ public class BattleController : MonoBehaviour {
 
     public bool IsBattling { get => _isBattling; set => _isBattling = value; }
     // public bool IsFinishBattle { get => _isFinishBattle; set => _isFinishBattle = value; }
+
+    public enum GameState {
+        // BattleStart,    // バトル開始演出中
+        BattleMain,     // バトル中
+        // Win,            // 勝利演出中
+        // Lose,           // 敗北演出中
+        BattleFinish,
+    }
+    // GameState currentState = GameState.BattleStart;
+    public GameState currentState = GameState.BattleMain;
 
     private void Start() {
         BGM.Instance.AudioSource.Stop();
@@ -32,17 +46,20 @@ public class BattleController : MonoBehaviour {
         PlayTimeline(0);
     }
 
-    // private void Update() {
-    //     if (_isFinishBattle) {
-    //         PlayTimeline(1);
-    //     }
-    // }
+    private void Update() {
+        if (!_isInFinishDirection && currentState == GameState.BattleFinish) {
+            _isInFinishDirection = true;
+            PlayTimeline(1);
+        }
+    }
 
-    // private void PlayTimeline(int index) {
     public void PlayTimeline(int index) {
+        Debug.Log(index);
         if (index < 0 || index >= _timelineAssets.Count)
             return;
         
+        // TODO 
+        _playableDirector.initialTime = 0;
         _playableDirector.Play(_timelineAssets[index]);
     }
 
@@ -52,14 +69,29 @@ public class BattleController : MonoBehaviour {
     }
 
     private void ResumeCutscene() {
-    // public void ResumeCutscene() {
         if (!_isPauseCutscene) return;
         
+        // _playableDirector.Resume();
+        if (!_isSceneTransitioning && _isInFinishDirection) {
+            _isSceneTransitioning = true;
+            StartCoroutine(GoToNextScene((float)(_timelineAssets[1].duration - _playableDirector.time)));
+        } else {
+            _playableDirector.Resume();
+        }
+    }
+
+    private IEnumerator GoToNextScene(float duration) {
         _playableDirector.Resume();
+
+        yield return new WaitForSeconds(duration);
+
+        SceneManager.LoadScene("Result");
     }
 
     public void StartMusic() {
         BGM.Instance.AudioSource.Play();
+        // _playableDirector.Resume();
+        // _playableDirector.Play();
     }
 
     public void StartTimer() {

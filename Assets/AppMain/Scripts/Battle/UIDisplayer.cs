@@ -6,7 +6,8 @@ using DG.Tweening;
 
 public class UIDisplayer : MonoBehaviour {
     private float _currentTime;
-    private bool _isPlaying = true;
+    // true <= 初期値, false <= timeが0
+    // private bool _isPlaying = true;
 
     // private int _previousScore = 0;
     // private bool _isCountUp;
@@ -32,16 +33,17 @@ public class UIDisplayer : MonoBehaviour {
     }
 
     private void TimerUpdate() {
-        if (_isPlaying) {
+        // if (_isPlaying) {
             _currentTime -= Time.deltaTime;
             if (_currentTime <= 0) {
                 _currentTime = 0;
-                _isPlaying = false;
-                // _battleController.IsFinishBattle = true;
-                _battleController.PlayTimeline(1);
+                // _isPlaying = false;
+                _battleController.IsBattling = false;
+                _battleController.currentState = BattleController.GameState.BattleFinish;
+                // _battleController.PlayTimeline(1);
             }
             GetCurrentFill();
-        }
+        // }
     }
 
     private void GetCurrentFill() {
