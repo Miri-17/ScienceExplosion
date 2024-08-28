@@ -291,11 +291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _enemyCharacterIndex
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _playerCharacterIndex
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

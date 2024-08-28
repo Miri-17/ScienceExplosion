@@ -11,6 +11,8 @@ public class SoundSelector : MonoBehaviour {
 
     [SerializeField] private Button _selectButton = null;
 
+    [SerializeField] private AudioSource _soundTrackAudioSource;
+
     private List<bool> _isPlayingMusic = Enumerable.Repeat(false, 9).ToList();
 
     private void Start () {
@@ -29,20 +31,26 @@ public class SoundSelector : MonoBehaviour {
         // 何も流れていない時は
         if (nowIndex == -1) {
             _isPlayingMusic[index] = true;
-            BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
-            BGM.Instance.AudioSource.Play();
+            // BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
+            _soundTrackAudioSource.clip = character.UniqueAudioClip;
+            // BGM.Instance.AudioSource.Play();
+            _soundTrackAudioSource.Play();
             return;
         }
 
         _isPlayingMusic[nowIndex] = false;
-        BGM.Instance.AudioSource.Stop();
+        // BGM.Instance.AudioSource.Stop();
+        _soundTrackAudioSource.Stop();
         // 今流れている曲と同じボタンを押した時は再生停止
         // そうでない時は別の曲を再生
         if (nowIndex != index) {
             _isPlayingMusic[index] = true;
-            BGM.Instance.AudioSource.Stop();
-            BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
-            BGM.Instance.AudioSource.Play();
+            // BGM.Instance.AudioSource.Stop();
+            _soundTrackAudioSource.Stop();
+            // BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
+            _soundTrackAudioSource.clip = character.UniqueAudioClip;
+            // BGM.Instance.AudioSource.Play();
+            _soundTrackAudioSource.Play();
         }
     }
 
