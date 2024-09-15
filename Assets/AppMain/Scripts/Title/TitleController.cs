@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.Playables;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour {
     #region
@@ -16,26 +16,21 @@ public class TitleController : MonoBehaviour {
 
     #region
     [SerializeField] private ImageFade _imageFade = null;
+    [SerializeField] private Image _tapToStart = null;
     [SerializeField] private PlayableDirector _playableDirector = null;
-    [SerializeField] private TextMeshProUGUI _copyright = null;
-    [SerializeField] private TextMeshProUGUI _tapToStart = null;
     [SerializeField] private string _nextSceneName = "Menu";
     #endregion
 
     private void Start() {
-        var version = Application.version;
-        var companyName = Application.companyName;
-        _copyright.text = $"Ver. {version} © {companyName}";
-
-        _playableDirector.Play();
-
-        _imageFade.enabled = false;
-
         _tapToStart.enabled = false;
-        _tapToStart.DOFade(0.0f, 1.5f)
+        _tapToStart.DOFade(0.0f, 1.0f)
             .SetEase(Ease.InQuart)
             .SetLoops(-1, LoopType.Yoyo)
             .SetLink(_tapToStart.gameObject);
+        
+        _imageFade.enabled = false;
+
+        _playableDirector.Play();
     }
 
     private void Update() {

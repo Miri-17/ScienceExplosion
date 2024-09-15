@@ -14,7 +14,7 @@ public class Character {
     // 0 ... StandingCharacter, 1 ... GameCharacter, 2 ... Character
     [SerializeField] private List<Sprite> _characterSprites = null;
     [SerializeField] private Sprite _nationMark = null;
-    // 0 ... Home, 1 ... Game, 2 ... Cutscene
+    // 0 ... Home, 1 ... Game
     [SerializeField] private List<Sprite> _placeSprites = null;
     [SerializeField] private Color _uniqueColor = Color.white;
     [SerializeField] private AudioClip _uniqueAudioClip = null;
