@@ -21,6 +21,7 @@ MonoBehaviour:
   _affiliationJapanese: 
   _characterSprites: []
   _nationMark: {fileID: 0}
-  _placeSprites: []
+  _placeSprites:
+  - {fileID: 0}
   _uniqueColor: {r: 1, g: 1, b: 1, a: 1}
   _uniqueAudioClip: {fileID: 0}
