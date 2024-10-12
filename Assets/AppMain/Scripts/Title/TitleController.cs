@@ -12,6 +12,8 @@ public class TitleController : MonoBehaviour {
     private bool _isTitleCutEnded = false;
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
+    private AudioSource _audioSource_SE = null;
+    private AudioClip _audioClip_SE = null;
     #endregion
 
     #region
@@ -30,6 +32,9 @@ public class TitleController : MonoBehaviour {
             .SetLink(_tapToStart.gameObject);
         
         _imageFade.enabled = false;
+
+        _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
+        _audioClip_SE = SE.Instance.audioClips[1];
 
         _playableDirector.Play();
     }
@@ -55,6 +60,7 @@ public class TitleController : MonoBehaviour {
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration) {
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
         _imageFade.enabled = true;
         
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);

@@ -15,6 +15,7 @@ MonoBehaviour:
   _characterSprites:
   - {fileID: 21300000, guid: 83f719dd5712c4551a38c141e1d0fa3b, type: 3}
   - {fileID: 21300000, guid: 6eea4e9ace5b94e7092615e5fecefff8, type: 3}
+  - {fileID: 21300000, guid: 93bd789f8d7a64b3e913183620b70be8, type: 3}
   _placeSprites:
   - {fileID: 21300000, guid: 0f09c5d2d1ae049e9ba6dddfaae6cbf1, type: 3}
   - {fileID: 21300000, guid: 335831cbfe569404698c324f3f1274e8, type: 3}

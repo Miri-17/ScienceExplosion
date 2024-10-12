@@ -11,6 +11,8 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour {
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
+    private AudioSource _audioSource_SE = null;
+    private AudioClip _audioClip_SE = null;
 
     #region
     [SerializeField] private Button _settingsButton = null;
@@ -35,6 +37,8 @@ public class MenuController : MonoBehaviour {
             ChangeAlphaHitThreshold(nextSceneButton, 1.0f);
         }
         ChangeAlphaHitThreshold(_chargeButton, 1.0f);
+
+        _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
 
         _settingsButton.onClick.AddListener(() => OnSettingsButtonClicked());
         _hideUIButton.onClick.AddListener(() => OnHideUIButtonClicked());
@@ -68,6 +72,8 @@ public class MenuController : MonoBehaviour {
         if (_isChangingScene) return;
 
         _isChangingScene = true;
+        _audioClip_SE = SE.Instance.audioClips[0];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
         // TODO durationの変更
         GoNextSceneAsync(0, _nextSceneNames[index], false).Forget();
     }
@@ -76,6 +82,8 @@ public class MenuController : MonoBehaviour {
         if (_isChangingScene) return;
 
         _isChangingScene = true;
+        _audioClip_SE = SE.Instance.audioClips[1];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
         // StartCoroutine(ChangeScene(1, "ModeSelection"));
         // TODO durationの変更
         GoNextSceneAsync(0, "ModeSelection", true).Forget();
