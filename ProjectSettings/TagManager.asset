@@ -14,8 +14,8 @@ TagManager:
   - TapEffects
   - Puzzle
   - BattleCharacter
-  - Direction
-  - 
+  - BattleFrontUI
+  - Notification
   - 
   - 
   - 

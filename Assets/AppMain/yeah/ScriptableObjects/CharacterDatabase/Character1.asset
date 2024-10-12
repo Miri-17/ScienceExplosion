@@ -12,15 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992d4cedd175648c28ef0d6f42e4604d, type: 3}
   m_Name: Character1
   m_EditorClassIdentifier: 
-  _name: 
-  _profession: 
-  _skill: 
-  _explosion: 
-  _place: 
-  _affiliationEnglish: 
-  _affiliationJapanese: 
-  _characterSprites: []
-  _nationMark: {fileID: 0}
-  _placeSprites: []
-  _uniqueColor: {r: 1, g: 1, b: 1, a: 1}
-  _uniqueAudioClip: {fileID: 0}
+  _characterSprites:
+  - {fileID: 21300000, guid: c5f0f2ab9e8124df09740bf268cbd1f6, type: 3}
+  - {fileID: 21300000, guid: fb7e89054d7ac4f469271af10cfb52cb, type: 3}
+  _placeSprites:
+  - {fileID: 21300000, guid: 8418f308059524496bedf363c0693733, type: 3}
+  - {fileID: 21300000, guid: c311d3c1e176646a49bc0d0d84350e13, type: 3}

@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedCharacterIndex: 0
-  _selectedBackgroundIndex: 0
-  _battleCharacterIndex: 0
+  _selectedPlaceIndex: 0
+  _playerCharacterIndex: 0
   _enemyCharacterIndex: 1
   _charactersFirstIndex: 0
   _score: 0
+  _masterSliderValue: 10
+  _bgmSliderValue: 10
+  _seSliderValue: 10

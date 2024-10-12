@@ -19,7 +19,7 @@ public class UIDisplayer : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _scoreText;
     // 1つのパズルに対するスコア
     [SerializeField] private int scorePerPuzzle = 30;
-    [SerializeField] private BattleController _battleController;
+    // [SerializeField] private BattleController _battleController;
 
     private void Start() {
         _currentTime = timeLimit;
@@ -27,9 +27,9 @@ public class UIDisplayer : MonoBehaviour {
     }
 
     private void Update() {
-        if (_battleController.IsBattling) {
-            TimerUpdate();
-        }
+        // if (_battleController.IsBattling) {
+        //     TimerUpdate();
+        // }
     }
 
     private void TimerUpdate() {
@@ -38,8 +38,8 @@ public class UIDisplayer : MonoBehaviour {
             if (_currentTime <= 0) {
                 _currentTime = 0;
                 // _isPlaying = false;
-                _battleController.IsBattling = false;
-                _battleController.currentState = BattleController.GameState.BattleFinish;
+                // _battleController.IsBattling = false;
+                // _battleController.currentState = BattleController.GameState.BattleFinish;
                 // _battleController.PlayTimeline(1);
             }
             GetCurrentFill();

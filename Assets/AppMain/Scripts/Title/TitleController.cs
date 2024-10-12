@@ -11,7 +11,7 @@ public class TitleController : MonoBehaviour {
     #region
     private bool _isTitleCutEnded = false;
     private bool _isChangingScene = false;
-    private CancellationToken _token;
+    private CancellationToken _token = default;
     #endregion
 
     #region
@@ -19,6 +19,7 @@ public class TitleController : MonoBehaviour {
     [SerializeField] private Image _tapToStart = null;
     [SerializeField] private PlayableDirector _playableDirector = null;
     [SerializeField] private string _nextSceneName = "Menu";
+    [SerializeField] private GameObject _loadingPanel = null;
     #endregion
 
     private void Start() {
@@ -59,6 +60,12 @@ public class TitleController : MonoBehaviour {
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + _nextSceneName);
-        SceneManager.LoadScene(_nextSceneName);
+        
+        // ローディングパネルがある時
+        _loadingPanel.SetActive(true);
+        AsyncOperation async = SceneManager.LoadSceneAsync(_nextSceneName);
+        await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
+        // ローディングパネルがない時
+        // SceneManager.LoadScene(_nextSceneName);
     }
 }
