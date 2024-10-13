@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SelectedCharacterController : MonoBehaviour {
     #region
-    [SerializeField] private CharacterDatabase _characterDatabase;
+    // [SerializeField] private CharacterDatabase _characterDatabase;
 
     [SerializeField] private SpriteRenderer _playerSpriteRenderer;
     [SerializeField] private SpriteRenderer _enemySpriteRenderer;
@@ -18,15 +18,15 @@ public class SelectedCharacterController : MonoBehaviour {
     }
 
     public void UpdatePlayerCharacter(int index) {
-        var character = _characterDatabase.GetCharacter(index);
-        _playerSpriteRenderer.sprite = character.CharacterSprites[2];
+        // var character = _characterDatabase.GetCharacter(index);
+        // _playerSpriteRenderer.sprite = character.CharacterSprites[2];
 
-        _unmask.sprite = character.NationMark;
-        _screen.color = character.UniqueColor;
+        // _unmask.sprite = character.NationMark;
+        // _screen.color = character.UniqueColor;
     }
     
     public void UpdateEnemyCharacter(int index) {
-        var character = _characterDatabase.GetCharacter(index);
-        _enemySpriteRenderer.sprite = character.CharacterSprites[2];
+        // var character = _characterDatabase.GetCharacter(index);
+        // _enemySpriteRenderer.sprite = character.CharacterSprites[2];
     }
 }

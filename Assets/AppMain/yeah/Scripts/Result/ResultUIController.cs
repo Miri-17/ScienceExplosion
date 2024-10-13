@@ -8,10 +8,12 @@ public class ResultUIController : MonoBehaviour {
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
 
+    #region
     [SerializeField] private GameObject _warningPanel = null;
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
     [SerializeField] private Button _closeButton = null;
+    #endregion
 
     private void Start() {
         _warningPanel.SetActive(false);

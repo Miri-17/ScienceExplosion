@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SoundSelector : MonoBehaviour {
-    [SerializeField] private CharacterDatabase _characterDatabase;
+    // [SerializeField] private CharacterDatabase _characterDatabase;
     [SerializeField] private List<Button> _soundButtons = null;
 
     [SerializeField] private Button _selectButton = null;
@@ -25,14 +25,14 @@ public class SoundSelector : MonoBehaviour {
 
     // TODO nowIndexとindexがあまり良い名前とはいえないので変えること
     private void ChangeMusic(int index) {
-        var character = _characterDatabase.GetCharacter(index);
+        // var character = _characterDatabase.GetCharacter(index);
         var nowIndex = _isPlayingMusic.FindIndex(n => n == true);
 
         // 何も流れていない時は
         if (nowIndex == -1) {
             _isPlayingMusic[index] = true;
             // BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
-            _soundTrackAudioSource.clip = character.UniqueAudioClip;
+            // _soundTrackAudioSource.clip = character.UniqueAudioClip;
             // BGM.Instance.AudioSource.Play();
             _soundTrackAudioSource.Play();
             return;
@@ -48,7 +48,7 @@ public class SoundSelector : MonoBehaviour {
             // BGM.Instance.AudioSource.Stop();
             _soundTrackAudioSource.Stop();
             // BGM.Instance.AudioSource.clip = character.UniqueAudioClip;
-            _soundTrackAudioSource.clip = character.UniqueAudioClip;
+            // _soundTrackAudioSource.clip = character.UniqueAudioClip;
             // BGM.Instance.AudioSource.Play();
             _soundTrackAudioSource.Play();
         }
@@ -59,7 +59,7 @@ public class SoundSelector : MonoBehaviour {
         if (nowIndex == -1)
             return;
         
-        var character = _characterDatabase.GetCharacter(nowIndex);
-        BGM.Instance.AudioClips[1] = character.UniqueAudioClip;
+        // var character = _characterDatabase.GetCharacter(nowIndex);
+        // BGM.Instance.AudioClips[1] = character.UniqueAudioClip;
     }
 }

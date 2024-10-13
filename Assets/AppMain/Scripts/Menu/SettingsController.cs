@@ -1,8 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using TMPro;
 
 public class SettingsController : AudioMixerController {
+    // TODO 完全に実装したら消す
+    private List<string> _warningTexts = new List<string>() {
+        "スタッフロールはまだ見られません。",
+        "データ消去は未実装です。",
+    };
+
     # region
     [SerializeField] private Image _settingsBg = null;
     [SerializeField] private Image _hologramBg = null;
@@ -11,6 +19,9 @@ public class SettingsController : AudioMixerController {
     [SerializeField] private GameObject _settingsPanel = null;
     [SerializeField] private Button _showCreditsButton = null;
     [SerializeField] private Button _deleteSaveDataButton = null;
+    // TODO 完全に実装したら消す
+    [SerializeField] private GameObject _notYetInstalledPanel = null;
+    [SerializeField] private TextMeshProUGUI _warningSentence = null;
     #endregion
 
     // TODO 合ってるか調べる
@@ -31,6 +42,9 @@ public class SettingsController : AudioMixerController {
         _deleteSaveDataButton.onClick.AddListener(() => OnDeleteSaveDataButtonClicked());
         
         _settingsPanel.SetActive(false);
+
+        // TODO 完全に実装したら消す
+        _notYetInstalledPanel.SetActive(false);
     }
 
     private void CloseSettings() {
@@ -41,10 +55,20 @@ public class SettingsController : AudioMixerController {
     }
 
     private void OnShowCreditsButtonClicked() {
-        // TODO Creditsに遷移する処理
+        // Creditsに遷移する処理
+
+        // TODO 完全に実装したら消す
+        if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[0];
+        _notYetInstalledPanel.SetActive(true);
     }
 
     private void OnDeleteSaveDataButtonClicked() {
-        // TODO セーブデータを消去する処理
+        // セーブデータを消去する処理
+
+        // TODO 完全に実装したら消す
+        if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[1];
+        _notYetInstalledPanel.SetActive(true);
     }
 }

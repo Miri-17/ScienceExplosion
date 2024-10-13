@@ -13,6 +13,8 @@ public class StageGenerator : MonoBehaviour {
     // [SerializeField] private SpriteRenderer _enemyLive2D;
     // [SerializeField] private List<Image> _playerBackgrounds;
     // [SerializeField] private List<Image> _enemyBackgrounds;
+    [SerializeField] private Image _sampleImage1 = null; // add
+    [SerializeField] private Image _sampleImage2 = null; // add
 
     private void Start() {
         if (GameDirector.Instance == null) {
@@ -20,6 +22,9 @@ public class StageGenerator : MonoBehaviour {
             Destroy(this);
             return;
         }
+
+        _sampleImage1.alphaHitTestMinimumThreshold = 1; // add
+        _sampleImage2.alphaHitTestMinimumThreshold = 1; // add
 
         var playerCharacter = _charactersDB.GetCharacter(GameDirector.Instance.PlayerCharacterIndex);
         var enemyCharacter = _charactersDB.GetCharacter(GameDirector.Instance.EnemyCharacterIndex);

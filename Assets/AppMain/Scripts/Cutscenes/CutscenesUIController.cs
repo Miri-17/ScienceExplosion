@@ -1,73 +1,157 @@
-using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 using System.Collections.Generic;
+using TMPro;
 
 public class CutscenesUIController : MonoBehaviour {
     #region
-    // [SerializeField] private CharacterDatabase _characterDatabase;
-    // [SerializeField] private List<Image> _repeatBackgrounds;
-    // [SerializeField] private RectTransform _background;
-    [SerializeField] private Button _backButton;
-    [SerializeField] private Button[] _images;
-    // SelectedImagePanelのBackgroundをタップすると閉じるようにする.
-    [SerializeField] private EventTrigger _eventTrigger;
-    [SerializeField] private GameObject _selectedImagePanel;
-    // [SerializeField] private Animator _transition;
-    [SerializeField] private float _transitionTime = 1.0f;
+    private CancellationToken _token = default;
+    private AudioSource _audioSource_SE = null;
+    private AudioClip _audioClip_SE = null;
+    private bool _isChangingScene = false;
+
+    private int _cutsceneIndex = 0;
+    private int _previousCutsceneIndex = 0;
+    private List<SetStill> _setStills = null;
+
+    // TODO 完全に実装したら消す
+    private List<string> _warningTexts = new List<string>() {
+        "スチルの拡大機能はまだ実装されていません。",
+        "ストーリーはまだ見られません。",
+    };
     #endregion
 
-    private bool _isChangeScene = false;
+    #region
+    [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
+    [SerializeField] private GameObject _loadingPanel = null;
+    [SerializeField] private Button _backButton = null;
+    [SerializeField] private Button _zoomButton = null;
+    [SerializeField] private Button _readButton = null;
+    [SerializeField] private string _previousSceneName = "";
+
+    [SerializeField] private CutscenesDB _cutscenesDB = null;
+    [SerializeField] private Image _title = null;
+    [SerializeField] private List<Image> _icons = new List<Image>();
+    [SerializeField] private List<Button> _stillButtons = new List<Button>();
+
+    // TODO 完全に実装したら消す
+    [SerializeField] private GameObject _notYetInstalledPanel = null;
+    [SerializeField] private TextMeshProUGUI _warningSentence = null;
+    [SerializeField] private Button _closeButton = null;
+    #endregion
 
     private void Start() {
-        // var character = _characterDatabase.GetCharacter(GameDirector.Instance.SelectedCharacterIndex);
-        // foreach(var repeatBackground in _repeatBackgrounds)
-        //     repeatBackground.sprite = character.PlaceSprites[2];
-        // _background.DOAnchorPos(new Vector2(-2500f, 2500), 10f)
-        //     .SetEase(Ease.Linear)
-        //     .SetLoops(-1, LoopType.Restart)
-        //     .SetLink(_background.gameObject);
+        _token = this.GetCancellationTokenOnDestroy();
 
+        _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
+
+        ChangeAlphaHitThreshold(_backButton, 1.0f);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
-        foreach (Button image in _images) {
-            image.onClick.AddListener(() => PushImage());
+        ChangeAlphaHitThreshold(_zoomButton, 1.0f);
+        _zoomButton.onClick.AddListener(() => OnZoomButtonClicked());
+        ChangeAlphaHitThreshold(_readButton, 1.0f);
+        _readButton.onClick.AddListener(() => OnReadButtonClicked());
+
+        _setStills = new List<SetStill>(_stillButtons.Count);
+        for (var i = 0; i < _stillButtons.Count; i++) {
+            var index = i;
+            _stillButtons[i].onClick.AddListener(() => OnStillButtonClicked(index));
+            // FIXME これ、リストへの追加の仕方おかしいかも
+            _setStills.Add(_stillButtons[i].GetComponent<SetStill>());
         }
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        // 押した瞬間に実行するようにする.
-        entry.eventID = EventTriggerType.PointerDown;
-        entry.callback.AddListener((x) => CloseSelectedImagePanel());
-        //イベントの設定をEventTriggerに反映
-        _eventTrigger.triggers.Add(entry);
-        
-        _selectedImagePanel.SetActive(false);
+        ChangeCutscene(0);
+
+        // TODO 完全に実装したら消す
+        _notYetInstalledPanel.SetActive(false);
+        _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
+    }
+
+    private void ChangeAlphaHitThreshold(Button button, float alpha) {
+        Image image = button.GetComponent<Image>();
+        image.alphaHitTestMinimumThreshold = alpha;
     }
 
     private void OnBackButtonClicked() {
-            if (_isChangeScene) return;
+        if (_isChangingScene) return;
 
-        _isChangeScene = true;
-        StartCoroutine(GoBackToScene());
+        _isChangingScene = true;
+        _audioClip_SE = SE.Instance.audioClips[0];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+        // TODO durationの変更
+        GoNextSceneAsync(0, _previousSceneName, false).Forget();
     }
 
-    private void PushImage() {
-        _selectedImagePanel.SetActive(true);
+    private void OnZoomButtonClicked() {
+        if (_isChangingScene) return;
+
+        // 2人プレイに行く処理
+
+        // TODO 完全に実装したら消す
+        if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[0];
+        _notYetInstalledPanel.SetActive(true);
+    }
+    
+    private void OnReadButtonClicked() {
+        if (_isChangingScene) return;
+
+        // 2人プレイに行く処理
+
+        // TODO 完全に実装したら消す
+        if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[1];
+        _notYetInstalledPanel.SetActive(true);
     }
 
-    private void CloseSelectedImagePanel() {
-        if (!_selectedImagePanel.activeSelf) return;
+    // TODO 完全に実装したら消す
+    private void OnCloseButtonClicked() {
+        if (!_notYetInstalledPanel.activeSelf) return;
 
-        Debug.Log("Close Panel");
-        _selectedImagePanel.SetActive(false);
+        _notYetInstalledPanel.SetActive(false);
     }
 
-    private IEnumerator GoBackToScene() {
-        // _transition.SetTrigger("Start");
+    private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
+        // ローディングパネルが出る前にすること
 
-        yield return new WaitForSeconds(_transitionTime);
+        await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
-        SceneManager.LoadScene("Menu");
+        // Debug.Log("Go to " + nextSceneName);
+        
+        // ローディングパネルがある時
+        if (isShowLoadingPanel && _loadingPanel != null) {
+            _loadingPanel.SetActive(true);
+            AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
+            await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
+        // ローディングパネルがない時
+        } else {
+            SceneManager.LoadScene(nextSceneName);
+        }
+    }
+
+    private void ChangeCutscene(int index) {
+        // Debug.Log(_cutsceneIndex);
+        _setStills[index].SetSelection(true);
+        _previousCutsceneIndex = index;
+
+        var cutscene = _cutscenesDB.GetCutscene(index);
+        _title.sprite = cutscene.TitleSprite;
+
+        _icons[0].sprite = cutscene.RelatedCharacterSprites[0];
+        // if (cutscene.RelatedCharacterSprites[1] != null)
+        if (cutscene.RelatedCharacterSprites.Count > 1)
+            _icons[1].sprite = cutscene.RelatedCharacterSprites[1];
+        else
+            _icons[1].sprite = null;
+    }
+
+    private void OnStillButtonClicked(int index) {
+        Debug.Log("index: " + index);
+        Debug.Log("previousIndex" + _previousCutsceneIndex);
+        _setStills[_previousCutsceneIndex].SetSelection(false);
+
+        ChangeCutscene(index);
     }
 }

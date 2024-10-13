@@ -39,10 +39,11 @@ namespace ScienceExplosion {
                     break;
                 case "Menu":
                 case "Characters":
-                case "Character":
+                case "Map":
                 case "Cutscenes":
                 case "ModeSelection":
-                case "CharacterSelection":
+                case "PlayerSelection":
+                case "EnemySelection":
                 case "Result":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;

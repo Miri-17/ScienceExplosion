@@ -1,18 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Playables;
-using UnityEngine.Timeline;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour {
+    #region
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
+    // TODO 完全に実装したら消す
+    private List<string> _warningTexts = new List<string>() {
+        "UIの非表示はまだ未実装です。",
+        "キャラクター・マップ・ストーリー・サウンドはまだ見られません。",
+    };
+    #endregion
 
     #region
     [SerializeField] private Button _settingsButton = null;
@@ -21,11 +26,13 @@ public class MenuController : MonoBehaviour {
     [SerializeField] private List<Button> _nextSceneButtons = null;
     [SerializeField] private List<string> _nextSceneNames = new List<string> { "Characters", "Map", "Cutscenes", "Audio" };
     [SerializeField] private Button _chargeButton = null;
-
     [SerializeField] private GameObject _settingsPanel = null;
     [SerializeField] private GameObject _loadingPanel = null;
-    // [SerializeField] private PlayableDirector _playableDirector = null;
-    // [SerializeField] private List<TimelineAsset> _timelineAssets = null;
+
+    // TODO 完全に実装したら消す
+    [SerializeField] private GameObject _notYetInstalledPanel = null;
+    [SerializeField] private TextMeshProUGUI _warningSentence = null;
+    [SerializeField] private Button _closeButton = null;
     #endregion
 
     private void Start() {
@@ -48,12 +55,21 @@ public class MenuController : MonoBehaviour {
         }
         _chargeButton.onClick.AddListener(() => OnChargeButtonClicked());
 
-        // PlayTimeline(0);
+        // TODO 完全に実装したら消す
+        _notYetInstalledPanel.SetActive(false);
+        _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
     }
 
     private void ChangeAlphaHitThreshold(Button button, float alpha) {
         Image image = button.GetComponent<Image>();
         image.alphaHitTestMinimumThreshold = alpha;
+    }
+
+    // TODO 完全に実装したら消す
+    private void OnCloseButtonClicked() {
+        if (!_notYetInstalledPanel.activeSelf) return;
+
+        _notYetInstalledPanel.SetActive(false);
     }
 
     private void OnSettingsButtonClicked() {
@@ -66,10 +82,29 @@ public class MenuController : MonoBehaviour {
         if (_isChangingScene) return;
 
         // UIの表示・非表示処理
+
+        // TODO 完全に実装したら消す
+        if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[0];
+        _notYetInstalledPanel.SetActive(true);
     }
 
     private void OnNextSceneButtonClicked(int index) {
         if (_isChangingScene) return;
+
+        // TODO 完全に実装したら消す
+        switch (_nextSceneNames[index]) {
+            case "Characters":
+            case "Map":
+            case "Cutscenes":
+            case "Audio":
+                if (_notYetInstalledPanel.activeSelf) return;
+                _warningSentence.text = _warningTexts[1];
+                _notYetInstalledPanel.SetActive(true);
+                return;
+            default:
+                break;
+        }
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
@@ -89,6 +124,7 @@ public class MenuController : MonoBehaviour {
         GoNextSceneAsync(0, "ModeSelection", true).Forget();
     }
 
+    // TODO GoNextSceneAsyncシリーズはこれを中心にオーバーライドさせること
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
         // ローディングパネルが出る前にすること
 
@@ -97,7 +133,7 @@ public class MenuController : MonoBehaviour {
         // Debug.Log("Go to " + nextSceneName);
         
         // ローディングパネルがある時
-        if (isShowLoadingPanel) {
+        if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
@@ -106,19 +142,4 @@ public class MenuController : MonoBehaviour {
             SceneManager.LoadScene(nextSceneName);
         }
     }
-
-    // private IEnumerator ChangeScene(int index, string nextScene) {
-    //     PlayTimeline(index);
-
-    //     yield return new WaitForSeconds((float)_timelineAssets[index].duration);
-
-    //     SceneManager.LoadScene(nextScene);
-    // }
-
-    // private void PlayTimeline(int index) {
-    //     if (index < 0 || index >= _timelineAssets.Count)
-    //         return;
-        
-    //     _playableDirector.Play(_timelineAssets[index]);
-    // }
 }

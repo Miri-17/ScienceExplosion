@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CharacterUIController : MonoBehaviour {
     #region
-    [SerializeField] private CharacterDatabase _characterDatabase;
+    // [SerializeField] private CharacterDatabase _characterDatabase;
 
     [SerializeField] private SpriteRenderer _characterSpriteRenderer;
     [SerializeField] private TextMeshProUGUI _professionText;
@@ -96,7 +96,7 @@ public class CharacterUIController : MonoBehaviour {
     }
     
     private void UpdateCharacter(int index) {
-        var character = _characterDatabase.GetCharacter(index);
+        // var character = _characterDatabase.GetCharacter(index);
         
         // 設定されていたキャラのボタンを押せなくする
         // if (_currentIndex == 0)
@@ -105,8 +105,8 @@ public class CharacterUIController : MonoBehaviour {
         // _characterButtons[index].interactable = false;
         _currentIndex = index;
         
-        _professionText.text = character.Profession;
-        _nameText.text = character.Name;
+        // _professionText.text = character.Profession;
+        // _nameText.text = character.Name;
         // _nameText.color = character.UniqueColor;
         // _nameImage.color = character.UniqueColor;
         // Dr. Pだけフォントサイズを上げる
@@ -114,12 +114,12 @@ public class CharacterUIController : MonoBehaviour {
             _nameText.fontSize = 160;
         else
             _nameText.fontSize = 120;
-        _skillText.text = character.Skill;
-        _explosionText.text = character.Explosion;
-        _placeText.text = character.Place;
-        _affiliationText.text = character.AffiliationJapanese;
+        // _skillText.text = character.Skill;
+        // _explosionText.text = character.Explosion;
+        // _placeText.text = character.Place;
+        // _affiliationText.text = character.AffiliationJapanese;
         _descriptionText.text = _description[index];
-        _characterSpriteRenderer.sprite = character.CharacterSprites[2];
+        // _characterSpriteRenderer.sprite = character.CharacterSprites[2];
 
         if (index == GameDirector.Instance.SelectedCharacterIndex) {
             _characterSettingButtonImage.sprite = _settingButtonSprites[2];
