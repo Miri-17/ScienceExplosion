@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CutscenesDB", menuName = "Create Cutscenes Database")]
+[CreateAssetMenu(fileName = "CutscenesDB", menuName = "ScriptableObjects/Cutscenes Database")]
 public class CutscenesDB : ScriptableObject {
     [SerializeField] private List<CutsceneDB> _cutsceneDatabases = null;
 

@@ -86,6 +86,9 @@ public class ModeSelectionController : MonoBehaviour {
     private void OnPlayAloneButtonClicked() {
         if (_isChangingScene) return;
 
+        // TODO Dr. Pに変更
+        GameDirector.Instance.PlayerCharacterIndex = 7;
+
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);

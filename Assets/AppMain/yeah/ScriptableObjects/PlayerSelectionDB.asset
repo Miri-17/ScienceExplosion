@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d1e8b280122413aa0cf9de3490c2f9, type: 3}
+  m_Name: PlayerSelectionDB
+  m_EditorClassIdentifier: 
+  _nameSprites:
+  - {fileID: 21300000, guid: 9cdfc334374d0427cbb9dbce30a67691, type: 3}
+  - {fileID: 21300000, guid: cc469466421114d6ba3aa98534c38d15, type: 3}
+  - {fileID: 21300000, guid: 69e33dd479cce4db99b586160d546273, type: 3}
+  - {fileID: 21300000, guid: 27eb85722c4c34bd08666bd69935a8fc, type: 3}
+  - {fileID: 21300000, guid: c30d0cbff0c744b4eb9cf75db44e7b0e, type: 3}
+  - {fileID: 21300000, guid: d3949df381d674966a1bcee4753aecca, type: 3}
+  - {fileID: 21300000, guid: 4af7e1abd168546b0ba4dee7f5cc0107, type: 3}
+  - {fileID: 21300000, guid: 52bfea121ecf44ba288c557a10568394, type: 3}
+  - {fileID: 21300000, guid: 7f1fcfaa11c8f415e884944ed1817841, type: 3}
+  _majorSprites:
+  - {fileID: 21300000, guid: 536bbaf3b743b46f98c74a7322ea6f48, type: 3}
+  - {fileID: 21300000, guid: 54eae1e34703343639aa347a47a75b44, type: 3}
+  - {fileID: 21300000, guid: 5367a757e350e47e49a92c6d67ea6c40, type: 3}
+  - {fileID: 21300000, guid: 1256a05e533c04646ba2ee1a25856e23, type: 3}
+  - {fileID: 21300000, guid: c1d7bbeb8fea84a4faf4f9f031085e89, type: 3}
+  - {fileID: 21300000, guid: f19f6655d7a8e49d19f2d2b3faf29373, type: 3}
+  - {fileID: 21300000, guid: db58c330964f94432ac6af14491e8099, type: 3}
+  - {fileID: 21300000, guid: d2fdae2fcac2c4f11a231128b2207060, type: 3}
+  - {fileID: 21300000, guid: e0dafc40bc5f6473685b06131fd7c39e, type: 3}
+  _typeSprites:
+  - {fileID: 21300000, guid: 1fbbd60f270994c7891b143a11c9dfd6, type: 3}
+  - {fileID: 21300000, guid: 5f97ab34e8f3249109159be80e4bdb19, type: 3}
+  - {fileID: 21300000, guid: c94b8c799b25746a489477083e293bee, type: 3}
+  - {fileID: 21300000, guid: e940346594a0e4cc0a15515cd159aabe, type: 3}
+  - {fileID: 21300000, guid: aab3aa781649d41878ae16371118033b, type: 3}
+  - {fileID: 21300000, guid: 9ac762b8f52664fa6882d928f7ac15ba, type: 3}
+  - {fileID: 21300000, guid: 32ab223ab7d564df6a40ffa8e43b2d57, type: 3}
+  - {fileID: 21300000, guid: 3c46796bee1404336927ef7d4bf9139a, type: 3}
+  - {fileID: 21300000, guid: c5f3dc340e6c9413e95f9f94d39d090e, type: 3}
+  _descriptions:
+  - "\u76F8\u624B\u304C\u7279\u6B8A\u306A\u653B\u6483\u3092\u6253\u3066\u306A\u3044\u3088\u3046\u306B\u3067\u304D\u308B\u305E\uFF01"
+  - "\u81EA\u5206\u306E\u30D1\u30BA\u30EB\u3092\u30B3\u30F3\u30B9\u30BF\u30F3\u30C8\u306B\u5897\u3084\u305B\u308B\u305E\uFF01"
+  - "\u81EA\u5206\u306E\u30D1\u30BA\u30EB\u3092\u5186\u5F62\u306B\u5897\u3084\u305B\u308B\u305E\uFF01"
+  - "\u81EA\u5206\u306E\u30D1\u30BA\u30EB\u3092\u30E9\u30F3\u30C0\u30E0\u306A\u4F4D\u7F6E\u306B\u5897\u3084\u305B\u308B\u305E\uFF01"
+  - "\u30D0\u30EA\u30A2\u3092\u5F35\u3063\u3066HP\u304C\u524A\u3089\u308C\u306A\u3044\u3088\u3046\u306B\u3067\u304D\u308B\u305E\uFF01"
+  - "\u6A2A\u306B\u30D1\u30BA\u30EB\u3092\u8599\u304E\u5012\u3059\u306E\u304C\u5F97\u610F\uFF01"
+  - "\u76F8\u624B\u306E\u653B\u6483\u3092\u963B\u5BB3\u3067\u304D\u308B\u305E\uFF01"
+  - "\u7E26\u306B\u30D1\u30BA\u30EB\u3092\u7834\u58CA\u3059\u308B\u305E\uFF01"
+  - "\u30D1\u30BA\u30EB\u3092\u4E00\u6C17\u306B\u7834\u58CA\u3059\u308B\u305E\uFF01"
+  _hps: 030000000500000003000000040000000500000002000000040000000200000001000000
+  _damages: 040000000200000001000000030000000100000005000000030000000400000005000000
+  _testTubeSprites:
+  - {fileID: 21300000, guid: 4c953fca683d2430cb1f7ddc6eb8774a, type: 3}
+  - {fileID: 21300000, guid: 01669346750e04380baa9c4f8c6b928d, type: 3}
+  - {fileID: 21300000, guid: 799a3972921f945a1b6a85d96d30f459, type: 3}
+  - {fileID: 21300000, guid: 18e7dc7ca336744e9a232bd84f7395b5, type: 3}
+  - {fileID: 21300000, guid: 985e168966ebe441cbd33b49ab40ca67, type: 3}
+  _requiredNumberPuzzle: 010000000200000003000000040000000500000006000000070000000800000009000000
+  _requiredNumberEx: 0a0000000900000008000000070000000600000005000000040000000300000002000000
+  _uniqueColors:
+  - {r: 1, g: 0, b: 0.21960784, a: 1}
+  - {r: 1, g: 0.50980395, b: 0, a: 1}
+  - {r: 0.96862745, g: 0.81960785, b: 0, a: 1}
+  - {r: 0.20392157, g: 0.77254903, b: 0, a: 1}
+  - {r: 0.039215688, g: 0.87058824, b: 0.6666667, a: 1}
+  - {r: 0.039215688, g: 0.29803923, b: 0.87058824, a: 1}
+  - {r: 0.54901963, g: 0.21568628, b: 0.80784315, a: 1}
+  - {r: 1, g: 0, b: 0.99215686, a: 1}
+  - {r: 0.6901961, g: 0.6901961, b: 0.6901961, a: 1}
+  _puzzleSprites:
+  - {fileID: 21300000, guid: 63797e570501942f4aa84923897e8aef, type: 3}
+  - {fileID: 21300000, guid: 4aab1156d6abf4ab898ff6b8d87a70ba, type: 3}
+  - {fileID: 21300000, guid: e1f8c8414751542c1acf971d2dfda1cb, type: 3}
+  - {fileID: 21300000, guid: 8a4b697ac442f402890f207ad5f60394, type: 3}
+  - {fileID: 21300000, guid: a34deab5e9b8c48e18c9bd71fece9d3b, type: 3}
+  - {fileID: 21300000, guid: 46077b87adebd48f6bfca4058b4b403c, type: 3}
+  - {fileID: 21300000, guid: d78a4e7abc96d41bc9efb81b1a2ef318, type: 3}
+  - {fileID: 21300000, guid: 0a2229c8726734dab9ac59ceeeb39e68, type: 3}
+  - {fileID: 21300000, guid: ec7b091e169f44e9586db8a109a69d88, type: 3}
+  _exSprites:
+  - {fileID: 21300000, guid: d193eec5c95c04ce8aa09384ee46bf7c, type: 3}
+  - {fileID: 21300000, guid: 87c68b0d2fcc54688aeea9f3d395cbcb, type: 3}
+  - {fileID: 21300000, guid: cfc14f060969544028063235b41adabb, type: 3}
+  - {fileID: 21300000, guid: 42566c39fee9c4398b5570842b8bcfdf, type: 3}
+  - {fileID: 21300000, guid: d82dbbf33efdc408b94ee01d24f26406, type: 3}
+  - {fileID: 21300000, guid: 1d22d8147a75441ce878dbca34cb5724, type: 3}
+  - {fileID: 21300000, guid: ed7e59396c29141ca9411ccf698d1bdc, type: 3}
+  - {fileID: 21300000, guid: 7621c34a819c448b08f30348a27134d4, type: 3}
+  - {fileID: 21300000, guid: b196e3a9728a9430abd8966a32cd52b1, type: 3}

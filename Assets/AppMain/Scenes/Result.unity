@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Result
+  m_text: "\u30EA\u30B6\u30EB\u30C8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5704f9f0bc90d47069dd656b47170bc0, type: 2}
@@ -3438,7 +3438,7 @@ GameObject:
   - component: {fileID: 1910205418}
   - component: {fileID: 1910205419}
   m_Layer: 0
-  m_Name: ResultUIController
+  m_Name: UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

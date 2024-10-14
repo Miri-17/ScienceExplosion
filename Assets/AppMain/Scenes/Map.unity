@@ -1347,8 +1347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 216.5, y: -100}
-  m_SizeDelta: {x: 428, y: 200}
+  m_AnchoredPosition: {x: 263.5, y: -100}
+  m_SizeDelta: {x: 522, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254908159
 MonoBehaviour:
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Map
+  m_text: "\u30DE\u30C3\u30D7"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5704f9f0bc90d47069dd656b47170bc0, type: 2}
@@ -1533,7 +1533,7 @@ GameObject:
   - component: {fileID: 1325312741}
   - component: {fileID: 1325312742}
   m_Layer: 0
-  m_Name: MapUIController
+  m_Name: UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

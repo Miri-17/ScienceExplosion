@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f22b701d4fe3400a9da50a587f3e4e6, type: 3}
-  m_Name: CutsceneDB
+  m_Name: Cutscene00
   m_EditorClassIdentifier: 
-  _titleSprite: {fileID: 21300000, guid: 4b0691c5f89664d60bf9a03c0a574cf6, type: 3}
+  _titleSprite: {fileID: 21300000, guid: 2204cde682be2498b9386a509ab0c1a7, type: 3}
   _relatedCharacterSprites:
-  - {fileID: 21300000, guid: 967b21a9135e649be8d34d2499b03e69, type: 3}
+  - {fileID: 21300000, guid: f1876f8be47e84eb392bc16f563b7551, type: 3}

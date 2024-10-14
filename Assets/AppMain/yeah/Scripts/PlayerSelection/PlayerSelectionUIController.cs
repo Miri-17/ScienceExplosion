@@ -30,6 +30,23 @@ public class PlayerSelectionUIController : MonoBehaviour {
     [SerializeField] private List<Button> _characterButtons = null;
     [SerializeField] private Button _selectionButton = null;
 
+    [SerializeField] private PlayerSelectionDB _playerSelectionDB = null;
+    [SerializeField] private Image _nameImage = null;
+    [SerializeField] private Image _majorImage = null;
+    [SerializeField] private Image _typeImage = null;
+    [SerializeField] private TextMeshProUGUI _descriptionText = null;
+    // TODO ここ、あまり良いコードではないので直すこと
+    [Header("0...HP, 1...Damage")]
+    [SerializeField] private List<TextMeshProUGUI> _maxTexts = null;
+    [Header("0...HP, 1...Damage")]
+    [SerializeField] private List<Image> _testTubeFill = null;
+    [Header("0...Unique Puzzle, 1...Ex Puzzle")]
+    [SerializeField] private List<TextMeshProUGUI> _maxNumberTexts = null;
+    [SerializeField] private List<Image> _uniquePuzzleScales = null;
+    [SerializeField] private Sprite _uniquePuzzleScaleDefault = null;
+    [SerializeField] private List<Image> _exPuzzleScales = null;
+    [SerializeField] private Sprite _exPuzzleScaleDefault = null;
+
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
@@ -52,6 +69,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
             var index = i;
             ChangeAlphaHitThreshold(_characterButtons[i], 1.0f);
             _characterButtons[i].onClick.AddListener(() => OnCharacterButtonClicked(index));
+            // FIXME これ、リストへの追加の仕方おかしいかも
             _characterButtonScripts.Add(_characterButtons[i].GetComponent<CharacterButton>());
         }
 
@@ -62,6 +80,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _previousPlayerIndex = GameDirector.Instance.PlayerCharacterIndex;
         _characterButtonScripts[_previousPlayerIndex].SetSelection(true);
 
+        UpdateUI(_previousPlayerIndex);
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
@@ -105,8 +124,84 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _characterButtonScripts[_previousPlayerIndex].SetSelection(false);
 
         _playerSelectionController.UpdatePlayerCharacter(index);
+
+        UpdateUI(index);
+
         _characterButtonScripts[index].SetSelection(true);
         _previousPlayerIndex = index;
+    }
+
+    private void UpdateUI(int index) {
+        _nameImage.sprite = _playerSelectionDB.NameSprites[index];
+        _majorImage.sprite = _playerSelectionDB.MajorSprites[index];
+        _typeImage.sprite = _playerSelectionDB.TypeSprites[index];
+        _descriptionText.text = _playerSelectionDB.Descriptions[index];
+
+        var hp = _playerSelectionDB.HPs[index];
+        // TODO 元からenum使って対応づけとくと綺麗かも
+        switch (hp) {
+            case 1:
+                _maxTexts[0].text = "最小";
+                break;
+            case 2:
+                _maxTexts[0].text = "小";
+                break;
+            case 3:
+                _maxTexts[0].text = "中";
+                break;
+            case 4:
+                _maxTexts[0].text = "大";
+                break;
+            default:
+                _maxTexts[0].text = "最大";
+                break;
+        }
+        _testTubeFill[0].sprite = _playerSelectionDB.TestTubeSprites[hp - 1];
+        _testTubeFill[0].color = _playerSelectionDB.UniqueColors[index];
+
+        var damage = _playerSelectionDB.Damages[index];
+        // TODO 元からenum使って対応づけとくと綺麗かも
+        switch (damage) {
+            case 1:
+                _maxTexts[1].text = "最小";
+                break;
+            case 2:
+                _maxTexts[1].text = "小";
+                break;
+            case 3:
+                _maxTexts[1].text = "中";
+                break;
+            case 4:
+                _maxTexts[1].text = "大";
+                break;
+            default:
+                _maxTexts[1].text = "最大";
+                break;
+        }
+        _testTubeFill[1].sprite = _playerSelectionDB.TestTubeSprites[damage - 1];
+        _testTubeFill[1].color = _playerSelectionDB.UniqueColors[index];
+
+        var requiredNumberPuzzle = _playerSelectionDB.RequiredNumberPuzzle[index];
+        _maxNumberTexts[0].text = requiredNumberPuzzle.ToString();
+        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする
+        for (int i = 0; i < _uniquePuzzleScales.Count; i++) {
+            if (i + 1 > requiredNumberPuzzle) {
+                _uniquePuzzleScales[i].sprite = _uniquePuzzleScaleDefault;
+                continue;
+            }
+            _uniquePuzzleScales[i].sprite = _playerSelectionDB.PuzzleSprites[index];
+        }
+
+        var requiredNumberEx = _playerSelectionDB.RequiredNumberEx[index];
+        _maxNumberTexts[1].text = requiredNumberEx.ToString();
+        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする
+        for (int i = 0; i < _exPuzzleScales.Count; i++) {
+            if (i + 1 > requiredNumberEx) {
+                _exPuzzleScales[i].sprite = _exPuzzleScaleDefault;
+                continue;
+            }
+            _exPuzzleScales[i].sprite = _playerSelectionDB.ExSprites[index];
+        }
     }
 
     private void OnSelectionButtonClicked() {

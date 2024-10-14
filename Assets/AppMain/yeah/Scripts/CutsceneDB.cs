@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CutsceneDB", menuName = "Create Cutscene Database")]
+[CreateAssetMenu(fileName = "CutsceneDB", menuName = "ScriptableObjects/Cutscene Database")]
 public class CutsceneDB : ScriptableObject {
     // TODO 読むボタン識別のためのインデックス
     // 場合によっては、渡すcsvファイルを格納しても良い気がする

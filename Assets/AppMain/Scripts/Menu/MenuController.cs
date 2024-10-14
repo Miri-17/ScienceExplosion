@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour {
     // TODO 完全に実装したら消す
     private List<string> _warningTexts = new List<string>() {
         "UIの非表示はまだ未実装です。",
-        "キャラクター・マップ・ストーリー・サウンドはまだ見られません。",
+        "キャラクター・サウンドはまだ見られません。",
     };
     #endregion
 
@@ -95,8 +95,6 @@ public class MenuController : MonoBehaviour {
         // TODO 完全に実装したら消す
         switch (_nextSceneNames[index]) {
             case "Characters":
-            case "Map":
-            case "Cutscenes":
             case "Audio":
                 if (_notYetInstalledPanel.activeSelf) return;
                 _warningSentence.text = _warningTexts[1];

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharactersDB", menuName = "Create Characters Database")]
+[CreateAssetMenu(fileName = "CharactersDB", menuName = "ScriptableObjects/Characters Database")]
 public class CharactersDB : ScriptableObject {
     [SerializeField] private List<CharacterDB> _characterDatabases = null;
 

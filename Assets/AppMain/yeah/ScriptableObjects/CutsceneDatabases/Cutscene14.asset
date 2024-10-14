@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22b701d4fe3400a9da50a587f3e4e6, type: 3}
+  m_Name: Cutscene14
+  m_EditorClassIdentifier: 
+  _titleSprite: {fileID: 21300000, guid: 5d8745fbb1e6a4e1484514641bdca30f, type: 3}
+  _relatedCharacterSprites:
+  - {fileID: 21300000, guid: 967b21a9135e649be8d34d2499b03e69, type: 3}
+  - {fileID: 21300000, guid: 138e2a60352964a8a98a08074a283e5f, type: 3}
