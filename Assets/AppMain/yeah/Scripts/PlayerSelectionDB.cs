@@ -3,8 +3,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerSelectionDB", menuName = "ScriptableObjects/PlayerSelection Database")]
 public class PlayerSelectionDB : ScriptableObject {
-    [SerializeField] private List<Sprite> _nameSprites = null;
-    [SerializeField] private List<Sprite> _majorSprites = null;
+    // [SerializeField] private List<Sprite> _nameSprites = null;
+    // [SerializeField] private List<Sprite> _majorSprites = null;
     [SerializeField] private List<Sprite> _typeSprites = null;
     [SerializeField] private List<string> _descriptions = null;
 
@@ -22,8 +22,8 @@ public class PlayerSelectionDB : ScriptableObject {
     [SerializeField] private List<Sprite> _puzzleSprites = null;
     [SerializeField] private List<Sprite> _exSprites = null;
 
-    public List<Sprite> NameSprites { get => _nameSprites; set => _nameSprites = value; }
-    public List<Sprite> MajorSprites { get => _majorSprites; set => _majorSprites = value; }
+    // public List<Sprite> NameSprites { get => _nameSprites; set => _nameSprites = value; }
+    // public List<Sprite> MajorSprites { get => _majorSprites; set => _majorSprites = value; }
     public List<Sprite> TypeSprites { get => _typeSprites; set => _typeSprites = value; }
     public List<string> Descriptions { get => _descriptions; set => _descriptions = value; }
 

@@ -9,14 +9,9 @@ public class CharacterDB : ScriptableObject {
     [Header("0...Menu, 1...Battle")]
     [SerializeField] private List<Sprite> _placeSprites = null;
 
-    [Header("PlayerSelectionで使っているが、他でも使う可能性が高い情報")]
-    [Header("min: 1, max: 5")]
-    [SerializeField] private int _hp = 1;
-    [Header("min: 1, max: 5")]
-    [SerializeField] private int _damage = 1;
-    [SerializeField] private Sprite _puzzleSprite = null;
-    [SerializeField] private Sprite _exSprite = null;
-    [SerializeField] private Color _uniqueColor = Color.white;
+    // CharactersとPlayerSelectionで使用している情報
+    [SerializeField] private Sprite _nameSprite = null;
+    [SerializeField] private Sprite _majorSprite = null;
 
     // [SerializeField] private string _name = "";
     // [SerializeField] private string _profession = "";
@@ -33,11 +28,8 @@ public class CharacterDB : ScriptableObject {
     public List<Sprite> CharacterSprites { get => _characterSprites; set => _characterSprites = value; }
     public List<Sprite> PlaceSprites { get => _placeSprites; set => _placeSprites = value; }
 
-    public int HP { get => _hp; set => _hp = value; }
-    public int Damage { get => _damage; set => _damage = value; }
-    public Sprite PuzzleSprite { get => _puzzleSprite; set => _puzzleSprite = value; }
-    public Sprite ExSprite { get => _exSprite; set => _exSprite = value; }
-    public Color UniqueColor { get => _uniqueColor; set => _uniqueColor = value; }
+    public Sprite NameSprite { get => _nameSprite; set => _nameSprite = value; }
+    public Sprite MajorSprite { get => _majorSprite; set => _majorSprite = value; }
 
     // public string Name { get => _name; set => _name = value; }
     // public string Profession { get => _profession; set => _profession = value; }

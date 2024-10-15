@@ -14,9 +14,9 @@ TagManager:
   - TapEffects
   - Puzzle
   - BattleCharacter
-  - BattleFrontUI
+  - PerspectiveUI
   - Notification
-  - 
+  - FrontUI
   - 
   - 
   - 

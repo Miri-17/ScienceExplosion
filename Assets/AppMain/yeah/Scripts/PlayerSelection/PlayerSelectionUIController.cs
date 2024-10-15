@@ -132,8 +132,8 @@ public class PlayerSelectionUIController : MonoBehaviour {
     }
 
     private void UpdateUI(int index) {
-        _nameImage.sprite = _playerSelectionDB.NameSprites[index];
-        _majorImage.sprite = _playerSelectionDB.MajorSprites[index];
+        _nameImage.sprite = _playerSelectionController.Character.NameSprite;
+        _majorImage.sprite = _playerSelectionController.Character.MajorSprite;
         _typeImage.sprite = _playerSelectionDB.TypeSprites[index];
         _descriptionText.text = _playerSelectionDB.Descriptions[index];
 
@@ -214,6 +214,9 @@ public class PlayerSelectionUIController : MonoBehaviour {
             _notYetInstalledPanel.SetActive(true);
             return;
         }
+
+        // TODO マイラ・キメラに変更
+        GameDirector.Instance.EnemyCharacterIndex = 2;
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
