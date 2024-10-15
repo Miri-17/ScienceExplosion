@@ -8,8 +8,8 @@ public class SelectedCharacterController : MonoBehaviour {
     [SerializeField] private SpriteRenderer _playerSpriteRenderer;
     [SerializeField] private SpriteRenderer _enemySpriteRenderer;
 
-    [SerializeField] private Image _unmask = null;
-    [SerializeField] private Image _screen = null;
+    // [SerializeField] private Image _unmask = null;
+    // [SerializeField] private Image _screen = null;
     #endregion
 
     private void Start() {

@@ -459,6 +459,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
+      propertyPath: _score
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _playerCharacterIndex
       value: 7
       objectReference: {fileID: 0}
@@ -3475,6 +3479,7 @@ MonoBehaviour:
   _loadingPanel: {fileID: 1437747292}
   _backButton: {fileID: 1489967121}
   _closeButton: {fileID: 666517745}
+  _totalScore: {fileID: 257523027}
 --- !u!1 &1976469948
 GameObject:
   m_ObjectHideFlags: 0

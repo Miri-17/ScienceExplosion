@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ResultUIController : MonoBehaviour {
     private bool _isChangingScene = false;
@@ -13,12 +14,16 @@ public class ResultUIController : MonoBehaviour {
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
     [SerializeField] private Button _closeButton = null;
+
+    [SerializeField] private TextMeshProUGUI _totalScore = null;
     #endregion
 
     private void Start() {
         _warningPanel.SetActive(false);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
         _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
+
+        _totalScore.text = GameDirector.Instance.Score.ToString("000000000");
     }
 
     private void OnBackButtonClicked() {

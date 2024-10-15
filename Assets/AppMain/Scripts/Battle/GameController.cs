@@ -6,14 +6,21 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
+    #region
     private List<Puzzle> _selectedPuzzles = new List<Puzzle>();
     private GameObject[,] _puzzlesXY;
     // ある六角形の中心から上の六角形の中心までの長さ
     private float _hexagonHeight = 0;
     // ある六角形の中心と上の六角形の中心のずれ
     private float _adjustmentWidth = 0;
+    private string _selectID = "";
 
-    [SerializeField] private UIDisplayer _uiDisplayer = null;
+    private AudioSource _audioSource_SE = null;
+    private AudioClip _audioClip_SE = null;
+    #endregion
+
+    #region
+    [SerializeField] private BattleUIController _battleUIController = null;
     [SerializeField] private GameObject[] _puzzles = null;
     [SerializeField] private GameObject _puzzleBlack = null;
     [SerializeField] private LineRenderer _lineRenderer = null;
@@ -21,8 +28,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] private float _hexagonWidth = 0.74f;
     [SerializeField] private int _rowSize = 17;
     [SerializeField] private int _columnSize = 7;
-
-    private string _selectID = "";
+    #endregion
 
     private void Awake() {
         if (Instance != null) {
@@ -33,6 +39,8 @@ public class GameController : MonoBehaviour {
     }
 
     private void Start() {
+        _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
+
         _puzzlesXY = new GameObject[_rowSize, _columnSize];
 
         _hexagonHeight = _hexagonWidth * Mathf.Sin(60.0f * Mathf.Deg2Rad);
@@ -112,6 +120,10 @@ public class GameController : MonoBehaviour {
     }
 
     public void OnPuzzleDown(Puzzle puzzle) {
+        Debug.Log("OnPuzzleDown");
+        _audioClip_SE = SE.Instance.audioClips[2];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+
         _selectedPuzzles.Add(puzzle);
         puzzle.SetSelection(true);
         _selectID = puzzle.ID;
@@ -122,7 +134,7 @@ public class GameController : MonoBehaviour {
     public void OnPuzzleEnter(Puzzle puzzle) {
         if (_selectedPuzzles.Count < 1 || _selectID != puzzle.ID)
             return;
-        
+
         // Debug.Log(_selectedPuzzles.Count);
 
         if (puzzle.IsSelected) {
@@ -140,12 +152,35 @@ public class GameController : MonoBehaviour {
             }
         }
 
+        Debug.Log("OnPuzzleEnter");
+        Debug.Log(_selectedPuzzles.Count);
+        switch(_selectedPuzzles.Count) {
+            // TODO case 1の時の音変えた方が良いかも
+            case 1:
+                _audioClip_SE = SE.Instance.audioClips[2];
+                break;
+            case 2:
+                _audioClip_SE = SE.Instance.audioClips[3];
+                break;
+            case 3:
+                _audioClip_SE = SE.Instance.audioClips[4];
+                break;
+            default:
+                _audioClip_SE = SE.Instance.audioClips[5];
+                break;
+        }
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+
         UpdateLineRenderer();
     }
     
     public void OnPuzzleUp(Puzzle puzzle) {
+        Debug.Log("OnPuzzleUp");
+        _audioClip_SE = SE.Instance.audioClips[6];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+
         Debug.Log(puzzle);
-        _uiDisplayer.AddScore(_selectedPuzzles.Count, puzzle.ID);
+        _battleUIController.AddScore(_selectedPuzzles.Count, puzzle.ID);
         DestroyPuzzles(_selectedPuzzles);
         // 消えたパズルがある行
         var affectedRows = _selectedPuzzles.Select(p => p.Row).Distinct().ToList();

@@ -12,8 +12,7 @@ public class CutscenesUIController : MonoBehaviour {
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
-
-    private int _cutsceneIndex = 0;
+    
     private int _previousCutsceneIndex = 0;
     private List<SetStill> _setStills = null;
 
