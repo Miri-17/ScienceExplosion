@@ -6,7 +6,7 @@ using System.Threading;
 using System.Collections.Generic;
 using TMPro;
 
-public class ModeSelectionController : MonoBehaviour {
+public class ModeSelectionUIController : MonoBehaviour {
     #region
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
@@ -25,7 +25,20 @@ public class ModeSelectionController : MonoBehaviour {
     [SerializeField] private Button _howToPlayButton = null;
     [SerializeField] private Button _backButton = null;
     [SerializeField] private Button _playAloneButton = null;
-    [SerializeField] private Button _playTwoButton = null; // TODO ネットワークのこと学んだら変更あり
+    [SerializeField] private Button _playTwoButton = null;
+
+    [SerializeField] private TextMeshProUGUI _descriptionText = null;
+    [SerializeField] private List<string> _descriptions = new List<string>() {
+        "相手を倒すとストーリーが解放されるモードです。\n世界観を楽しみたい方に！",
+        "お友達と通信して遊べるモードです。\n目指せ！ 世界最強のマッドサイエンティスト！",
+    };
+    [SerializeField] private string _nextSceneName = "PlayerSelection";
+    [SerializeField] private Button _nextButton = null;
+    [Header("0...PlayAlone, 1...PlayTwo")]
+    [SerializeField] private List<Image> _particles = null;
+    [SerializeField] private List<Image> _triangles = null;
+    [SerializeField] private List<Image> _explosions = null;
+
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
@@ -37,13 +50,29 @@ public class ModeSelectionController : MonoBehaviour {
 
         _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
 
+        #region // ボタン設定
         ChangeAlphaHitThreshold(_howToPlayButton, 1.0f);
         _howToPlayButton.onClick.AddListener(() => OnHowToPlayButtonClicked());
         ChangeAlphaHitThreshold(_backButton, 1.0f);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
 
+        ChangeAlphaHitThreshold(_playAloneButton, 1.0f);
         _playAloneButton.onClick.AddListener(() => OnPlayAloneButtonClicked());
+        ChangeAlphaHitThreshold(_playTwoButton, 1.0f);
         _playTwoButton.onClick.AddListener(() => OnPlayTwoButtonClicked());
+
+        ChangeAlphaHitThreshold(_nextButton, 1.0f);
+        _nextButton.onClick.AddListener(() => OnNextButtonClicked());
+        #endregion
+
+        // TODO ここが良くないので直すこと
+        _playAloneButton.interactable = false;
+        _particles[0].enabled = true;
+        _particles[1].enabled = false;
+        _triangles[0].enabled = true;
+        _triangles[1].enabled = false;
+        _explosions[0].enabled = false;
+        _explosions[1].enabled = false;
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
@@ -86,6 +115,44 @@ public class ModeSelectionController : MonoBehaviour {
     private void OnPlayAloneButtonClicked() {
         if (_isChangingScene) return;
 
+        // TODO ここが良くないので直すこと
+        _playAloneButton.interactable = false;
+        _playTwoButton.interactable = true;
+        _nextSceneName = "PlayerSelection";
+        _descriptionText.text = _descriptions[0];
+        _particles[1].enabled = false;
+        _particles[0].enabled = true;
+        _triangles[1].enabled = false;
+        _triangles[0].enabled = true;
+    }
+
+    private void OnPlayTwoButtonClicked() {
+        if (_isChangingScene) return;
+
+        // TODO ここが良くないので直すこと
+        _playTwoButton.interactable = false;
+        _playAloneButton.interactable = true;
+        // TODO シーン名決まったら変更
+        _nextSceneName = "Network";
+        _descriptionText.text = _descriptions[1];
+        _particles[0].enabled = false;
+        _particles[1].enabled = true;
+        _triangles[0].enabled = false;
+        _triangles[1].enabled = true;
+    }
+
+    private void OnNextButtonClicked() {
+        if (_isChangingScene) return;
+
+        // TODO 完全に実装したら消す
+        if (_nextSceneName != "PlayerSelection") {
+            if (_notYetInstalledPanel.activeSelf) return;
+            _warningSentence.text = _warningTexts[1];
+            _notYetInstalledPanel.SetActive(true);
+            return;
+        }
+
+        _explosions[0].enabled = true;
         // TODO Dr. Pに変更
         GameDirector.Instance.PlayerCharacterIndex = 7;
 
@@ -93,18 +160,7 @@ public class ModeSelectionController : MonoBehaviour {
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
         // TODO durationの変更
-        GoNextSceneAsync(0, "PlayerSelection", false).Forget();
-    }
-
-    private void OnPlayTwoButtonClicked() {
-        if (_isChangingScene) return;
-
-        // 2人プレイに行く処理
-
-        // TODO 完全に実装したら消す
-        if (_notYetInstalledPanel.activeSelf) return;
-        _warningSentence.text = _warningTexts[1];
-        _notYetInstalledPanel.SetActive(true);
+        GoNextSceneAsync(0, _nextSceneName, false).Forget();
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
