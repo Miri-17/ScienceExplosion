@@ -63,6 +63,8 @@ public class CharacterSelectionDB : ScriptableObject {
 
     [SerializeField] private List<Sprite> _explosionNames = null;
     [SerializeField] private List<string> _explosionDescriptions = null;
+
+    public List<string> CharacterDescriptions { get => _characterDescriptions; set => _characterDescriptions = value; }
     
     public List<string> GovernmentNameTexts { get => _governmentNameTexts; set => _governmentNameTexts = value; }
     public List<Sprite> GovernmentNameImages { get => _governmentNameImages; set => _governmentNameImages = value; }

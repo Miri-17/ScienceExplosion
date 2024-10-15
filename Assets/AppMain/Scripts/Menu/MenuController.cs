@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour {
     // TODO 完全に実装したら消す
     private List<string> _warningTexts = new List<string>() {
         "UIの非表示はまだ未実装です。",
-        "キャラクター・サウンドはまだ見られません。",
+        "サウンドはまだ見られません。",
     };
     #endregion
 
@@ -93,15 +93,11 @@ public class MenuController : MonoBehaviour {
         if (_isChangingScene) return;
 
         // TODO 完全に実装したら消す
-        switch (_nextSceneNames[index]) {
-            case "Characters":
-            case "Audio":
+        if (_nextSceneNames[index] == "Audio") {
                 if (_notYetInstalledPanel.activeSelf) return;
                 _warningSentence.text = _warningTexts[1];
                 _notYetInstalledPanel.SetActive(true);
                 return;
-            default:
-                break;
         }
 
         _isChangingScene = true;

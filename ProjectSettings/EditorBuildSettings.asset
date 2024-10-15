@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/AppMain/Scenes/Menu.unity
     guid: b39c50cf3afeb4d74888a0568500c6dd
   - enabled: 1
-    path: Assets/AppMain/Scenes/Characters_.unity
-    guid: ec2c50d348a8b4973a3eb0f3206b2339
+    path: Assets/AppMain/Scenes/Characters.unity
+    guid: 81b0b7bdaeba9425f9ffa14619c41ffd
   - enabled: 1
     path: Assets/AppMain/Scenes/Map.unity
     guid: 211d1c442d1324623bb935b0aa977a57
