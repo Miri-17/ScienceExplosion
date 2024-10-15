@@ -931,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _charactersDB: {fileID: 11400000, guid: aafc6743043ce4e738a982492736a467, type: 2}
   _playerSpriteRenderer: {fileID: 637327472}
+  Character: {fileID: 0}
 --- !u!1 &237412040
 GameObject:
   m_ObjectHideFlags: 0
