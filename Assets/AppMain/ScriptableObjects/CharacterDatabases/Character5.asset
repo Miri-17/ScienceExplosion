@@ -19,12 +19,7 @@ MonoBehaviour:
   _placeSprites:
   - {fileID: 21300000, guid: 22fde80a344384e5b8a2c079840a5905, type: 3}
   - {fileID: 21300000, guid: 807adab402a5048f1a9b48f81d30fe9d, type: 3}
-  _hp: 1
-  _damage: 1
-  _puzzleSprite: {fileID: 21300000, guid: 46077b87adebd48f6bfca4058b4b403c, type: 3}
-  _exSprite: {fileID: 21300000, guid: 1d22d8147a75441ce878dbca34cb5724, type: 3}
-  _uniqueColor: {r: 0.039215688, g: 0.29803923, b: 0.87058824, a: 1}
   _nameSprite: {fileID: 21300000, guid: d3949df381d674966a1bcee4753aecca, type: 3}
   _majorSprite: {fileID: 21300000, guid: f19f6655d7a8e49d19f2d2b3faf29373, type: 3}
-  _typeSprite: {fileID: 21300000, guid: 9ac762b8f52664fa6882d928f7ac15ba, type: 3}
-  _description: "\u6A2A\u306B\u30D1\u30BA\u30EB\u3092\u8599\u304E\u5012\u3059\u306E\u304C\u5F97\u610F\uFF01"
+  _placeNameSprite: {fileID: 21300000, guid: 06b06b4d10bd348d49fa7285e721cf47, type: 3}
+  _iconSprite: {fileID: 21300000, guid: 394edfc9bc99f4cd4a8e23ba649e99f6, type: 3}

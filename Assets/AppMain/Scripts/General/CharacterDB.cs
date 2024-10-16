@@ -13,6 +13,10 @@ public class CharacterDB : ScriptableObject {
     [SerializeField] private Sprite _nameSprite = null;
     [SerializeField] private Sprite _majorSprite = null;
 
+    // MapとEnemySelectionで使用している情報
+    [SerializeField] private Sprite _placeNameSprite = null;
+    [SerializeField] private Sprite _iconSprite = null;
+
     // [SerializeField] private string _name = "";
     // [SerializeField] private string _profession = "";
     // [SerializeField] private string _skill = "";
@@ -30,6 +34,9 @@ public class CharacterDB : ScriptableObject {
 
     public Sprite NameSprite { get => _nameSprite; set => _nameSprite = value; }
     public Sprite MajorSprite { get => _majorSprite; set => _majorSprite = value; }
+
+    public Sprite PlaceNameSprite { get => _placeNameSprite; set => _placeNameSprite = value; }
+    public Sprite IconSprite { get => _iconSprite; set => _iconSprite = value; }
 
     // public string Name { get => _name; set => _name = value; }
     // public string Profession { get => _profession; set => _profession = value; }

@@ -12,6 +12,8 @@ public class MapUIController : MonoBehaviour {
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
+
+    private int _currentPlaceIndex = 0;
     #endregion
 
     #region
@@ -22,6 +24,11 @@ public class MapUIController : MonoBehaviour {
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
+
+    [SerializeField] private List<Button> _placeButtons = null;
+    [SerializeField] private CharactersDB _charactersDB = null;
+    [SerializeField] private Image _icon = null;
+    [SerializeField] private Image _place = null;
     #endregion
 
     private void Start() {
@@ -33,6 +40,14 @@ public class MapUIController : MonoBehaviour {
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
         ChangeAlphaHitThreshold(_goButton, 1.0f);
         _goButton.onClick.AddListener(() => OnGoButtonClicked());
+
+        for (var i = 0; i < _placeButtons.Count; i++) {
+            var index = i;
+            _placeButtons[i].onClick.AddListener(() => OnPlaceButtonClicked(index));
+        }
+
+        _currentPlaceIndex = GameDirector.Instance.SelectedPlaceIndex;
+        UpdateUI(_currentPlaceIndex);
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
@@ -61,14 +76,31 @@ public class MapUIController : MonoBehaviour {
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
+    private void OnPlaceButtonClicked(int index) {
+        // GameDirector.Instance.EnemyCharacterIndex = index;
+        _currentPlaceIndex = index;
+
+        UpdateUI(_currentPlaceIndex);
+    }
+
+    private void UpdateUI(int index) {
+        var character = _charactersDB.GetCharacter(index);
+
+        _place.sprite = character.PlaceNameSprite;
+        _icon.sprite = character.IconSprite;
+    }
+
     private void OnGoButtonClicked() {
         if (_isChangingScene) return;
 
-        // その場所に行く処理
+        _audioClip_SE = SE.Instance.audioClips[1];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+        
+        GameDirector.Instance.SelectedPlaceIndex = _currentPlaceIndex;
 
         // TODO 完全に実装したら消す
-        if (_notYetInstalledPanel.activeSelf) return;
-        _notYetInstalledPanel.SetActive(true);
+        // if (_notYetInstalledPanel.activeSelf) return;
+        // _notYetInstalledPanel.SetActive(true);
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {

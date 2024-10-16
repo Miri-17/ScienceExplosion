@@ -3,7 +3,10 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
+using Unity.VisualScripting;
 
 public class EnemySelectionUIController : MonoBehaviour {
     #region
@@ -12,6 +15,12 @@ public class EnemySelectionUIController : MonoBehaviour {
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
     private readonly float SCALE_DURATION = 0.5f;
+
+    // TODO 完全に実装したら消す
+    private List<string> _warningTexts = new List<string>() {
+        "遊び方はまだ見られません。",
+        "クラックス・クルーを選ばないと、次のシーンに進めません。",
+    };
     #endregion
 
     #region
@@ -24,8 +33,14 @@ public class EnemySelectionUIController : MonoBehaviour {
     [SerializeField] private RectTransform _unmask = null;
     [SerializeField] private Image _screen = null;
 
+    [SerializeField] private List<Button> _placeButtons = null;
+    [SerializeField] private CharactersDB _charactersDB = null;
+    [SerializeField] private Image _icon = null;
+    [SerializeField] private Image _place = null;
+
     /// TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
+    [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
     #endregion
 
@@ -42,6 +57,13 @@ public class EnemySelectionUIController : MonoBehaviour {
         _chargeButton.onClick.AddListener(() => OnChargeButtonClicked());
 
         _screen.enabled = false;
+
+        for (var i = 0; i < _placeButtons.Count; i++) {
+            var index = i;
+            _placeButtons[i].onClick.AddListener(() => OnPlaceButtonClicked(index));
+        }
+
+        UpdateUI(GameDirector.Instance.EnemyCharacterIndex);
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
@@ -60,6 +82,7 @@ public class EnemySelectionUIController : MonoBehaviour {
 
         // TODO 完全に実装したら消す
         if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
     }
 
@@ -80,8 +103,29 @@ public class EnemySelectionUIController : MonoBehaviour {
         GoNextSceneAsync(0, "PlayerSelection", false).Forget();
     }
 
+    private void OnPlaceButtonClicked(int index) {
+        GameDirector.Instance.EnemyCharacterIndex = index;
+
+        UpdateUI(index);
+    }
+
+    private void UpdateUI(int index) {
+        var character = _charactersDB.GetCharacter(index);
+
+        _place.sprite = character.PlaceNameSprite;
+        _icon.sprite = character.IconSprite;
+    }
+
     private void OnChargeButtonClicked() {
         if (_isChangingScene) return;
+
+        // TODO 完全に実装したら消す
+        if (GameDirector.Instance.EnemyCharacterIndex != 2) {
+            if (_notYetInstalledPanel.activeSelf) return;
+            _warningSentence.text = _warningTexts[1];
+            _notYetInstalledPanel.SetActive(true);
+            return;
+        }
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
