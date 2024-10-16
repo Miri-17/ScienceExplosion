@@ -3,15 +3,23 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class SettingsController : AudioMixerController {
-    // TODO 完全に実装したら消す
-    private List<string> _warningTexts = new List<string>() {
-        "スタッフロールはまだ見られません。",
-        "データ消去は未実装です。",
-    };
+    #region
+    private CancellationToken _token = default;
+    private AudioSource _audioSource_SE = null;
+    private AudioClip _audioClip_SE = null;
+    private bool _isChangingScene = false;
+    #endregion
 
     # region
+    [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
+    [SerializeField] private GameObject _loadingPanel = null;
+    [SerializeField] private string _nextSceneName = "Credits";
+
     [SerializeField] private Image _settingsBg = null;
     [SerializeField] private Image _hologramBg = null;
     // SettingsのBackgroundをタップするとSettingsが閉じるようにする.
@@ -19,9 +27,9 @@ public class SettingsController : AudioMixerController {
     [SerializeField] private GameObject _settingsPanel = null;
     [SerializeField] private Button _showCreditsButton = null;
     [SerializeField] private Button _deleteSaveDataButton = null;
+
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
-    [SerializeField] private TextMeshProUGUI _warningSentence = null;
     #endregion
 
     // TODO 合ってるか調べる
@@ -29,6 +37,11 @@ public class SettingsController : AudioMixerController {
         base.Start();
 
         Debug.Log("SettingsControllerのStart()が呼ばれた");
+
+        _token = this.GetCancellationTokenOnDestroy();
+
+        _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
+
         _hologramBg.alphaHitTestMinimumThreshold = 1;
         _settingsBg.alphaHitTestMinimumThreshold = 1;
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -55,20 +68,39 @@ public class SettingsController : AudioMixerController {
     }
 
     private void OnShowCreditsButtonClicked() {
-        // Creditsに遷移する処理
+        if (_isChangingScene) return;
 
-        // TODO 完全に実装したら消す
-        if (_notYetInstalledPanel.activeSelf) return;
-        _warningSentence.text = _warningTexts[0];
-        _notYetInstalledPanel.SetActive(true);
+        _isChangingScene = true;
+        _audioClip_SE = SE.Instance.audioClips[0];
+        _audioSource_SE.PlayOneShot(_audioClip_SE);
+        // TODO durationの変更
+        GoNextSceneAsync(0, _nextSceneName, false).Forget();
     }
 
     private void OnDeleteSaveDataButtonClicked() {
+        if (_isChangingScene) return;
         // セーブデータを消去する処理
 
         // TODO 完全に実装したら消す
         if (_notYetInstalledPanel.activeSelf) return;
-        _warningSentence.text = _warningTexts[1];
         _notYetInstalledPanel.SetActive(true);
+    }
+
+    private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
+        // ローディングパネルが出る前にすること
+
+        await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
+
+        // Debug.Log("Go to " + nextSceneName);
+        
+        // ローディングパネルがある時
+        if (isShowLoadingPanel && _loadingPanel != null) {
+            _loadingPanel.SetActive(true);
+            AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
+            await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
+        // ローディングパネルがない時
+        } else {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 }

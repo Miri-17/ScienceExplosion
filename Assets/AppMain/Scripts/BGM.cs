@@ -45,6 +45,7 @@ namespace ScienceExplosion {
                 case "PlayerSelection":
                 case "EnemySelection":
                 case "Result":
+                case "Credits":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
                 // テスト用
