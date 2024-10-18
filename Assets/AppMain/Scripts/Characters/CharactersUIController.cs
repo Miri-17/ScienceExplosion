@@ -15,8 +15,6 @@ public class CharactersUIController : MonoBehaviour {
     private List<CharacterButton> _characterButtonScripts = null;
     private int _previousCharacterIndex = 0;
     private int _informatioinIndex = 0;
-
-    private Image _callButtonImage = null;
     #endregion
 
     #region
@@ -100,8 +98,6 @@ public class CharactersUIController : MonoBehaviour {
 
         _previousCharacterIndex = GameDirector.Instance.SelectedCharacterIndex;
         _characterButtonScripts[_previousCharacterIndex].SetSelection(true);
-
-        _callButtonImage = _callButton.GetComponent<Image>();
 
         UpdateUI(_previousCharacterIndex);
 
@@ -201,6 +197,7 @@ public class CharactersUIController : MonoBehaviour {
 
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
+
         GameDirector.Instance.SelectedCharacterIndex = _previousCharacterIndex;
 
         _callButton.interactable = false;

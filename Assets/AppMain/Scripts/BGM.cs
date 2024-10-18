@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,6 +46,10 @@ namespace ScienceExplosion {
                 case "Result":
                 case "Credits":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
+                    break;
+                // テスト用
+                case "Audio":
+                    _audioSource.clip = _audioClips[3];
                     break;
                 // テスト用
                 case "Battle":

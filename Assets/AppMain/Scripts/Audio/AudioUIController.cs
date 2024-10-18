@@ -5,30 +5,22 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
 
-public class MapUIController : MonoBehaviour {
+public class AudioUIController : MonoBehaviour {
     #region
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
-
-    private int _currentPlaceIndex = 0;
     #endregion
 
     #region
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
-    [SerializeField] private Button _goButton = null;
 
-    [SerializeField] private List<Button> _placeButtons = null;
-    [SerializeField] private CharactersDB _charactersDB = null;
-    [SerializeField] private Image _icon = null;
-    [SerializeField] private Image _place = null;
-
-    [SerializeField] private Image _goTextImage = null;
-    [Header("0...行く！, 1...設定済み")]
-    [SerializeField] private List<Sprite> _goTextSprites = null;
+    [SerializeField] private Button _playButton = null;
+    [SerializeField] private Button _triangleLeftButton = null;
+    [SerializeField] private Button _triangleRightButton = null;
     #endregion
 
     private void Start() {
@@ -38,16 +30,11 @@ public class MapUIController : MonoBehaviour {
 
         ChangeAlphaHitThreshold(_backButton, 1.0f);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
-        ChangeAlphaHitThreshold(_goButton, 1.0f);
-        _goButton.onClick.AddListener(() => OnGoButtonClicked());
 
-        for (var i = 0; i < _placeButtons.Count; i++) {
-            var index = i;
-            _placeButtons[i].onClick.AddListener(() => OnPlaceButtonClicked(index));
-        }
-
-        _currentPlaceIndex = GameDirector.Instance.SelectedPlaceIndex;
-        UpdateUI(_currentPlaceIndex);
+        ChangeAlphaHitThreshold(_playButton, 1.0f);
+        _playButton.onClick.AddListener(() => OnPlayButtonClicked());
+        _triangleLeftButton.onClick.AddListener(() => OnTriangleButtonClicked(-1));
+        _triangleRightButton.onClick.AddListener(() => OnTriangleButtonClicked(1));
     }
 
     private void ChangeAlphaHitThreshold(Button button, float alpha) {
@@ -65,37 +52,23 @@ public class MapUIController : MonoBehaviour {
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
-    private void OnPlaceButtonClicked(int index) {
-        _currentPlaceIndex = index;
+    private void OnPlayButtonClicked() {
 
-        UpdateUI(_currentPlaceIndex);
     }
 
-    private void UpdateUI(int index) {
-        var character = _charactersDB.GetCharacter(index);
+    private void OnTriangleButtonClicked(int number) {
+        Debug.Log(number);
 
-        _place.sprite = character.PlaceNameSprite;
-        _icon.sprite = character.IconSprite;
+        // _informatioinIndex += number;
+        // if (_informatioinIndex < 0)
+        //     _informatioinIndex = _informationPanels.Count - 1;
+        // else if (_informatioinIndex >= _informationPanels.Count)
+        //     _informatioinIndex = 0;
 
-        if (index == GameDirector.Instance.SelectedPlaceIndex) {
-            _goButton.interactable = false;
-            _goTextImage.sprite = _goTextSprites[1];
-        } else {
-            _goButton.interactable = true;
-            _goTextImage.sprite = _goTextSprites[0];
-        }
-    }
-
-    private void OnGoButtonClicked() {
-        if (_isChangingScene) return;
-
-        _audioClip_SE = SE.Instance.audioClips[1];
-        _audioSource_SE.PlayOneShot(_audioClip_SE);
-        
-        GameDirector.Instance.SelectedPlaceIndex = _currentPlaceIndex;
-
-        _goButton.interactable = false;
-        _goTextImage.sprite = _goTextSprites[1];
+        // iconの遷移処理
+        // タイトルの変更処理
+        // 時間の変更処理
+        // 
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
