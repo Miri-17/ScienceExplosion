@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour {
     #region
@@ -33,6 +34,8 @@ public class MenuController : MonoBehaviour {
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
+    // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
+    [SerializeField] private EventTrigger _eventTrigger = null;
     #endregion
 
     private void Start() {
@@ -57,7 +60,14 @@ public class MenuController : MonoBehaviour {
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
-        _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
+        _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        // 押した瞬間に実行するようにする.
+        entry.eventID = EventTriggerType.PointerDown;
+        entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
+        //イベントの設定をEventTriggerに反映
+        _eventTrigger.triggers.Add(entry);
     }
 
     private void ChangeAlphaHitThreshold(Button button, float alpha) {
@@ -66,7 +76,7 @@ public class MenuController : MonoBehaviour {
     }
 
     // TODO 完全に実装したら消す
-    private void OnCloseButtonClicked() {
+    private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
         _notYetInstalledPanel.SetActive(false);

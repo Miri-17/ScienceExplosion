@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenuController : AudioMixerController {
     private CancellationToken _token = default;
@@ -28,6 +28,8 @@ public class PauseMenuController : AudioMixerController {
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
+    // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
+    [SerializeField] private EventTrigger _eventTrigger = null;
     #endregion
 
     // TODO 合ってるか調べる
@@ -46,7 +48,14 @@ public class PauseMenuController : AudioMixerController {
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
-        _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
+        _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        // 押した瞬間に実行するようにする.
+        entry.eventID = EventTriggerType.PointerDown;
+        entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
+        //イベントの設定をEventTriggerに反映
+        _eventTrigger.triggers.Add(entry);
     }
 
     private void OnHowToPlayButtonClicked() {
@@ -78,6 +87,8 @@ public class PauseMenuController : AudioMixerController {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
+        // TODO 一時停止の方法をtimeScaleを使わないものに変更するかも
+        Time.timeScale = 1;
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
@@ -100,7 +111,7 @@ public class PauseMenuController : AudioMixerController {
     }
 
     // TODO 完全に実装したら消す
-    private void OnCloseButtonClicked() {
+    private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
         _notYetInstalledPanel.SetActive(false);

@@ -23,3 +23,4 @@ MonoBehaviour:
   _majorSprite: {fileID: 21300000, guid: 5367a757e350e47e49a92c6d67ea6c40, type: 3}
   _placeNameSprite: {fileID: 21300000, guid: a77afb876e9f54be59c66635ead646fa, type: 3}
   _iconSprite: {fileID: 21300000, guid: 9931389d4cf20445c8fc7d6ff9daad84, type: 3}
+  _nameSpriteSpeech: {fileID: 21300000, guid: 003ee0f30ef6e4b66b8e804ac17a6ed5, type: 3}

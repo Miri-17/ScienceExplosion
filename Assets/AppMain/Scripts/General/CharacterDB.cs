@@ -17,6 +17,9 @@ public class CharacterDB : ScriptableObject {
     [SerializeField] private Sprite _placeNameSprite = null;
     [SerializeField] private Sprite _iconSprite = null;
 
+    // 今の所Menuでしか使用していないが、Storyでも使われると考えられる情報
+    [SerializeField] private Sprite _nameSpriteSpeech = null;
+
     // [SerializeField] private string _name = "";
     // [SerializeField] private string _profession = "";
     // [SerializeField] private string _skill = "";
@@ -37,6 +40,8 @@ public class CharacterDB : ScriptableObject {
 
     public Sprite PlaceNameSprite { get => _placeNameSprite; set => _placeNameSprite = value; }
     public Sprite IconSprite { get => _iconSprite; set => _iconSprite = value; }
+
+    public Sprite NameSpriteSpeech { get => _nameSpriteSpeech; set => _nameSpriteSpeech = value;}
 
     // public string Name { get => _name; set => _name = value; }
     // public string Profession { get => _profession; set => _profession = value; }

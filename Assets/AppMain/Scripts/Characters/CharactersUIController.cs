@@ -5,6 +5,8 @@ using System.Threading;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class CharactersUIController : MonoBehaviour {
     #region
@@ -54,6 +56,8 @@ public class CharactersUIController : MonoBehaviour {
     [SerializeField] private Image _explosionName = null;
     [SerializeField] private TextMeshProUGUI _explosionDescription = null;
     
+    [SerializeField] private RectTransform _triangleLeft = null;
+    [SerializeField] private RectTransform _triangleRight = null;
     [SerializeField] private Button _triangleLeftButton = null;
     [SerializeField] private Button _triangleRightButton = null;
     [Header("0...Lab, 1...Skill, 2...Level")]
@@ -63,12 +67,26 @@ public class CharactersUIController : MonoBehaviour {
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
+    // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
+    [SerializeField] private EventTrigger _eventTrigger = null;
     #endregion
 
     private void Start() {
         _token = this.GetCancellationTokenOnDestroy();
 
         _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
+
+        // _triangleLeft.DOAnchorPosX(-420.0f, 0.8f)
+        _triangleLeft.DOAnchorPosX(-432.0f, 0.8f)
+            .SetEase(Ease.OutCubic)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetLink(_triangleLeft.gameObject);
+
+        // _triangleRight.DOAnchorPosX(452.0f, 0.8f)
+        _triangleRight.DOAnchorPosX(464.0f, 0.8f)
+            .SetEase(Ease.OutCubic)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetLink(_triangleRight.gameObject);
 
         #region // ボタンの設定
         ChangeAlphaHitThreshold(_backButton, 1.0f);
@@ -103,7 +121,14 @@ public class CharactersUIController : MonoBehaviour {
 
         // TODO 完全に実装したら消す
         _notYetInstalledPanel.SetActive(false);
-        _closeButton.onClick.AddListener(() => OnCloseButtonClicked());
+        _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        // 押した瞬間に実行するようにする.
+        entry.eventID = EventTriggerType.PointerDown;
+        entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
+        //イベントの設定をEventTriggerに反映
+        _eventTrigger.triggers.Add(entry);
     }
 
     private void ChangeAlphaHitThreshold(Button button, float alpha) {
@@ -112,7 +137,7 @@ public class CharactersUIController : MonoBehaviour {
     }
 
     // TODO 完全に実装したら消す
-    private void OnCloseButtonClicked() {
+    private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
         _notYetInstalledPanel.SetActive(false);

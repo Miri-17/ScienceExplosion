@@ -6,15 +6,50 @@ using DG.Tweening;
 using TMPro;
 
 public class MenuUIController : MonoBehaviour {
-    [SerializeField] private CharactersDB _charactersDB;
-    [SerializeField] private RectTransform _flaskImage;
-    [SerializeField] private RectTransform _chargeImage;
-    [SerializeField] private SpriteRenderer _characterSpriteRenderer;
-    // [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] private Image _background;
+    // TODO csvファイルを読み込めるように変更
+    private List<string> _speeches = new List<string>() {
+        "私はピエリス。みんなからDr. Pって呼ばれてるわ。\n"
+        + "毒を持ってる植物を調べるのが好きなの。\n"
+        + "...ねぇ、何かいい毒物を知らない？",
+        "やっほー！！！ おいらはマイラ・キメラ！\n"
+        + "わくわくけんきゅーじょの所長だよ。\n"
+        + "あなたの体が何で作られてるか、ちょっとおれに見せてよ！",
+        "僕<sprite=3, color=#61009b>はクラックス・クルー<sprite=3, color=#61009b> 星に愛された男さ<sprite=3, color=#61009b>\n"
+        + "君<sprite=3, color=#61009b>も僕<sprite=3, color=#61009b>の輝きに導かれてここまできたのだろう？\n"
+        + "それなら、僕<sprite=3, color=#61009b>のブロマイドをあげよう<sprite=3, color=#61009b>",
+        "ごきげんよう。アタクシはミセス・グリューン。\n"
+        + "プラネッタで植物栄養学の研究をしているの。\n"
+        + "雑草さんには縁のない学問でしょうけれど、よろしくね。",
+        "遠路はるばるトロイ州までようこそお越しくださいました。\n"
+        + "私は電脳交流学者の<sprite=0, color=#61009b>・青雷です。\n"
+        + "以後お見知り置きを...。",
+        "ナミモロという。悲涙エネルギーの研究者だ。\n"
+        + "テュレーネンを気に入ってくれることを願う。\n"
+        + "何か困ったことがあったら言ってくれ...力になりたい。",
+        "あー、どうも。新村八雲だ。\n"
+        + "霊魂統御学を専攻している者だ。\n"
+        + "これからよろしく頼む。",
+        "はじめまして！ ロジーちゃんだよ！\n"
+        + "みてみて！ きれいな化石を見つけたの！\n"
+        + "特別にロジーちゃんのコレクションを見せてあげるね！",
+        "中央政府総統、ヴィクトリア・J・グラヴィティーナだ。\n"
+        + "貴様が新人か？ 期待しているぞ。\n"
+        + "リアンフリーデンに栄光あれ！",
+    };
+
+    #region
+    [SerializeField] private CharactersDB _charactersDB = null;
+    [SerializeField] private RectTransform _flaskImage = null;
+    [SerializeField] private RectTransform _chargeImage = null;
+    [SerializeField] private SpriteRenderer _characterSpriteRenderer = null;
+    [SerializeField] private Image _background = null;
+
+    [SerializeField] private Image _nameImage = null;
+    [SerializeField] private TextMeshProUGUI _speechText = null;
+    #endregion
 
     private void Start() {
-        _flaskImage.DOAnchorPos(new Vector2(-4f, 23f), 0.8f)
+        _flaskImage.DOAnchorPosY(23.0f, 0.8f)
             .SetEase(Ease.OutCubic)
             .SetLoops(-1, LoopType.Yoyo)
             .SetLink(_flaskImage.gameObject);
@@ -34,7 +69,10 @@ public class MenuUIController : MonoBehaviour {
     // CharacterのUIController.csにも使用されている。
     private void UpdateCharacter(int index) {
         var character = _charactersDB.GetCharacter(index);
+
         _characterSpriteRenderer.sprite = character.CharacterSprites[0];
-        // _nameText.text = character.Name;
+        _nameImage.sprite = character.NameSpriteSpeech;
+        
+        _speechText.text = _speeches[index];
     }
 }

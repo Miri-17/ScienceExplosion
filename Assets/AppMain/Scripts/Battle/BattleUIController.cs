@@ -67,7 +67,7 @@ public class BattleUIController : MonoBehaviour {
 
     private void OnPauseMenuButtonClicked() {
         if (_pauseMenuPanel.activeSelf) {
-            // TODO 1時停止の方法をtimeScaleを使わないものに変更するかも
+            // TODO 一時停止の方法をtimeScaleを使わないものに変更するかも
             Time.timeScale = 1;
             _audioSource_BGM.UnPause();
 
