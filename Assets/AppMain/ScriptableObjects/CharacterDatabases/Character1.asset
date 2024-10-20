@@ -23,4 +23,6 @@ MonoBehaviour:
   _majorSprite: {fileID: 21300000, guid: 54eae1e34703343639aa347a47a75b44, type: 3}
   _placeNameSprite: {fileID: 21300000, guid: 360cad819c40243a1a091f7a6e747220, type: 3}
   _iconSprite: {fileID: 21300000, guid: 274f8150194734f2f80e34094f035b1c, type: 3}
+  _uniqueColor: {r: 1, g: 0.50980395, b: 0, a: 1}
+  _nationMarkSprite: {fileID: 21300000, guid: a3e34a0888b6b48349abbfb1ebd13f3f, type: 3}
   _nameSpriteSpeech: {fileID: 21300000, guid: 089684de50d4e4396b26ba28e9219fe3, type: 3}

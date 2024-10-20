@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class CharactersUIController : MonoBehaviour {
     #region
@@ -55,7 +56,10 @@ public class CharactersUIController : MonoBehaviour {
     [Header("Explosion")]
     [SerializeField] private Image _explosionName = null;
     [SerializeField] private TextMeshProUGUI _explosionDescription = null;
-    
+
+    [SerializeField] private List<Button> _labButtons = null;
+    [SerializeField] private List<Button> _skillButtons = null;
+    [SerializeField] private List<Button> _levelButtons = null;
     [SerializeField] private RectTransform _triangleLeft = null;
     [SerializeField] private RectTransform _triangleRight = null;
     [SerializeField] private Button _triangleLeftButton = null;
@@ -63,6 +67,8 @@ public class CharactersUIController : MonoBehaviour {
     [Header("0...Lab, 1...Skill, 2...Level")]
     [SerializeField] private List<GameObject> _informationPanels = null;
 
+    [Header("0...UniquePuzzle, 1...Explosion, 2,3...Level")]
+    [SerializeField] private List<Image> _changeColorImages = null;
 
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
@@ -76,13 +82,11 @@ public class CharactersUIController : MonoBehaviour {
 
         _audioSource_SE = SE.Instance.GetComponent<AudioSource>();
 
-        // _triangleLeft.DOAnchorPosX(-420.0f, 0.8f)
         _triangleLeft.DOAnchorPosX(-432.0f, 0.8f)
             .SetEase(Ease.OutCubic)
             .SetLoops(-1, LoopType.Yoyo)
             .SetLink(_triangleLeft.gameObject);
-
-        // _triangleRight.DOAnchorPosX(452.0f, 0.8f)
+        
         _triangleRight.DOAnchorPosX(464.0f, 0.8f)
             .SetEase(Ease.OutCubic)
             .SetLoops(-1, LoopType.Yoyo)
@@ -123,6 +127,13 @@ public class CharactersUIController : MonoBehaviour {
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
+        foreach (var labButton in _labButtons)
+            labButton.onClick.AddListener(() => OnInfoButtonClicked(0));
+        foreach (var skillButton in _skillButtons)
+            skillButton.onClick.AddListener(() => OnInfoButtonClicked(1));
+        foreach (var levelButton in _levelButtons)
+            levelButton.onClick.AddListener(() => OnInfoButtonClicked(2));
+        
         EventTrigger.Entry entry = new EventTrigger.Entry();
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
@@ -191,6 +202,16 @@ public class CharactersUIController : MonoBehaviour {
             _callButton.interactable = true;
             _callTextImage.sprite = _callTextSprites[0];
         }
+
+        foreach (var changeColorImage in _changeColorImages)
+            changeColorImage.color = _charactersController.Character.UniqueColor;
+    }
+
+    private void OnInfoButtonClicked(int index) {
+        _informationPanels[_informatioinIndex].SetActive(false);
+
+        _informatioinIndex = index;
+        _informationPanels[_informatioinIndex].SetActive(true);
     }
 
     private void OnTriangleButtonClicked(int number) {
@@ -213,7 +234,6 @@ public class CharactersUIController : MonoBehaviour {
 
         // TODO 完全に実装したら消す
         if (_notYetInstalledPanel.activeSelf) return;
-        // _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
     }
 

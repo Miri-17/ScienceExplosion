@@ -14,9 +14,9 @@ public class MenuUIController : MonoBehaviour {
         "やっほー！！！ おいらはマイラ・キメラ！\n"
         + "わくわくけんきゅーじょの所長だよ。\n"
         + "あなたの体が何で作られてるか、ちょっとおれに見せてよ！",
-        "僕<sprite=3, color=#61009b>はクラックス・クルー<sprite=3, color=#61009b> 星に愛された男さ<sprite=3, color=#61009b>\n"
-        + "君<sprite=3, color=#61009b>も僕<sprite=3, color=#61009b>の輝きに導かれてここまできたのだろう？\n"
-        + "それなら、僕<sprite=3, color=#61009b>のブロマイドをあげよう<sprite=3, color=#61009b>",
+        "ボク<sprite=3, color=#61009b>はクラックス・クルー<sprite=3, color=#61009b> 星に愛された男さ<sprite=3, color=#61009b>\n"
+        + "キミ<sprite=3, color=#61009b>もボク<sprite=3, color=#61009b>の輝きに導かれてここまできたのだろう？\n"
+        + "それなら、ボク<sprite=3, color=#61009b>のブロマイドをあげよう<sprite=3, color=#61009b>",
         "ごきげんよう。アタクシはミセス・グリューン。\n"
         + "プラネッタで植物栄養学の研究をしているの。\n"
         + "雑草さんには縁のない学問でしょうけれど、よろしくね。",
@@ -46,6 +46,8 @@ public class MenuUIController : MonoBehaviour {
 
     [SerializeField] private Image _nameImage = null;
     [SerializeField] private TextMeshProUGUI _speechText = null;
+    [Header("0,1...Level")]
+    [SerializeField] private List<Image> _changeColorImages = null;
     #endregion
 
     private void Start() {
@@ -74,5 +76,8 @@ public class MenuUIController : MonoBehaviour {
         _nameImage.sprite = character.NameSpriteSpeech;
         
         _speechText.text = _speeches[index];
+
+        foreach (var changeColorImage in _changeColorImages)
+            changeColorImage.color = character.UniqueColor;
     }
 }

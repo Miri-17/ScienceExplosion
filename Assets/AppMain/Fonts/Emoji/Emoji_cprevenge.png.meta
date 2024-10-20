@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 462357237eba54e088a8f502cf50d2d9
+guid: 841c2970aaac847079095d18422c942c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +94,20 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -124,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 530f9cd5c65554cf19111bdbe973da7a
-      internalID: -449916650
+      spriteID: 60b1c4e5c32e74aeaa9b69ceccd3c354
+      internalID: 1251483180
       vertices: []
       indices: 
       edges: []
@@ -145,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78139ae6190c84994afa8256b91a8551
-      internalID: 2043872565
+      spriteID: ea19a720be3544b758f6e3927dace88f
+      internalID: -2040091205
       vertices: []
       indices: 
       edges: []
@@ -166,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9efdfc59123be4998a5af5239d05ae31
-      internalID: 1609497605
+      spriteID: 6d7ea3d7eaae448e789499c58dc733b8
+      internalID: -1822537325
       vertices: []
       indices: 
       edges: []
@@ -187,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 721324cdabe524fce9dd34810df907f2
-      internalID: -258516505
+      spriteID: ae771ff0cdff34521947f40a940d5648
+      internalID: -1706464894
       vertices: []
       indices: 
       edges: []
@@ -204,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Emoji_cprevenge_0: -449916650
-      Emoji_cprevenge_1: 2043872565
-      Emoji_cprevenge_2: 1609497605
-      Emoji_cprevenge_3: -258516505
+      Emoji_cprevenge_0: 1251483180
+      Emoji_cprevenge_1: -2040091205
+      Emoji_cprevenge_2: -1822537325
+      Emoji_cprevenge_3: -1706464894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -17,8 +17,16 @@ public class CharacterDB : ScriptableObject {
     [SerializeField] private Sprite _placeNameSprite = null;
     [SerializeField] private Sprite _iconSprite = null;
 
+    // PlayerSelectionとEnemySelectionで使用している情報
+    // 場合によっては private List<Color> _uniqueColors = null; にする
+    [SerializeField] private Color _uniqueColor = Color.white;
+    
+    // EnemySelectionで使用している情報
+    [SerializeField] private Sprite _nationMarkSprite = null;
+
     // 今の所Menuでしか使用していないが、Storyでも使われると考えられる情報
     [SerializeField] private Sprite _nameSpriteSpeech = null;
+
 
     // [SerializeField] private string _name = "";
     // [SerializeField] private string _profession = "";
@@ -41,7 +49,11 @@ public class CharacterDB : ScriptableObject {
     public Sprite PlaceNameSprite { get => _placeNameSprite; set => _placeNameSprite = value; }
     public Sprite IconSprite { get => _iconSprite; set => _iconSprite = value; }
 
-    public Sprite NameSpriteSpeech { get => _nameSpriteSpeech; set => _nameSpriteSpeech = value;}
+    public Color UniqueColor { get => _uniqueColor; set => _uniqueColor = value; }
+
+    public Sprite NationMarkSprite { get => _nationMarkSprite; set => _nationMarkSprite = value; }
+
+    public Sprite NameSpriteSpeech { get => _nameSpriteSpeech; set => _nameSpriteSpeech = value; }
 
     // public string Name { get => _name; set => _name = value; }
     // public string Profession { get => _profession; set => _profession = value; }
@@ -50,7 +62,6 @@ public class CharacterDB : ScriptableObject {
     // public string Place { get => _place; set => _place = value;}
     // public string AffiliationEnglish { get => _affiliationEnglish; set => _affiliationEnglish = value; }
     // public string AffiliationJapanese { get => _affiliationJapanese; set => _affiliationJapanese = value; }
-    // public Sprite NationMark { get => _nationMark; set => _nationMark = value; }
     // public AudioClip UniqueAudioClip { get => _ uniqueAudioClip; set => _uniqueAudioClip = value; }
     #endregion
 }

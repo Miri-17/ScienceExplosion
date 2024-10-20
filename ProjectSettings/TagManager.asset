@@ -17,9 +17,9 @@ TagManager:
   - PerspectiveUI
   - Notification
   - FrontUI
-  - Live2D
-  - 
-  - 
+  - BackLive2D
+  - MiddleLive2D
+  - FrontLive2D
   - 
   - 
   - 

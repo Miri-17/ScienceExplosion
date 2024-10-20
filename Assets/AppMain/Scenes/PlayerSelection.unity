@@ -7176,7 +7176,6 @@ MonoBehaviour:
   - {fileID: 1126922541}
   _exPuzzleScaleDefault: {fileID: 21300000, guid: 17bd072c266404c0eb4e4981bed500c9, type: 3}
   _notYetInstalledPanel: {fileID: 7906011815080067073}
-  _warningSentence: {fileID: 2661976774062087879}
   _closeButton: {fileID: 3538320436821472933}
   _eventTrigger: {fileID: 8256727631400423258}
 --- !u!1 &1411556472
@@ -9978,7 +9977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3053\u306E\u6A5F\u80FD\u306F\u307E\u3060\u5B9F\u88C5\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002\n\u307E\u305F\u3001\u6575\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306F\u30AF\u30E9\u30C3\u30AF\u30B9\u30FB\u30AF\u30EB\u30FC\u306B\u56FA\u5B9A\u3055\u308C\u3066\u3044\u307E\u3059\u3002"
+  m_text: "\u904A\u3073\u65B9\u306F\u307E\u3060\u898B\u3089\u308C\u307E\u305B\u3093\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
   m_sharedMaterial: {fileID: 2005856501988728280, guid: 1b005332a59674547849b5986a6c22bc, type: 2}

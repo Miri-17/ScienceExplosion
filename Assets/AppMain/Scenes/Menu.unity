@@ -880,6 +880,9 @@ MonoBehaviour:
   _background: {fileID: 156710307}
   _nameImage: {fileID: 1551837358}
   _speechText: {fileID: 1434082142}
+  _changeColorImages:
+  - {fileID: 2702005257317082813}
+  - {fileID: 4788608040056354309}
 --- !u!1 &606166267
 GameObject:
   m_ObjectHideFlags: 0

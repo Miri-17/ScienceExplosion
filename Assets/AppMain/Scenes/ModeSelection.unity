@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 263099882}
   - component: {fileID: 263099884}
   - component: {fileID: 263099883}
+  - component: {fileID: 263099885}
   m_Layer: 5
   m_Name: Particle_PlayTwo
   m_TagString: Untagged
@@ -523,7 +524,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -24, y: 31}
-  m_SizeDelta: {x: 1186, y: 1170}
+  m_SizeDelta: {x: 1266, y: 1266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263099883
 MonoBehaviour:
@@ -545,7 +546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d2edf80ac818a45b18beadf8fede8ad0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b636ba9001184e998592848d8810fe6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -563,6 +564,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263099881}
   m_CullTransparentMesh: 1
+--- !u!95 &263099885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263099881}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 116ab30431eb64ef0a4fec8ab3bd1a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &286591132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,6 +2217,7 @@ GameObject:
   - component: {fileID: 1447784350}
   - component: {fileID: 1447784352}
   - component: {fileID: 1447784351}
+  - component: {fileID: 1447784353}
   m_Layer: 5
   m_Name: Particle_PlayAlone
   m_TagString: Untagged
@@ -2219,7 +2242,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 46, y: 31}
-  m_SizeDelta: {x: 1186, y: 1170}
+  m_SizeDelta: {x: 1266, y: 1266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447784351
 MonoBehaviour:
@@ -2241,7 +2264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d2edf80ac818a45b18beadf8fede8ad0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b636ba9001184e998592848d8810fe6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2259,6 +2282,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447784349}
   m_CullTransparentMesh: 1
+--- !u!95 &1447784353
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447784349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 116ab30431eb64ef0a4fec8ab3bd1a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1468750615
 GameObject:
   m_ObjectHideFlags: 0

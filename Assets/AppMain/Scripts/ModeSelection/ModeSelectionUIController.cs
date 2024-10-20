@@ -6,6 +6,7 @@ using System.Threading;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class ModeSelectionUIController : MonoBehaviour {
     #region
@@ -13,10 +14,12 @@ public class ModeSelectionUIController : MonoBehaviour {
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
+    private RectTransform _trianglePlayAlone = null;
+    private RectTransform _trianglePlayTwo = null;
     // TODO 完全に実装したら消す
     private List<string> _warningTexts = new List<string>() {
         "遊び方はまだ見られません。",
-        "対戦モードではまだ遊べません。",
+        "バトルモードではまだ遊べません。",
     };
     #endregion
 
@@ -67,6 +70,17 @@ public class ModeSelectionUIController : MonoBehaviour {
         ChangeAlphaHitThreshold(_nextButton, 1.0f);
         _nextButton.onClick.AddListener(() => OnNextButtonClicked());
         #endregion
+
+        _trianglePlayAlone = _triangles[0].GetComponent<RectTransform>();
+        _trianglePlayTwo = _triangles[1].GetComponent<RectTransform>();
+        _trianglePlayAlone.DOAnchorPos(new Vector2(368.0f, -434.0f), 0.8f)
+            .SetEase(Ease.OutCubic)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetLink(_trianglePlayAlone.gameObject);
+        _trianglePlayTwo.DOAnchorPos(new Vector2(-368.0f, -434.0f), 0.8f)
+            .SetEase(Ease.OutCubic)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetLink(_trianglePlayTwo.gameObject);
 
         // TODO ここが良くないので直すこと
         _playAloneButton.interactable = false;
@@ -163,8 +177,8 @@ public class ModeSelectionUIController : MonoBehaviour {
         }
 
         _explosions[0].enabled = true;
-        // TODO Dr. Pに変更
-        GameDirector.Instance.PlayerCharacterIndex = 7;
+        // メニューで選んでいるキャラをプレイヤーセレクトで選ばれている初期キャラクターにする
+        GameDirector.Instance.PlayerCharacterIndex = GameDirector.Instance.SelectedCharacterIndex;
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];

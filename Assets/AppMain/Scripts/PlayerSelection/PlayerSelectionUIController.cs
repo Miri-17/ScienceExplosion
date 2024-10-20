@@ -15,11 +15,6 @@ public class PlayerSelectionUIController : MonoBehaviour {
     private bool _isChangingScene = false;
     private List<CharacterButton> _characterButtonScripts = null;
     private int _previousPlayerIndex = 0;
-    // TODO 完全に実装したら消す
-    private List<string> _warningTexts = new List<string>() {
-        "遊び方はまだ見られません。",
-        "ロジーちゃんを選ばないと、次のシーンに進めません。",
-    };
     #endregion
 
     #region
@@ -50,7 +45,6 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
-    [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
     // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
     [SerializeField] private EventTrigger _eventTrigger = null;
@@ -108,7 +102,6 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
         // TODO 完全に実装したら消す
         if (_notYetInstalledPanel.activeSelf) return;
-        _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
     }
 
@@ -166,7 +159,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
                 break;
         }
         _testTubeFill[0].sprite = _playerSelectionDB.TestTubeSprites[hp - 1];
-        _testTubeFill[0].color = _playerSelectionDB.UniqueColors[index];
+        _testTubeFill[0].color = _playerSelectionController.Character.UniqueColor;
 
         var damage = _playerSelectionDB.Damages[index];
         // TODO 元からenum使って対応づけとくと綺麗かも
@@ -188,7 +181,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
                 break;
         }
         _testTubeFill[1].sprite = _playerSelectionDB.TestTubeSprites[damage - 1];
-        _testTubeFill[1].color = _playerSelectionDB.UniqueColors[index];
+        _testTubeFill[1].color = _playerSelectionController.Character.UniqueColor;
 
         var requiredNumberPuzzle = _playerSelectionDB.RequiredNumberPuzzle[index];
         _maxNumberTexts[0].text = requiredNumberPuzzle.ToString();
@@ -215,14 +208,6 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
     private void OnSelectionButtonClicked() {
         if (_isChangingScene) return;
-
-        // TODO 完全に実装したら消す
-        if (GameDirector.Instance.PlayerCharacterIndex != 7) {
-            if (_notYetInstalledPanel.activeSelf) return;
-            _warningSentence.text = _warningTexts[1];
-            _notYetInstalledPanel.SetActive(true);
-            return;
-        }
 
         // TODO マイラ・キメラに変更
         GameDirector.Instance.EnemyCharacterIndex = 2;

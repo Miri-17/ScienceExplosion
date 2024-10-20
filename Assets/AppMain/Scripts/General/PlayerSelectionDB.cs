@@ -16,7 +16,6 @@ public class PlayerSelectionDB : ScriptableObject {
     [SerializeField] private List<int> _requiredNumberPuzzle = null;
     [Header("min: 1, max: 10")]
     [SerializeField] private List<int> _requiredNumberEx = null;
-    [SerializeField] private List<Color> _uniqueColors = null;
     [SerializeField] private List<Sprite> _puzzleSprites = null;
     [SerializeField] private List<Sprite> _exSprites = null;
 
@@ -28,7 +27,6 @@ public class PlayerSelectionDB : ScriptableObject {
     public List<Sprite> TestTubeSprites { get => _testTubeSprites; set => _testTubeSprites = value; }
     public List<int> RequiredNumberPuzzle { get => _requiredNumberPuzzle; set => _requiredNumberPuzzle = value; }
     public List<int> RequiredNumberEx { get => _requiredNumberEx; set => _requiredNumberEx = value; }
-    public List<Color> UniqueColors { get => _uniqueColors; set => _uniqueColors = value; }
     public List<Sprite> PuzzleSprites { get => _puzzleSprites; set => _puzzleSprites = value; }
     public List<Sprite> ExSprites { get => _exSprites; set => _exSprites = value; }
 }

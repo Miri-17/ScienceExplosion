@@ -7,6 +7,7 @@ public class MapController : MonoBehaviour {
     [SerializeField] private SpriteRenderer _characterSpriteRenderer = null;
 
     private void Start() {
+        // ここのインデックス以外、EnemySelectionControllerと同じ
         UpdateCharacter(GameDirector.Instance.SelectedCharacterIndex);
     }
 
