@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using DG.Tweening;
@@ -6,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class TitleController : MonoBehaviour {
     #region
@@ -17,6 +17,7 @@ public class TitleController : MonoBehaviour {
     #endregion
 
     #region
+    [SerializeField] private List<TitleL2D> _titleL2Ds = new List<TitleL2D>();
     [SerializeField] private ImageFade _imageFade = null;
     [SerializeField] private Image _tapToStart = null;
     [SerializeField] private PlayableDirector _playableDirector = null;
@@ -52,9 +53,13 @@ public class TitleController : MonoBehaviour {
                 _isTitleCutEnded = true;
                 _playableDirector.time = _playableDirector.duration;
                 _tapToStart.enabled = true;
+                foreach (var titleL2D in _titleL2Ds)
+                    titleL2D.PlayAnimation();
             } else if (_playableDirector.time >= _playableDirector.duration) {
                 _isTitleCutEnded = true;
                 _tapToStart.enabled = true;
+                foreach (var titleL2D in _titleL2Ds)
+                    titleL2D.PlayAnimation();
             }
         }
     }

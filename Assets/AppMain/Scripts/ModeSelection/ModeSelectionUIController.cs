@@ -28,8 +28,6 @@ public class ModeSelectionUIController : MonoBehaviour {
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _howToPlayButton = null;
     [SerializeField] private Button _backButton = null;
-    [SerializeField] private Button _playAloneButton = null;
-    [SerializeField] private Button _playTwoButton = null;
 
     [SerializeField] private TextMeshProUGUI _descriptionText = null;
     [SerializeField] private List<string> _descriptions = new List<string>() {
@@ -51,6 +49,8 @@ public class ModeSelectionUIController : MonoBehaviour {
     [SerializeField] private EventTrigger _eventTrigger = null;
     #endregion
 
+    public bool IsChangingScene { get => _isChangingScene; set => _isChangingScene = value;}
+
     private void Start() {
         _token = this.GetCancellationTokenOnDestroy();
 
@@ -61,11 +61,6 @@ public class ModeSelectionUIController : MonoBehaviour {
         _howToPlayButton.onClick.AddListener(() => OnHowToPlayButtonClicked());
         ChangeAlphaHitThreshold(_backButton, 1.0f);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
-
-        ChangeAlphaHitThreshold(_playAloneButton, 1.0f);
-        _playAloneButton.onClick.AddListener(() => OnPlayAloneButtonClicked());
-        ChangeAlphaHitThreshold(_playTwoButton, 1.0f);
-        _playTwoButton.onClick.AddListener(() => OnPlayTwoButtonClicked());
 
         ChangeAlphaHitThreshold(_nextButton, 1.0f);
         _nextButton.onClick.AddListener(() => OnNextButtonClicked());
@@ -83,7 +78,7 @@ public class ModeSelectionUIController : MonoBehaviour {
             .SetLink(_trianglePlayTwo.gameObject);
 
         // TODO ここが良くないので直すこと
-        _playAloneButton.interactable = false;
+        // _playAloneButton.interactable = false;
         _particles[0].enabled = true;
         _particles[1].enabled = false;
         _triangles[0].enabled = true;
@@ -136,12 +131,7 @@ public class ModeSelectionUIController : MonoBehaviour {
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
-    private void OnPlayAloneButtonClicked() {
-        if (_isChangingScene) return;
-
-        // TODO ここが良くないので直すこと
-        _playAloneButton.interactable = false;
-        _playTwoButton.interactable = true;
+    public void OnPlayAloneButtonClicked() {
         _nextSceneName = "PlayerSelection";
         _descriptionText.text = _descriptions[0];
         _particles[1].enabled = false;
@@ -150,12 +140,7 @@ public class ModeSelectionUIController : MonoBehaviour {
         _triangles[0].enabled = true;
     }
 
-    private void OnPlayTwoButtonClicked() {
-        if (_isChangingScene) return;
-
-        // TODO ここが良くないので直すこと
-        _playTwoButton.interactable = false;
-        _playAloneButton.interactable = true;
+    public void OnPlayTwoButtonClicked() {
         // TODO シーン名決まったら変更
         _nextSceneName = "Network";
         _descriptionText.text = _descriptions[1];

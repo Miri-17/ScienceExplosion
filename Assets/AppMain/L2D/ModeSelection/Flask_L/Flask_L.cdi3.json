@@ -1,0 +1,73 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamFlask_Rotate",
+			"GroupId": "ParamGroup",
+			"Name": "フラスコ揺れ"
+		},
+		{
+			"Id": "ParamFlask_Position",
+			"GroupId": "ParamGroup",
+			"Name": "フラスコ上下"
+		},
+		{
+			"Id": "ParamFlask_Grow",
+			"GroupId": "ParamGroup",
+			"Name": "フラスコ発光"
+		},
+		{
+			"Id": "ParamLiquidX1",
+			"GroupId": "ParamGroup2",
+			"Name": "液体揺れX1"
+		},
+		{
+			"Id": "ParamLiquidY1",
+			"GroupId": "ParamGroup2",
+			"Name": "液体揺れY1"
+		},
+		{
+			"Id": "ParamLiquidX2",
+			"GroupId": "ParamGroup2",
+			"Name": "液体揺れX2"
+		},
+		{
+			"Id": "ParamLiquidY2",
+			"GroupId": "ParamGroup2",
+			"Name": "液体揺れY2"
+		},
+		{
+			"Id": "ParamLiquidOpa",
+			"GroupId": "ParamGroup2",
+			"Name": "液体発光"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "フラスコL"
+		},
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "液体揺れL"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "フラスコL"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamLiquidX1",
+			"ParamLiquidY1"
+		],
+		[
+			"ParamLiquidX2",
+			"ParamLiquidY2"
+		]
+	]
+}
