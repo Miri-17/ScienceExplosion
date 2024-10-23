@@ -62,6 +62,9 @@ public class BattleController : MonoBehaviour {
             if (_isChangingScene) return;
 
             _isChangingScene = true;
+
+            GameDirector.Instance.Rank = _battleUIController.CurrentRank;
+            
             // TODO durationの変更
             GoNextSceneAsync(0, "Result", false).Forget();
         }

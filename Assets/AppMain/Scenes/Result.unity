@@ -459,12 +459,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
+      propertyPath: _rank
+      value: C
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _score
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _playerCharacterIndex
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3478,6 +3482,15 @@ MonoBehaviour:
   _loadingPanel: {fileID: 1437747292}
   _backButton: {fileID: 1489967121}
   _totalScore: {fileID: 257523027}
+  _speechBubble: {fileID: 1556329730}
+  _speechText: {fileID: 122390260}
+  _rank:
+  - {fileID: 21300000, guid: 302b499c3ede3407398b2da67364ef60, type: 3}
+  - {fileID: 21300000, guid: c81e2a87ff54e4c10a65acba9446a6cf, type: 3}
+  - {fileID: 21300000, guid: 4bf6f8fd54fde4bca81b768c4234a218, type: 3}
+  - {fileID: 21300000, guid: fbb471dd57b6a4e4f9b37b3b4d9460c2, type: 3}
+  - {fileID: 21300000, guid: 34762cf059f6444a7af78a55ee900d52, type: 3}
+  _rankImage: {fileID: 370097483}
   _notYetInstalledPanel: {fileID: 883388521}
   _closeButton: {fileID: 666517745}
   _eventTrigger: {fileID: 1976469952}

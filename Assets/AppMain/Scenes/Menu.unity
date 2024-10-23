@@ -1841,6 +1841,7 @@ MonoBehaviour:
   _showCreditsButton: {fileID: 3156737396786320827}
   _deleteSaveDataButton: {fileID: 2861275387595815071}
   _notYetInstalledPanel: {fileID: 232479001140374581}
+  _warningSentence: {fileID: 5368036173402452723}
 --- !u!1 &964992693
 GameObject:
   m_ObjectHideFlags: 0

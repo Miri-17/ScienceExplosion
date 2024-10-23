@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using TMPro;
 
 public class SettingsController : AudioMixerController {
     #region
@@ -11,6 +12,9 @@ public class SettingsController : AudioMixerController {
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
+
+    // TODO 完全に実装したら消す
+    private string _warningText = "データの消去はまだ未実装です。";
     #endregion
 
     # region
@@ -28,6 +32,7 @@ public class SettingsController : AudioMixerController {
 
     // TODO 完全に実装したら消す
     [SerializeField] private GameObject _notYetInstalledPanel = null;
+    [SerializeField] private TextMeshProUGUI _warningSentence = null;
     #endregion
 
     // TODO 合ってるか調べる
@@ -53,9 +58,6 @@ public class SettingsController : AudioMixerController {
         _deleteSaveDataButton.onClick.AddListener(() => OnDeleteSaveDataButtonClicked());
         
         _settingsPanel.SetActive(false);
-
-        // TODO 完全に実装したら消す
-        _notYetInstalledPanel.SetActive(false);
     }
 
     private void CloseSettings() {
@@ -81,6 +83,7 @@ public class SettingsController : AudioMixerController {
 
         // TODO 完全に実装したら消す
         if (_notYetInstalledPanel.activeSelf) return;
+        _warningSentence.text = _warningText;
         _notYetInstalledPanel.SetActive(true);
     }
 

@@ -49,7 +49,8 @@ public class ModeSelectionUIController : MonoBehaviour {
     [SerializeField] private EventTrigger _eventTrigger = null;
     #endregion
 
-    public bool IsChangingScene { get => _isChangingScene; set => _isChangingScene = value;}
+    public bool IsChangingScene { get => _isChangingScene; set => _isChangingScene = value; }
+    // public GameObject NotYetInstalledPanel { get => _notYetInstalledPanel; set => _notYetInstalledPanel = value; }
 
     private void Start() {
         _token = this.GetCancellationTokenOnDestroy();

@@ -14,6 +14,7 @@ public class GameDirector : MonoBehaviour {
     // FIXME 他の渡し方ないか模索すること！
     [SerializeField] private int _charactersFirstIndex = 0;
     [SerializeField] private int _score = 0;
+    [SerializeField] private string _rank = "C";
     [SerializeField] private float _masterSliderValue = 10.0f;
     [SerializeField] private float _bgmSliderValue = 10.0f;
     [SerializeField] private float _seSliderValue = 10.0f;
@@ -24,6 +25,7 @@ public class GameDirector : MonoBehaviour {
     public int EnemyCharacterIndex { get => _enemyCharacterIndex; set => _enemyCharacterIndex = value; }
     public int CharactersFirstIndex { get => _charactersFirstIndex; set => _charactersFirstIndex = value; }
     public int Score { get => _score; set => _score = value; }
+    public string Rank { get => _rank; set => _rank = value;}
     public float MasterSliderValue { get => _masterSliderValue; set => _masterSliderValue = value; }
     public float BGMSliderValue { get => _bgmSliderValue; set => _bgmSliderValue = value; }
     public float SESliderValue { get => _seSliderValue; set => _seSliderValue = value; }

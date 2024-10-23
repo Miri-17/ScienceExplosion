@@ -17,6 +17,7 @@ public class ModeSelectionController : MonoBehaviour {
         };
 
         _flaskAnimators[1].enabled = false;
+        // _flaskAnimators[1].Play("Flask_R_Fadein");
         _flaskAnimators[0].Play("Flask_L_Select");
     }
     
@@ -38,6 +39,8 @@ public class ModeSelectionController : MonoBehaviour {
                 _flaskAnimators[0].Play("Flask_L_Select");
                 _modeSelectionUIController.OnPlayAloneButtonClicked();
 
+                // _flaskAnimators[0].Play("Flask_L_Select");
+                // _flaskAnimators[1].Play("Flask_R_Fadein");
                 _flaskAnimators[1].enabled = false;
             } else if (_isLeftSelected && hitCount1 == 1) {
                 _isLeftSelected = false;
@@ -46,6 +49,8 @@ public class ModeSelectionController : MonoBehaviour {
                 _flaskAnimators[1].Play("Flask_R_Select");
                 _modeSelectionUIController.OnPlayTwoButtonClicked();
 
+                // _flaskAnimators[1].Play("Flask_R_Select");
+                // _flaskAnimators[0].Play("Flask_L_Fadein");
                 _flaskAnimators[0].enabled = false;
             }
         }
