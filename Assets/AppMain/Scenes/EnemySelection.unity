@@ -1967,6 +1967,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
+      propertyPath: _score
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _enemyCharacterIndex
       value: 3
       objectReference: {fileID: 0}

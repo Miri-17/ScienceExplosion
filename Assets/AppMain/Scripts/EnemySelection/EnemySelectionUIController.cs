@@ -130,8 +130,6 @@ public class EnemySelectionUIController : MonoBehaviour {
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
 
-        GameDirector.Instance.Score = 0;
-
         IrisOut();
         // TODO durationの変更
         GoNextSceneAsync(0.5f, "Battle", false).Forget();

@@ -7481,7 +7481,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ed1bb9d31b9ec4929a33614a0c3ec8bc, type: 3}
   - {fileID: 21300000, guid: af6614f75599a454f8c8edf104d5a7f0, type: 3}
   _timeText: {fileID: 113165079}
-  _timeLimit: 90
+  _timeLimit: 10
   scorePerPuzzle: 30
   _maxSliderValue: 10000
   _scoreSlider: {fileID: 1250559906}

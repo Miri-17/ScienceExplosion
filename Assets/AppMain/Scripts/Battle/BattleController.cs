@@ -63,6 +63,7 @@ public class BattleController : MonoBehaviour {
 
             _isChangingScene = true;
 
+            GameDirector.Instance.Score = _battleUIController.CurrentScore;
             GameDirector.Instance.Rank = _battleUIController.CurrentRank;
             
             // TODO durationの変更
