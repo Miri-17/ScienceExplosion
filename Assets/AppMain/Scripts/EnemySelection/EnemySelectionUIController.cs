@@ -60,6 +60,8 @@ public class EnemySelectionUIController : MonoBehaviour {
             var index = i;
             _placeButtons[i].onClick.AddListener(() => OnPlaceButtonClicked(index));
         }
+        // 自分のキャラの場所は選べないようにする
+        _placeButtons[GameDirector.Instance.PlayerCharacterIndex].enabled = false;
 
         UpdateUI(GameDirector.Instance.EnemyCharacterIndex);
 

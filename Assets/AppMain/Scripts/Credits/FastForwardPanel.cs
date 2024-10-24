@@ -1,74 +1,49 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
-public class FastForwardPanel : MonoBehaviour {
-    // private float _startTime = 0;
-    // private bool _isTapping = false;
+public class FastForwardPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+    private float _time = 0;
+    private bool _isDown = false;
 
-    // [SerializeField, Header("ロングタップ成立までの時間")] private float _time = 2.0f;
+    #region
+    [SerializeField, Header("何秒で長押し判定になるか")] private float _longTapTime = 1.0f;
+    [SerializeField, Header("何倍速になるか")] private float _playSpeed = 4.0f;
+    [SerializeField] private Image _quadSpeed = null;
+    #endregion
 
-    // private void Start() {
-    //     AddEventSample(EventTriggerType.PointerDown);
-    //     AddEventSample(EventTriggerType.PointerUp);
-    //     AddEventSample(EventTriggerType.PointerExit);
-    // }
+    private void Start() {
+        // TODO Time.timeScaleを使うことによって、下のDoTweenや、背景のマテリアルの速さまでおかしくなってしまうので
+        // それを使わないように変更すること
+        _quadSpeed.enabled = false;
+        // _quadSpeed.DOFade(0.0f, 1.0f)
+        //     .SetEase(Ease.InQuart)
+        //     .SetLoops(-1, LoopType.Yoyo)
+        //     .SetLink(_quadSpeed.gameObject);
+    }
 
-    // private void FixedUpdate() {
-    //     if (_isTapping) {
-    //         float leftTime = _time - (Time.time - _startTime);
+    private void Update() {
+        if (!_isDown) return;
 
-    //         // ロングタップの成立
-    //         if (leftTime < 0) {
-    //             // 初期化しておく
-    //             _isTapping = false;
-    //             _startTime = 0;
+        _time += Time.deltaTime;
+        if (_time >= _longTapTime) {
+            _isDown = false;
+            Debug.Log("2倍速にする処理を呼ぶ");
+            Time.timeScale = _playSpeed;
+            _quadSpeed.enabled = true;
+        }
+    }
 
-    //             // ロングタップの目的の処理を実行
-    //             OnLongTap();
-    //         }
-    //     }
-    // }
+    public void OnPointerDown(PointerEventData eventData) {
+        _isDown = true;
+        _time = 0;
+    }
 
-    // public void AddEventSample(EventTriggerType eventTriggerType) {
-    //     EventTrigger currentTrigger = this.GetComponent<EventTrigger>();
-
-    //     EventTrigger.Entry entry = new EventTrigger.Entry();
-    //     entry.eventID = eventTriggerType;
-    //     switch (eventTriggerType) {
-    //         case EventTriggerType.PointerDown:
-    //             Debug.Log("PointerDown");
-    //             entry.callback.AddListener((x) => PointEnter());
-    //             break;
-    //         case EventTriggerType.PointerUp:
-    //             Debug.Log("PointerUp");
-    //             entry.callback.AddListener((x) => PointExit());
-    //             break;
-    //         case EventTriggerType.PointerExit:
-    //             Debug.Log("PointerExit");
-    //             entry.callback.AddListener((x) => PointExit());
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //     currentTrigger.triggers.Add(entry); 
-    // }
-
-    // private void PointEnter() {
-    //     Debug.Log("enter");
-    //     _isTapping = true;
-    //     _startTime = Time.time;
-    // }
-
-    // private void PointExit() {
-    //     if (_isTapping) {
-    //         Debug.Log("exit");
-    //         _isTapping = false;
-    //         // Time.timeScale = 1.0f;
-    //     }
-    // }
-
-    // private void OnLongTap() {
-    //     Debug.Log("long tap");
-    //     Time.timeScale = 2.0f;
-    // }
+    public void OnPointerUp(PointerEventData eventData) {
+        _isDown = false;
+        Debug.Log("1倍速に戻す処理を呼ぶ");
+        Time.timeScale = 1;
+        _quadSpeed.enabled = false;
+    }
 }

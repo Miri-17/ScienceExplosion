@@ -209,8 +209,10 @@ public class PlayerSelectionUIController : MonoBehaviour {
     private void OnSelectionButtonClicked() {
         if (_isChangingScene) return;
 
-        // TODO マイラ・キメラに変更
-        GameDirector.Instance.EnemyCharacterIndex = 2;
+        if (GameDirector.Instance.PlayerCharacterIndex == 0)
+            GameDirector.Instance.EnemyCharacterIndex = 1;
+        else
+            GameDirector.Instance.EnemyCharacterIndex = 0;
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];

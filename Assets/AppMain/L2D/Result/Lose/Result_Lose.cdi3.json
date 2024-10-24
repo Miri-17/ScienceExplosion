@@ -1,0 +1,96 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamPlaceA",
+			"GroupId": "ParamGroup2",
+			"Name": "位置A"
+		},
+		{
+			"Id": "ParamPlaceB",
+			"GroupId": "ParamGroup2",
+			"Name": "位置B"
+		},
+		{
+			"Id": "ParamPlaceC",
+			"GroupId": "ParamGroup2",
+			"Name": "位置C"
+		},
+		{
+			"Id": "ParamPlaceD",
+			"GroupId": "ParamGroup2",
+			"Name": "位置D"
+		},
+		{
+			"Id": "ParamShapeA",
+			"GroupId": "ParamGroup3",
+			"Name": "変形A"
+		},
+		{
+			"Id": "ParamShapeB",
+			"GroupId": "ParamGroup3",
+			"Name": "変形B"
+		},
+		{
+			"Id": "ParamShapeC",
+			"GroupId": "ParamGroup3",
+			"Name": "変形C"
+		},
+		{
+			"Id": "ParamShapeD",
+			"GroupId": "ParamGroup3",
+			"Name": "変形D"
+		},
+		{
+			"Id": "ParamOpacityA",
+			"GroupId": "ParamGroup",
+			"Name": "不透明度A"
+		},
+		{
+			"Id": "ParamOpacityB",
+			"GroupId": "ParamGroup",
+			"Name": "不透明度B"
+		},
+		{
+			"Id": "ParamOpacityC",
+			"GroupId": "ParamGroup",
+			"Name": "不透明度C"
+		},
+		{
+			"Id": "ParamOpacityD",
+			"GroupId": "ParamGroup",
+			"Name": "不透明度D"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "Place"
+		},
+		{
+			"Id": "ParamGroup3",
+			"GroupId": "",
+			"Name": "Shape"
+		},
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "Opacity"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Lose_Deco",
+			"Name": "Lose_Deco"
+		},
+		{
+			"Id": "Drop",
+			"Name": "Drop"
+		},
+		{
+			"Id": "Sad",
+			"Name": "Sad"
+		}
+	]
+}

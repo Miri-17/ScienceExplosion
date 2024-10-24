@@ -1,0 +1,106 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamPlaceA",
+			"GroupId": "ParamGroup2",
+			"Name": "上下A"
+		},
+		{
+			"Id": "ParamPlaceB",
+			"GroupId": "ParamGroup2",
+			"Name": "上下B"
+		},
+		{
+			"Id": "ParamPlaceC",
+			"GroupId": "ParamGroup2",
+			"Name": "上下C"
+		},
+		{
+			"Id": "ParamPlaceD",
+			"GroupId": "ParamGroup2",
+			"Name": "上下D"
+		},
+		{
+			"Id": "ParamSizeA",
+			"GroupId": "ParamGroup",
+			"Name": "サイズA"
+		},
+		{
+			"Id": "ParamSizeB",
+			"GroupId": "ParamGroup",
+			"Name": "サイズB"
+		},
+		{
+			"Id": "ParamSizeC",
+			"GroupId": "ParamGroup",
+			"Name": "サイズC"
+		},
+		{
+			"Id": "ParamSizeD",
+			"GroupId": "ParamGroup",
+			"Name": "サイズD"
+		},
+		{
+			"Id": "ParamEXBlue",
+			"GroupId": "ParamGroup",
+			"Name": "爆発青"
+		},
+		{
+			"Id": "ParamEXPink",
+			"GroupId": "ParamGroup",
+			"Name": "爆発赤"
+		},
+		{
+			"Id": "ParamOpacityA",
+			"GroupId": "ParamGroup3",
+			"Name": "不透明度A"
+		},
+		{
+			"Id": "ParamOpacityB",
+			"GroupId": "ParamGroup3",
+			"Name": "不透明度B"
+		},
+		{
+			"Id": "ParamOpacityC",
+			"GroupId": "ParamGroup3",
+			"Name": "不透明度C"
+		},
+		{
+			"Id": "ParamOpacityD",
+			"GroupId": "ParamGroup3",
+			"Name": "不透明度D"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "Place"
+		},
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "Scale"
+		},
+		{
+			"Id": "ParamGroup3",
+			"GroupId": "",
+			"Name": "Opacity"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Victory_Deco",
+			"Name": "Victory_Deco"
+		},
+		{
+			"Id": "Grow",
+			"Name": "Grow"
+		},
+		{
+			"Id": "Circle",
+			"Name": "Circle"
+		}
+	]
+}

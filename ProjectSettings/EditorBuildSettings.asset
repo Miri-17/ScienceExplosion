@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/AppMain/Scenes/Title.unity
-    guid: 6cd15a64242094a9e9bfec059d9e4516
+    guid: 53dcb67ac467d48f1a1009a4983abd07
   - enabled: 1
     path: Assets/AppMain/Scenes/Menu.unity
     guid: b39c50cf3afeb4d74888a0568500c6dd
@@ -21,11 +21,11 @@ EditorBuildSettings:
     path: Assets/AppMain/Scenes/Cutscenes.unity
     guid: 6e46ca2c218d2476fac9284f5201e67c
   - enabled: 1
-    path: Assets/AppMain/Scenes/ModeSelection_.unity
-    guid: 44238f94ee61544c5ba360e6dc43d8ee
-  - enabled: 1
     path: Assets/AppMain/Scenes/Credits.unity
     guid: 61f8df6819cb548268a1b9a2c4ed789d
+  - enabled: 1
+    path: Assets/AppMain/Scenes/ModeSelection.unity
+    guid: 79ea342e329d54e23b3b9218df4c9455
   - enabled: 1
     path: Assets/AppMain/Scenes/PlayerSelection.unity
     guid: 429b63e47a9894ec986257086730112e

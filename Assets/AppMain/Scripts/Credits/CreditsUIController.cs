@@ -50,6 +50,7 @@ public class CreditsUIController : MonoBehaviour {
         if (_isChangingScene) return;
 
         _isChangingScene = true;
+        Time.timeScale = 1;
         // TODO durationの変更
         GoNextSceneAsync(0, _nextSceneName, false).Forget();
     }
@@ -58,6 +59,7 @@ public class CreditsUIController : MonoBehaviour {
         if (_isChangingScene) return;
 
         _isChangingScene = true;
+        Time.timeScale = 1;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
         // TODO durationの変更
