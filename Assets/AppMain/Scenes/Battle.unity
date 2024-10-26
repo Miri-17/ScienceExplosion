@@ -2579,11 +2579,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _enemyCharacterIndex
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7000239499531907805, guid: 520bfbaa234dd496498d7fb1d8c7d37a, type: 3}
       propertyPath: _playerCharacterIndex
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5875,13 +5875,13 @@ MonoBehaviour:
     - {fileID: 8834039417145314183, guid: 1582253173752476898e8b2e4a3d411a, type: 3}
     - {fileID: 8834039417145314183, guid: dd16d06a5f4e44fed95101273358c9a9, type: 3}
     - {fileID: 8834039417145314183, guid: 2679de7b7890e46c983122443470d3d2, type: 3}
-    - {fileID: 8834039417145314183, guid: 53e25aafb4fcc44d1899c9484a2103eb, type: 3}
+    - {fileID: 8834039417145314183, guid: 435a7d99be11a4ae0bc4ae6ffaccc978, type: 3}
   - Puzzles:
     - {fileID: 8834039417145314183, guid: 9a2aa7a8fdb24476aa578c096725a4ec, type: 3}
     - {fileID: 8834039417145314183, guid: 614f9853d8050463a804e7b720fef291, type: 3}
     - {fileID: 8834039417145314183, guid: 435a7d99be11a4ae0bc4ae6ffaccc978, type: 3}
     - {fileID: 8834039417145314183, guid: 53e25aafb4fcc44d1899c9484a2103eb, type: 3}
-    - {fileID: 8834039417145314183, guid: 2c7790181e45c45d99c1b50c4f1f5d4a, type: 3}
+    - {fileID: 8834039417145314183, guid: 1582253173752476898e8b2e4a3d411a, type: 3}
   - Puzzles:
     - {fileID: 8834039417145314183, guid: 1582253173752476898e8b2e4a3d411a, type: 3}
     - {fileID: 8834039417145314183, guid: dd16d06a5f4e44fed95101273358c9a9, type: 3}
@@ -5899,7 +5899,7 @@ MonoBehaviour:
     - {fileID: 8834039417145314183, guid: 2679de7b7890e46c983122443470d3d2, type: 3}
     - {fileID: 8834039417145314183, guid: 2c7790181e45c45d99c1b50c4f1f5d4a, type: 3}
     - {fileID: 8834039417145314183, guid: 1582253173752476898e8b2e4a3d411a, type: 3}
-    - {fileID: 8834039417145314183, guid: 614f9853d8050463a804e7b720fef291, type: 3}
+    - {fileID: 8834039417145314183, guid: 435a7d99be11a4ae0bc4ae6ffaccc978, type: 3}
   - Puzzles:
     - {fileID: 8834039417145314183, guid: 435a7d99be11a4ae0bc4ae6ffaccc978, type: 3}
     - {fileID: 8834039417145314183, guid: 53e25aafb4fcc44d1899c9484a2103eb, type: 3}

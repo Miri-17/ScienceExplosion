@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: efa741962972a4c2484c20933b5eaf09, type: 3}
   _placeSprites:
   - {fileID: 21300000, guid: af757d133e5e7482db175c6ac9a329b1, type: 3}
-  - {fileID: 21300000, guid: aa6eab6413962495aabdc00f98433f9e, type: 3}
+  - {fileID: 21300000, guid: 725feccf3e3f04a9ba15477e91dfd495, type: 3}
   _nameSprite: {fileID: 21300000, guid: 9cdfc334374d0427cbb9dbce30a67691, type: 3}
   _majorSprite: {fileID: 21300000, guid: 536bbaf3b743b46f98c74a7322ea6f48, type: 3}
   _placeNameSprite: {fileID: 21300000, guid: 90316c1d3d8684557aac04f9039731e0, type: 3}

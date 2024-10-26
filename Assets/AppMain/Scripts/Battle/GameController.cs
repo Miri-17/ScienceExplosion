@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
     #region
+    // 同時押し防ぐ
+    private bool _isAlreadyPuzzleDown = false;
     private List<Puzzle> _selectedPuzzles = new List<Puzzle>();
     private GameObject[,] _puzzlesXY;
     // ある六角形の中心から上の六角形の中心までの長さ
@@ -117,7 +119,10 @@ public class GameController : MonoBehaviour {
     }
 
     public void OnPuzzleDown(Puzzle puzzle) {
+        if (_isAlreadyPuzzleDown) return;
+
         Debug.Log("OnPuzzleDown");
+        _isAlreadyPuzzleDown = true;
         _audioClip_SE = SE.Instance.audioClips[2];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
 
@@ -171,6 +176,7 @@ public class GameController : MonoBehaviour {
     public void OnPuzzleUp(Puzzle puzzle) {
         Debug.Log("OnPuzzleUp");
         Debug.Log(puzzle);
+        _isAlreadyPuzzleDown = false;
 
         if (_selectedPuzzles.Count >= _puzzleLowerLimit) {
             _audioClip_SE = SE.Instance.audioClips[6];
