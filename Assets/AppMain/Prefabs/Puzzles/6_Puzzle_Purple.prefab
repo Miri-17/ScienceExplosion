@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3880443769379731191}
   - component: {fileID: -4833270751955234690}
   m_Layer: 7
-  m_Name: Puzzle_Purple
+  m_Name: 6_Puzzle_Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

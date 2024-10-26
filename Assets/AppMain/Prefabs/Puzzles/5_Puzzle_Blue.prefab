@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3202156675513797142
+--- !u!1 &7140754557154893772
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1313457149220375991}
-  - component: {fileID: 6404285311184536447}
+  - component: {fileID: 8130810678216097326}
+  - component: {fileID: 631900703395483388}
   m_Layer: 7
   m_Name: SelectedPuzzle
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1313457149220375991
+--- !u!4 &8130810678216097326
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3202156675513797142}
+  m_GameObject: {fileID: 7140754557154893772}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 389902114711420207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6404285311184536447
+--- !u!212 &631900703395483388
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3202156675513797142}
+  m_GameObject: {fileID: 7140754557154893772}
   m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 857c6d0a3e03b4c1583e7eb5a9ddb591, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9b7e990367234dbd83cdbe0e9ae9ec8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 389902114711420207}
   - component: {fileID: 7541461456738499420}
   - component: {fileID: 3880443769379731191}
-  - component: {fileID: 5496074187351960730}
+  - component: {fileID: -3375127230514547302}
   m_Layer: 7
-  m_Name: Puzzle_Red
+  m_Name: 5_Puzzle_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ Transform:
   m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1313457149220375991}
+  - {fileID: 8130810678216097326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7541461456738499420
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d81b1ebd4ef94260ba3852edfcf043c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6216673b20aca4295a7066b448f27b85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,7 +222,7 @@ PolygonCollider2D:
       - {x: 0.43, y: -0.26}
       - {x: 0.43, y: 0.26}
   m_UseDelaunayMesh: 0
---- !u!114 &5496074187351960730
+--- !u!114 &-3375127230514547302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37df8a1207c4d45f2b8ed2051ac8447f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedSprite: {fileID: 6404285311184536447}
-  _id: 0
+  _selectedSprite: {fileID: 631900703395483388}
+  _id: 5
   _row: 0
   _column: 0

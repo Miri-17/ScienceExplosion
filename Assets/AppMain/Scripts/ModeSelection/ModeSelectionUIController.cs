@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class ModeSelectionUIController : MonoBehaviour {
     #region
@@ -36,6 +37,7 @@ public class ModeSelectionUIController : MonoBehaviour {
     };
     [SerializeField] private string _nextSceneName = "PlayerSelection";
     [SerializeField] private Button _nextButton = null;
+    [SerializeField] private RectTransform _hexagon = null;
     [Header("0...PlayAlone, 1...PlayTwo")]
     [SerializeField] private List<Image> _particles = null;
     [SerializeField] private List<Image> _triangles = null;
@@ -66,6 +68,16 @@ public class ModeSelectionUIController : MonoBehaviour {
         ChangeAlphaHitThreshold(_nextButton, 1.0f);
         _nextButton.onClick.AddListener(() => OnNextButtonClicked());
         #endregion
+
+        _hexagon.DOScale(2f, 1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart)
+            .SetLink(_hexagon.gameObject);
+        var hexagonImage = _hexagon.GetComponent<Image>();
+        hexagonImage.DOFade(0, 1f)
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart)
+            .SetLink(_hexagon.gameObject);
 
         _trianglePlayAlone = _triangles[0].GetComponent<RectTransform>();
         _trianglePlayTwo = _triangles[1].GetComponent<RectTransform>();

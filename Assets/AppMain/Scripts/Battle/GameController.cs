@@ -20,13 +20,13 @@ public class GameController : MonoBehaviour {
 
     #region
     [SerializeField] private BattleUIController _battleUIController = null;
-    [SerializeField] private GameObject[] _puzzles = null;
-    [SerializeField] private GameObject _puzzleBlack = null;
+    [SerializeField] private List<EachPuzzle> _eachPuzzle = new List<EachPuzzle>();
     [SerializeField] private LineRenderer _lineRenderer = null;
     // ある六角形の中心から右の六角形の中心までの長さ
     [SerializeField] private float _hexagonWidth = 0.74f;
     [SerializeField] private int _rowSize = 17;
     [SerializeField] private int _columnSize = 7;
+    [SerializeField, Header("パズルが何個以上で消えるか")] private int _puzzleLowerLimit = 3;
     #endregion
 
     private void Awake() {
@@ -45,9 +45,6 @@ public class GameController : MonoBehaviour {
         _hexagonHeight = _hexagonWidth * Mathf.Sin(60.0f * Mathf.Deg2Rad);
         _adjustmentWidth = -_hexagonWidth * Mathf.Cos(60.0f * Mathf.Deg2Rad);
 
-        // ヴィクトリアの時だけ敵のパズル色を無くし、ヴィクトリアのパズルを配置
-        if (GameDirector.Instance.PlayerCharacterIndex == 8)
-            _puzzles[GameDirector.Instance.EnemyCharacterIndex] = _puzzleBlack;
         CreatePuzzles();
     }
 
@@ -55,8 +52,9 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < _rowSize; i++) {
             for (int j = 0; j < _columnSize; j++) {
                 if (_puzzlesXY[i, j] == null) {
-                    int r = Random.Range(0, _puzzles.Length);
-                    var puzzlePrefab = Instantiate(_puzzles[r]);
+                    var puzzles = _eachPuzzle[GameDirector.Instance.PlayerCharacterIndex].Puzzles;
+                    int r = Random.Range(0, puzzles.Count);
+                    var puzzlePrefab = Instantiate(puzzles[r]);
                     puzzlePrefab.transform.parent = GameObject.Find("Puzzles").transform;
                     var x = _hexagonWidth * i + _adjustmentWidth * Mathf.Abs(j % 2);
                     var y = _hexagonHeight * j;
@@ -134,27 +132,8 @@ public class GameController : MonoBehaviour {
         if (_selectedPuzzles.Count < 1 || _selectID != puzzle.ID)
             return;
 
-        // Debug.Log(_selectedPuzzles.Count);
-
-        if (puzzle.IsSelected) {
-            if (_selectedPuzzles.Count >= 2 && _selectedPuzzles[_selectedPuzzles.Count - 2] == puzzle) {
-                var removedPuzzle = _selectedPuzzles[_selectedPuzzles.Count - 1];
-                removedPuzzle.SetSelection(false);
-                _selectedPuzzles.Remove(removedPuzzle);
-            }
-        } else {
-            var length = (_selectedPuzzles[_selectedPuzzles.Count - 1].transform.position - puzzle.transform.position).magnitude;
-            // Debug.Log("length: " + length);
-            if (length < _hexagonWidth + 0.01f) {
-                _selectedPuzzles.Add(puzzle);
-                puzzle.SetSelection(true);
-            }
-        }
-
-        Debug.Log("OnPuzzleEnter");
-        Debug.Log(_selectedPuzzles.Count);
+        Debug.Log("important: " + _selectedPuzzles.Count);
         switch(_selectedPuzzles.Count) {
-            // TODO case 1の時の音変えた方が良いかも
             case 1:
                 _audioClip_SE = SE.Instance.audioClips[2];
                 break;
@@ -168,26 +147,52 @@ public class GameController : MonoBehaviour {
                 _audioClip_SE = SE.Instance.audioClips[5];
                 break;
         }
-        _audioSource_SE.PlayOneShot(_audioClip_SE);
+
+        if (puzzle.IsSelected) {
+            if (_selectedPuzzles.Count >= 2 && _selectedPuzzles[_selectedPuzzles.Count - 2] == puzzle) {
+                var removedPuzzle = _selectedPuzzles[_selectedPuzzles.Count - 1];
+                removedPuzzle.SetSelection(false);
+                _selectedPuzzles.Remove(removedPuzzle);
+                _audioSource_SE.PlayOneShot(_audioClip_SE);
+            }
+        } else {
+            var length = (_selectedPuzzles[_selectedPuzzles.Count - 1].transform.position - puzzle.transform.position).magnitude;
+            // Debug.Log("length: " + length);
+            if (length < _hexagonWidth + 0.01f) {
+                _selectedPuzzles.Add(puzzle);
+                puzzle.SetSelection(true);
+                _audioSource_SE.PlayOneShot(_audioClip_SE);
+            }
+        }
 
         UpdateLineRenderer();
     }
     
     public void OnPuzzleUp(Puzzle puzzle) {
         Debug.Log("OnPuzzleUp");
-        _audioClip_SE = SE.Instance.audioClips[6];
-        _audioSource_SE.PlayOneShot(_audioClip_SE);
-
         Debug.Log(puzzle);
-        _battleUIController.AddScore(_selectedPuzzles.Count, puzzle.ID);
-        DestroyPuzzles(_selectedPuzzles);
-        // 消えたパズルがある行
-        var affectedRows = _selectedPuzzles.Select(p => p.Row).Distinct().ToList();
+
+        if (_selectedPuzzles.Count >= _puzzleLowerLimit) {
+            _audioClip_SE = SE.Instance.audioClips[6];
+            _audioSource_SE.PlayOneShot(_audioClip_SE);
+            _battleUIController.AddScore(_selectedPuzzles.Count, puzzle.ID);
+            DestroyPuzzles(_selectedPuzzles);
+            // 消えたパズルがある行
+            var affectedRows = _selectedPuzzles.Select(p => p.Row).Distinct().ToList();
+            TriggerFallCheck(affectedRows);
+            CreatePuzzles();
+        } else {
+            foreach (var selectedPuzzle in _selectedPuzzles)
+                selectedPuzzle.SetSelection(false);
+        }
+
         _selectedPuzzles.Clear();
-        TriggerFallCheck(affectedRows);
         
         UpdateLineRenderer();
-
-        CreatePuzzles();
     }
+}
+
+[System.Serializable]
+public class EachPuzzle {
+    public List<GameObject> Puzzles = new List<GameObject>();
 }

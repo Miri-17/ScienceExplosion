@@ -28,7 +28,7 @@ public class CutscenesUIController : MonoBehaviour {
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
-    [SerializeField] private Button _zoomButton = null;
+    [SerializeField] private Button _expandButton = null;
     [SerializeField] private Button _readButton = null;
     [SerializeField] private string _previousSceneName = "";
 
@@ -52,8 +52,8 @@ public class CutscenesUIController : MonoBehaviour {
 
         ChangeAlphaHitThreshold(_backButton, 1.0f);
         _backButton.onClick.AddListener(() => OnBackButtonClicked());
-        ChangeAlphaHitThreshold(_zoomButton, 1.0f);
-        _zoomButton.onClick.AddListener(() => OnZoomButtonClicked());
+        ChangeAlphaHitThreshold(_expandButton, 1.0f);
+        _expandButton.onClick.AddListener(() => OnExpandButtonClicked());
         ChangeAlphaHitThreshold(_readButton, 1.0f);
         _readButton.onClick.AddListener(() => OnReadButtonClicked());
 
@@ -93,7 +93,7 @@ public class CutscenesUIController : MonoBehaviour {
         GoNextSceneAsync(0, _previousSceneName, false).Forget();
     }
 
-    private void OnZoomButtonClicked() {
+    private void OnExpandButtonClicked() {
         if (_isChangingScene) return;
 
         // 2人プレイに行く処理
