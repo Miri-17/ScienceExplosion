@@ -19,7 +19,7 @@ public class CharacterButton : MonoBehaviour {
     }
 
     /// <summary>
-    /// キャラクターボタンの選択状態を変更する
+    /// キャラクターボタンの選択状態を変更する.
     /// </summary>
     /// <param name="isSelected"></param>
     public void SetSelection(bool isSelected) {

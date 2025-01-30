@@ -8,10 +8,10 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class ResultUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
-    // TODO csvファイルを読み込めるように変更
+    // TODO csvファイルを読み込めるように変更.
     private List<string> _speeches = new List<string>() {
         "うふふ\n"
         + "私の薬、なかなか悪くないでしょ？",
@@ -37,7 +37,7 @@ public class ResultUIController : MonoBehaviour {
     private List<float> _speechBubblePosY = new List<float>() { 250, 200, 418, 418, 250, 200, 200, 418, 250 };
     #endregion
 
-    #region
+    #region Serialized Fields
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
 
@@ -48,7 +48,7 @@ public class ResultUIController : MonoBehaviour {
     [SerializeField] private List<Sprite> _rank = null;
     [SerializeField] private Image _rankImage = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
     // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
@@ -83,14 +83,14 @@ public class ResultUIController : MonoBehaviour {
                 break;
         }
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
         EventTrigger.Entry entry = new EventTrigger.Entry();
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -100,28 +100,28 @@ public class ResultUIController : MonoBehaviour {
         _notYetInstalledPanel.SetActive(true);
     }
     
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (_isChangingScene) return;
 
         _isChangingScene = true;
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "Title", true).Forget();
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

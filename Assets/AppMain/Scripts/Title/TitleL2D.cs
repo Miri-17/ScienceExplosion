@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 
 public class TitleL2D : MonoBehaviour {
@@ -13,7 +10,7 @@ public class TitleL2D : MonoBehaviour {
     }
 
     /// <summary>
-    /// アニメーションをさせる
+    /// idによってそれぞれのLive2Dアニメーションを始める.
     /// </summary>
     public void PlayAnimation() {
         switch (id) {

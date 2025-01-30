@@ -13,7 +13,7 @@ public class SettingsController : AudioMixerController {
     private AudioClip _audioClip_SE = null;
     private bool _isChangingScene = false;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private string _warningText = "データの消去はまだ未実装です。";
     #endregion
 
@@ -30,12 +30,12 @@ public class SettingsController : AudioMixerController {
     [SerializeField] private Button _showCreditsButton = null;
     [SerializeField] private Button _deleteSaveDataButton = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     #endregion
 
-    // TODO 合ってるか調べる
+    // TODO 合ってるか調べる.
     private new void Start() {
         base.Start();
 
@@ -51,7 +51,7 @@ public class SettingsController : AudioMixerController {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseSettings());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
 
         _showCreditsButton.onClick.AddListener(() => OnShowCreditsButtonClicked());
@@ -73,22 +73,22 @@ public class SettingsController : AudioMixerController {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, _nextSceneName, false).Forget();
     }
 
     private void OnDeleteSaveDataButtonClicked() {
         if (_isChangingScene) return;
-        // セーブデータを消去する処理
+        // セーブデータを消去する処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _warningSentence.text = _warningText;
         _notYetInstalledPanel.SetActive(true);
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
@@ -99,7 +99,7 @@ public class SettingsController : AudioMixerController {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

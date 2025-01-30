@@ -6,7 +6,7 @@ using System.Threading;
 using System.Collections.Generic;
 
 public class MapUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
@@ -15,7 +15,7 @@ public class MapUIController : MonoBehaviour {
     private int _currentPlaceIndex = 0;
     #endregion
 
-    #region
+    #region Serialized Fields
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
@@ -61,7 +61,7 @@ public class MapUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
@@ -99,18 +99,18 @@ public class MapUIController : MonoBehaviour {
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

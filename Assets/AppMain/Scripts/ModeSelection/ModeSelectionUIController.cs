@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class ModeSelectionUIController : MonoBehaviour {
     #region
@@ -17,7 +16,7 @@ public class ModeSelectionUIController : MonoBehaviour {
     private bool _isChangingScene = false;
     private RectTransform _trianglePlayAlone = null;
     private RectTransform _trianglePlayTwo = null;
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private List<string> _warningTexts = new List<string>() {
         "遊び方はまだ見られません。",
         "バトルモードではまだ遊べません。",
@@ -43,7 +42,7 @@ public class ModeSelectionUIController : MonoBehaviour {
     [SerializeField] private List<Image> _triangles = null;
     [SerializeField] private List<Image> _explosions = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
@@ -90,7 +89,7 @@ public class ModeSelectionUIController : MonoBehaviour {
             .SetLoops(-1, LoopType.Yoyo)
             .SetLink(_trianglePlayTwo.gameObject);
 
-        // TODO ここが良くないので直すこと
+        // TODO ここが良くないので直すこと.
         // _playAloneButton.interactable = false;
         _particles[0].enabled = true;
         _particles[1].enabled = false;
@@ -99,7 +98,7 @@ public class ModeSelectionUIController : MonoBehaviour {
         _explosions[0].enabled = false;
         _explosions[1].enabled = false;
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
@@ -107,7 +106,7 @@ public class ModeSelectionUIController : MonoBehaviour {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -119,15 +118,15 @@ public class ModeSelectionUIController : MonoBehaviour {
     private void OnHowToPlayButtonClicked() {
         if (_isChangingScene) return;
 
-        // 遊び方パネルを表示させる処理
+        // 遊び方パネルを表示させる処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -140,7 +139,7 @@ public class ModeSelectionUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
@@ -154,7 +153,7 @@ public class ModeSelectionUIController : MonoBehaviour {
     }
 
     public void OnPlayTwoButtonClicked() {
-        // TODO シーン名決まったら変更
+        // TODO シーン名決まったら変更.
         _nextSceneName = "Network";
         _descriptionText.text = _descriptions[1];
         _particles[0].enabled = false;
@@ -166,7 +165,7 @@ public class ModeSelectionUIController : MonoBehaviour {
     private void OnNextButtonClicked() {
         if (_isChangingScene) return;
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_nextSceneName != "PlayerSelection") {
             if (_notYetInstalledPanel.activeSelf) return;
             _warningSentence.text = _warningTexts[1];
@@ -175,29 +174,29 @@ public class ModeSelectionUIController : MonoBehaviour {
         }
 
         _explosions[0].enabled = true;
-        // メニューで選んでいるキャラをプレイヤーセレクトで選ばれている初期キャラクターにする
+        // メニューで選んでいるキャラをプレイヤーセレクトで選ばれている初期キャラクターにする.
         GameDirector.Instance.PlayerCharacterIndex = GameDirector.Instance.SelectedCharacterIndex;
 
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, _nextSceneName, false).Forget();
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

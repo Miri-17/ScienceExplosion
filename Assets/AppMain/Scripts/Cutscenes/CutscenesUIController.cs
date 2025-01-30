@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class CutscenesUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
@@ -17,14 +17,14 @@ public class CutscenesUIController : MonoBehaviour {
     private int _previousCutsceneIndex = 0;
     private List<SetStill> _setStills = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private List<string> _warningTexts = new List<string>() {
         "スチルの拡大機能はまだ実装されていません。",
         "ストーリーはまだ見られません。",
     };
     #endregion
 
-    #region
+    #region Serialized Fields
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _backButton = null;
@@ -37,7 +37,7 @@ public class CutscenesUIController : MonoBehaviour {
     [SerializeField] private List<Image> _icons = new List<Image>();
     [SerializeField] private List<Button> _stillButtons = new List<Button>();
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
@@ -61,12 +61,12 @@ public class CutscenesUIController : MonoBehaviour {
         for (var i = 0; i < _stillButtons.Count; i++) {
             var index = i;
             _stillButtons[i].onClick.AddListener(() => OnStillButtonClicked(index));
-            // FIXME これ、リストへの追加の仕方おかしいかも
+            // FIXME これ、リストへの追加の仕方おかしいかも.
             _setStills.Add(_stillButtons[i].GetComponent<SetStill>());
         }
         ChangeCutscene(0);
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
@@ -74,7 +74,7 @@ public class CutscenesUIController : MonoBehaviour {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -89,16 +89,16 @@ public class CutscenesUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, _previousSceneName, false).Forget();
     }
 
     private void OnExpandButtonClicked() {
         if (_isChangingScene) return;
 
-        // 2人プレイに行く処理
+        // 2人プレイに行く処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
@@ -107,15 +107,15 @@ public class CutscenesUIController : MonoBehaviour {
     private void OnReadButtonClicked() {
         if (_isChangingScene) return;
 
-        // 2人プレイに行く処理
+        // 2人プレイに行く処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _warningSentence.text = _warningTexts[1];
         _notYetInstalledPanel.SetActive(true);
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -123,18 +123,18 @@ public class CutscenesUIController : MonoBehaviour {
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

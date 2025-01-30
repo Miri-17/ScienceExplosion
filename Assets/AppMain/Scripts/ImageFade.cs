@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ImageFade : MonoBehaviour {
-    #region
+    #region Private Fields
     private Image _fadeImage = null;
     private bool _isCompleted = false;
     private float _red;

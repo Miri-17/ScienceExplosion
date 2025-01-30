@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class TitleController : MonoBehaviour {
-    #region
+    #region Private Fields
     private bool _isTitleCutEnded = false;
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
@@ -16,7 +16,7 @@ public class TitleController : MonoBehaviour {
     private AudioClip _audioClip_SE = null;
     #endregion
 
-    #region
+    #region Serialized Fields
     [SerializeField] private List<TitleL2D> _titleL2Ds = new List<TitleL2D>();
     [SerializeField] private ImageFade _imageFade = null;
     [SerializeField] private Image _tapToStart = null;
@@ -48,7 +48,7 @@ public class TitleController : MonoBehaviour {
                 GoNextSceneAsync(_imageFade.FadeDuration).Forget();
             }
         } else {
-            // タップで演出をスキップ
+            // タップで演出をスキップ.
             if (Input.GetMouseButtonDown(0)) {
                 _isTitleCutEnded = true;
                 _playableDirector.time = _playableDirector.duration;
@@ -72,11 +72,11 @@ public class TitleController : MonoBehaviour {
 
         // Debug.Log("Go to " + _nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         _loadingPanel.SetActive(true);
         AsyncOperation async = SceneManager.LoadSceneAsync(_nextSceneName);
         await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         // SceneManager.LoadScene(_nextSceneName);
     }
 }

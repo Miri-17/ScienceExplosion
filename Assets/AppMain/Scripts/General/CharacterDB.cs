@@ -3,43 +3,32 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterDB", menuName = "ScriptableObjects/Character Database")]
 public class CharacterDB : ScriptableObject {
-    #region
+    #region Serialized Fields
     [Header("0...Menu, 1...Battle, 2...Character")]
     [SerializeField] private List<Sprite> _characterSprites = null;
     [Header("0...Menu, 1...Battle")]
     [SerializeField] private List<Sprite> _placeSprites = null;
 
-    // CharactersとPlayerSelectionで使用している情報
+    // CharactersとPlayerSelectionで使用している情報.
     [SerializeField] private Sprite _nameSprite = null;
     [SerializeField] private Sprite _majorSprite = null;
 
-    // MapとEnemySelectionで使用している情報
+    // MapとEnemySelectionで使用している情報.
     [SerializeField] private Sprite _placeNameSprite = null;
     [SerializeField] private Sprite _iconSprite = null;
 
-    // PlayerSelectionとEnemySelectionで使用している情報
-    // 場合によっては private List<Color> _uniqueColors = null; にする
+    // PlayerSelectionとEnemySelectionで使用している情報.
+    // 場合によっては private List<Color> _uniqueColors = null; にする.
     [SerializeField] private Color _uniqueColor = Color.white;
     
-    // EnemySelectionで使用している情報
+    // EnemySelectionで使用している情報.
     [SerializeField] private Sprite _nationMarkSprite = null;
 
-    // 今の所Menuでしか使用していないが、Storyでも使われると考えられる情報
+    // 今の所Menuでしか使用していないが、Storyでも使われると考えられる情報.
     [SerializeField] private Sprite _nameSpriteSpeech = null;
-
-
-    // [SerializeField] private string _name = "";
-    // [SerializeField] private string _profession = "";
-    // [SerializeField] private string _skill = "";
-    // [SerializeField] private string _explosion = "";
-    // [SerializeField] private string _place = "";
-    // [SerializeField] private string _affiliationEnglish = "";
-    // [SerializeField] private string _affiliationJapanese = "";
-    // [SerializeField] private Sprite _nationMark = null;
-    // [SerializeField] private AudioClip _uniqueAudioClip = null;
     #endregion
 
-    #region
+    #region Public Properties
     public List<Sprite> CharacterSprites { get => _characterSprites; set => _characterSprites = value; }
     public List<Sprite> PlaceSprites { get => _placeSprites; set => _placeSprites = value; }
 
@@ -54,14 +43,5 @@ public class CharacterDB : ScriptableObject {
     public Sprite NationMarkSprite { get => _nationMarkSprite; set => _nationMarkSprite = value; }
 
     public Sprite NameSpriteSpeech { get => _nameSpriteSpeech; set => _nameSpriteSpeech = value; }
-
-    // public string Name { get => _name; set => _name = value; }
-    // public string Profession { get => _profession; set => _profession = value; }
-    // public string Skill { get => _skill; set => _skill = value; }
-    // public string Explosion { get => _explosion; set => _explosion = value; }
-    // public string Place { get => _place; set => _place = value;}
-    // public string AffiliationEnglish { get => _affiliationEnglish; set => _affiliationEnglish = value; }
-    // public string AffiliationJapanese { get => _affiliationJapanese; set => _affiliationJapanese = value; }
-    // public AudioClip UniqueAudioClip { get => _ uniqueAudioClip; set => _uniqueAudioClip = value; }
     #endregion
 }

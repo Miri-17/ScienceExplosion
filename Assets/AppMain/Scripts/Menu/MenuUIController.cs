@@ -36,7 +36,7 @@ public class MenuUIController : MonoBehaviour {
         + "リアンフリーデンに栄光あれ！",
     };
 
-    #region
+    #region Serialized Fields
     [SerializeField] private CharactersDB _charactersDB = null;
     [SerializeField] private RectTransform _flaskImage = null;
     [SerializeField] private RectTransform _chargeImage = null;
@@ -66,8 +66,8 @@ public class MenuUIController : MonoBehaviour {
         _background.sprite = character.PlaceSprites[0];
     }
 
-    // キャラクターをアップデートするためのクラスを定義し、オーバーライド関数にした方が良いかも
-    // CharacterのUIController.csにも使用されている。
+    // キャラクターをアップデートするためのクラスを定義し、オーバーライド関数にした方が良いかも.
+    // CharacterのUIController.csにも使用されている.
     private void UpdateCharacter(int index) {
         var character = _charactersDB.GetCharacter(index);
 

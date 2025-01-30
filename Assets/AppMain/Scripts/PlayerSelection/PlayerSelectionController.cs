@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// TODO ほとんどCharactersControllerと同じ->統合
+// TODO ほとんどCharactersControllerと同じ->統合.
 public class PlayerSelectionController : MonoBehaviour {
     [SerializeField] private CharactersDB _charactersDB = null;
     [SerializeField] private SpriteRenderer _playerSpriteRenderer = null;
 
     /// <summary>
-    /// 選択中のキャラ情報を保持した変数
+    /// 選択中のキャラ情報を保持した変数.
     /// </summary>
     [HideInInspector] public CharacterDB Character = null;
 
@@ -16,6 +14,10 @@ public class PlayerSelectionController : MonoBehaviour {
         UpdatePlayerCharacter(GameDirector.Instance.PlayerCharacterIndex);
     }
 
+    /// <summary>
+    /// プレイヤーキャラクターの変更を行う.
+    /// </summary>
+    /// <param name="characterIndex"></param>
     public void UpdatePlayerCharacter(int characterIndex) {
         GameDirector.Instance.PlayerCharacterIndex = characterIndex;
 

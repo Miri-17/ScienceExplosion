@@ -5,11 +5,10 @@ using System.Threading;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using DG.Tweening;
-using TMPro;
 using UnityEngine.EventSystems;
 
 public class EnemySelectionUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
@@ -19,7 +18,7 @@ public class EnemySelectionUIController : MonoBehaviour {
     private readonly float SCALE_DURATION = 0.5f;
     #endregion
 
-    #region
+    #region Serialized Fields
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
     [SerializeField] private Button _howToPlayButton = null;
@@ -33,7 +32,7 @@ public class EnemySelectionUIController : MonoBehaviour {
     [SerializeField] private Image _icon = null;
     [SerializeField] private Image _place = null;
 
-    /// TODO 完全に実装したら消す
+    /// TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
     // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
@@ -60,12 +59,12 @@ public class EnemySelectionUIController : MonoBehaviour {
             var index = i;
             _placeButtons[i].onClick.AddListener(() => OnPlaceButtonClicked(index));
         }
-        // 自分のキャラの場所は選べないようにする
+        // 自分のキャラの場所は選べないようにする.
         _placeButtons[GameDirector.Instance.PlayerCharacterIndex].enabled = false;
 
         UpdateUI(GameDirector.Instance.EnemyCharacterIndex);
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
@@ -73,7 +72,7 @@ public class EnemySelectionUIController : MonoBehaviour {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -85,14 +84,14 @@ public class EnemySelectionUIController : MonoBehaviour {
     private void OnHowToPlayButtonClicked() {
         if (_isChangingScene) return;
 
-        // 遊び方パネルを表示させる処理
+        // 遊び方パネルを表示させる処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _notYetInstalledPanel.SetActive(true);
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -105,7 +104,7 @@ public class EnemySelectionUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "PlayerSelection", false).Forget();
     }
 
@@ -133,23 +132,23 @@ public class EnemySelectionUIController : MonoBehaviour {
         _audioSource_SE.PlayOneShot(_audioClip_SE);
 
         IrisOut();
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0.5f, "Battle", false).Forget();
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

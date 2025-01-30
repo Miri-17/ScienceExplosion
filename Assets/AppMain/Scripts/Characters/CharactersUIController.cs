@@ -7,10 +7,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class CharactersUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
@@ -20,7 +19,7 @@ public class CharactersUIController : MonoBehaviour {
     private int _informatioinIndex = 0;
     #endregion
 
-    #region
+    #region Serialized Fields
     [SerializeField] private CharactersController _charactersController = null;
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
@@ -70,7 +69,7 @@ public class CharactersUIController : MonoBehaviour {
     [Header("0...UniquePuzzle, 1...Explosion, 2,3...Level")]
     [SerializeField] private List<Image> _changeColorImages = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
     // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
@@ -101,7 +100,7 @@ public class CharactersUIController : MonoBehaviour {
             var index = i;
             ChangeAlphaHitThreshold(_characterButtons[i], 1.0f);
             _characterButtons[i].onClick.AddListener(() => OnCharacterButtonClicked(index));
-            // FIXME これ、リストへの追加の仕方おかしいかも
+            // FIXME これ、リストへの追加の仕方おかしいかも.
             _characterButtonScripts.Add(_characterButtons[i].GetComponent<CharacterButton>());
         }
 
@@ -112,7 +111,7 @@ public class CharactersUIController : MonoBehaviour {
 
         _triangleLeftButton.onClick.AddListener(() => OnTriangleButtonClicked(-1));
         _triangleRightButton.onClick.AddListener(() => OnTriangleButtonClicked(1));
-        // TODO informationPanelsの初期化処理 (LINQ?)
+        // TODO informationPanelsの初期化処理 (LINQを使用した方が良さそう).
         // _informationPanels[_informatioinIndex].SetActive(true);
         // _informationPanels[_informatioinIndex].SetActive(false);
         // _informationPanels[_informatioinIndex].SetActive(false);
@@ -123,7 +122,7 @@ public class CharactersUIController : MonoBehaviour {
 
         UpdateUI(_previousCharacterIndex);
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
@@ -138,7 +137,7 @@ public class CharactersUIController : MonoBehaviour {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -147,7 +146,7 @@ public class CharactersUIController : MonoBehaviour {
         image.alphaHitTestMinimumThreshold = alpha;
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -160,7 +159,7 @@ public class CharactersUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "Menu", false).Forget();
     }
 
@@ -229,10 +228,10 @@ public class CharactersUIController : MonoBehaviour {
     private void OnZoomButtonClicked() {
         if (_isChangingScene) return;
 
-        // UIを非表示にする処理
-        // キャラクターを大きくする処理
+        // UIを非表示にする処理.
+        // キャラクターを大きくする処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _notYetInstalledPanel.SetActive(true);
     }
@@ -250,18 +249,18 @@ public class CharactersUIController : MonoBehaviour {
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

@@ -30,8 +30,7 @@ namespace ScienceExplosion {
         private void Start() {
             _audioSource = this.GetComponent<AudioSource>();
 
-            // 本当は↓だけでもいいとは思う. デバッグ用
-            // audioSource.clip = audioClips[0];
+            #region デバッグ用
             switch (SceneManager.GetActiveScene().name) {
                 case "Title":
                     _audioSource.clip = _audioClips[_titleBGMIndex];
@@ -47,11 +46,9 @@ namespace ScienceExplosion {
                 case "Credits":
                     _audioSource.clip = _audioClips[_menuBGMIndex];
                     break;
-                // テスト用
                 case "Audio":
                     _audioSource.clip = _audioClips[3];
                     break;
-                // テスト用
                 case "Battle":
                     _audioSource.clip = _audioClips[_battleBGMIndex + GameDirector.Instance.EnemyCharacterIndex];
                     break;
@@ -59,6 +56,9 @@ namespace ScienceExplosion {
                 default:
                     break;
             }
+            #endregion
+            // TODO 上のデバッグ用の部分をこちらに変更すると, コードが短くなる.
+            // audioSource.clip = audioClips[0];
 
             _audioSource.Play();
 
@@ -79,7 +79,7 @@ namespace ScienceExplosion {
                     break;
                 case "Menu":
                 case "Result":
-                    // 後ろの条件だけだと、曲選択で何の曲も選択せず戻ると無音
+                    // 後ろの条件だけだと、曲選択で何の曲も選択せず戻ると無音.
                     if (_audioSource.isPlaying && _audioSource.clip == _audioClips[_menuBGMIndex])
                         break;
                     _audioSource.Stop();

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Live2D.Cubism.Framework.Raycasting;
 using UnityEngine;
@@ -23,7 +22,7 @@ public class ModeSelectionController : MonoBehaviour {
     
     private void Update() {
         if (!_modeSelectionUIController.IsChangingScene && Input.GetMouseButtonDown(0)) {
-            // 接触判定情報を取得する
+            // 接触判定情報を取得する.
             var results = new CubismRaycastHit[2];
 
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);

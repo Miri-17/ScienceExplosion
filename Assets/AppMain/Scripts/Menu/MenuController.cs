@@ -8,12 +8,12 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour {
-    #region
+    #region Private Fields
     private bool _isChangingScene = false;
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private List<string> _warningTexts = new List<string>() {
         "UIの非表示はまだ未実装です。",
         "サウンドはまだ見られません。",
@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField] private GameObject _settingsPanel = null;
     [SerializeField] private GameObject _loadingPanel = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private TextMeshProUGUI _warningSentence = null;
     [SerializeField] private Button _closeButton = null;
@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour {
         }
         _chargeButton.onClick.AddListener(() => OnChargeButtonClicked());
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
 
@@ -66,7 +66,7 @@ public class MenuController : MonoBehaviour {
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -75,7 +75,7 @@ public class MenuController : MonoBehaviour {
         image.alphaHitTestMinimumThreshold = alpha;
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -91,9 +91,9 @@ public class MenuController : MonoBehaviour {
     private void OnHideUIButtonClicked() {
         if (_isChangingScene) return;
 
-        // UIの表示・非表示処理
+        // UIの表示・非表示処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _warningSentence.text = _warningTexts[0];
         _notYetInstalledPanel.SetActive(true);
@@ -102,7 +102,7 @@ public class MenuController : MonoBehaviour {
     private void OnNextSceneButtonClicked(int index) {
         if (_isChangingScene) return;
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_nextSceneNames[index] == "Audio") {
                 if (_notYetInstalledPanel.activeSelf) return;
                 _warningSentence.text = _warningTexts[1];
@@ -113,7 +113,7 @@ public class MenuController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, _nextSceneNames[index], false).Forget();
     }
     
@@ -124,24 +124,24 @@ public class MenuController : MonoBehaviour {
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
         // StartCoroutine(ChangeScene(1, "ModeSelection"));
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "ModeSelection", true).Forget();
     }
 
-    // TODO GoNextSceneAsyncシリーズはこれを中心にオーバーライドさせること
+    // TODO GoNextSceneAsyncシリーズはこれを中心にオーバーライドさせること.
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

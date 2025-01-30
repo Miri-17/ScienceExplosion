@@ -5,14 +5,14 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
-    #region
-    // 同時押し防ぐ
+    #region Private Fields
+    // 同時押しを防ぐ.
     private bool _isAlreadyPuzzleDown = false;
     private List<Puzzle> _selectedPuzzles = new List<Puzzle>();
     private GameObject[,] _puzzlesXY;
-    // ある六角形の中心から上の六角形の中心までの長さ
+    // ある六角形の中心から上の六角形の中心までの長さ.
     private float _hexagonHeight = 0;
-    // ある六角形の中心と上の六角形の中心のずれ
+    // ある六角形の中心と上の六角形の中心のずれ.
     private float _adjustmentWidth = 0;
     private string _selectID = "";
 
@@ -20,11 +20,11 @@ public class GameController : MonoBehaviour {
     private AudioClip _audioClip_SE = null;
     #endregion
 
-    #region
+    #region Serialized Fields
     [SerializeField] private BattleUIController _battleUIController = null;
     [SerializeField] private List<EachPuzzle> _eachPuzzle = new List<EachPuzzle>();
     [SerializeField] private LineRenderer _lineRenderer = null;
-    // ある六角形の中心から右の六角形の中心までの長さ
+    // ある六角形の中心から右の六角形の中心までの長さ.
     [SerializeField] private float _hexagonWidth = 0.74f;
     [SerializeField] private int _rowSize = 17;
     [SerializeField] private int _columnSize = 7;

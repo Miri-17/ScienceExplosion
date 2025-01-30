@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class PlayerSelectionUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     private CancellationToken _token = default;
     private AudioSource _audioSource_SE = null;
     private AudioClip _audioClip_SE = null;
@@ -17,7 +17,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
     private int _previousPlayerIndex = 0;
     #endregion
 
-    #region
+    #region Serialized Fields
     [SerializeField] private PlayerSelectionController _playerSelectionController = null;
     [Header("そのシーンにローディングパネルが存在しないときはnullでOK")]
     [SerializeField] private GameObject _loadingPanel = null;
@@ -31,7 +31,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
     [SerializeField] private Image _majorImage = null;
     [SerializeField] private Image _typeImage = null;
     [SerializeField] private TextMeshProUGUI _descriptionText = null;
-    // TODO ここ、あまり良いコードではないので直すこと
+    // TODO ここ、あまり良いコードではないので直すこと.
     [Header("0...HP, 1...Damage")]
     [SerializeField] private List<TextMeshProUGUI> _maxTexts = null;
     [Header("0...HP, 1...Damage")]
@@ -43,7 +43,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
     [SerializeField] private List<Image> _exPuzzleScales = null;
     [SerializeField] private Sprite _exPuzzleScaleDefault = null;
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     [SerializeField] private GameObject _notYetInstalledPanel = null;
     [SerializeField] private Button _closeButton = null;
     // NotYetInstalledPanelのBackgroundをタップするとPanelが閉じるようにする.
@@ -66,7 +66,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
             var index = i;
             ChangeAlphaHitThreshold(_characterButtons[i], 1.0f);
             _characterButtons[i].onClick.AddListener(() => OnCharacterButtonClicked(index));
-            // FIXME これ、リストへの追加の仕方おかしいかも
+            // FIXME これ、リストへの追加の仕方おかしいかも.
             _characterButtonScripts.Add(_characterButtons[i].GetComponent<CharacterButton>());
         }
 
@@ -79,14 +79,14 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
         UpdateUI(_previousPlayerIndex);
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         _notYetInstalledPanel.SetActive(false);
         _closeButton.onClick.AddListener(() => CloseNotYetInstalledPanel());
         EventTrigger.Entry entry = new EventTrigger.Entry();
         // 押した瞬間に実行するようにする.
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((x) => CloseNotYetInstalledPanel());
-        //イベントの設定をEventTriggerに反映
+        //イベントの設定をEventTriggerに反映.
         _eventTrigger.triggers.Add(entry);
     }
 
@@ -98,14 +98,14 @@ public class PlayerSelectionUIController : MonoBehaviour {
     private void OnHowToPlayButtonClicked() {
         if (_isChangingScene) return;
 
-        // 遊び方パネルを表示させる処理
+        // 遊び方パネルを表示させる処理.
 
-        // TODO 完全に実装したら消す
+        // TODO 完全に実装したら消す.
         if (_notYetInstalledPanel.activeSelf) return;
         _notYetInstalledPanel.SetActive(true);
     }
 
-    // TODO 完全に実装したら消す
+    // TODO 完全に実装したら消す.
     private void CloseNotYetInstalledPanel() {
         if (!_notYetInstalledPanel.activeSelf) return;
 
@@ -118,7 +118,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[0];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "ModeSelection", false).Forget();
     }
 
@@ -140,7 +140,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _descriptionText.text = _playerSelectionDB.Descriptions[index];
 
         var hp = _playerSelectionDB.HPs[index];
-        // TODO 元からenum使って対応づけとくと綺麗かも
+        // TODO 元からenum使って対応づけとくと綺麗かも.
         switch (hp) {
             case 1:
                 _maxTexts[0].text = "最小";
@@ -162,7 +162,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _testTubeFill[0].color = _playerSelectionController.Character.UniqueColor;
 
         var damage = _playerSelectionDB.Damages[index];
-        // TODO 元からenum使って対応づけとくと綺麗かも
+        // TODO 元からenum使って対応づけとくと綺麗かも.
         switch (damage) {
             case 1:
                 _maxTexts[1].text = "最小";
@@ -185,7 +185,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
         var requiredNumberPuzzle = _playerSelectionDB.RequiredNumberPuzzle[index];
         _maxNumberTexts[0].text = requiredNumberPuzzle.ToString();
-        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする
+        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする.
         for (int i = 0; i < _uniquePuzzleScales.Count; i++) {
             if (i + 1 > requiredNumberPuzzle) {
                 _uniquePuzzleScales[i].sprite = _uniquePuzzleScaleDefault;
@@ -196,7 +196,7 @@ public class PlayerSelectionUIController : MonoBehaviour {
 
         var requiredNumberEx = _playerSelectionDB.RequiredNumberEx[index];
         _maxNumberTexts[1].text = requiredNumberEx.ToString();
-        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする
+        // TODO コレクションとラムダ式使えばもっと綺麗に書ける気がする.
         for (int i = 0; i < _exPuzzleScales.Count; i++) {
             if (i + 1 > requiredNumberEx) {
                 _exPuzzleScales[i].sprite = _exPuzzleScaleDefault;
@@ -217,23 +217,23 @@ public class PlayerSelectionUIController : MonoBehaviour {
         _isChangingScene = true;
         _audioClip_SE = SE.Instance.audioClips[1];
         _audioSource_SE.PlayOneShot(_audioClip_SE);
-        // TODO durationの変更
+        // TODO durationの変更.
         GoNextSceneAsync(0, "EnemySelection", false).Forget();
     }
 
     private async UniTaskVoid GoNextSceneAsync(float duration, string nextSceneName, bool isShowLoadingPanel) {
-        // ローディングパネルが出る前にすること
+        // ローディングパネルが出る前にすること.
 
         await UniTask.Delay((int)(duration * 1000), cancellationToken: _token);
 
         // Debug.Log("Go to " + nextSceneName);
         
-        // ローディングパネルがある時
+        // ローディングパネルがある時.
         if (isShowLoadingPanel && _loadingPanel != null) {
             _loadingPanel.SetActive(true);
             AsyncOperation async = SceneManager.LoadSceneAsync(nextSceneName);
             await UniTask.WaitUntil(() => async.isDone, cancellationToken: _token);
-        // ローディングパネルがない時
+        // ローディングパネルがない時.
         } else {
             SceneManager.LoadScene(nextSceneName);
         }

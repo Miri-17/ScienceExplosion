@@ -50,6 +50,7 @@ public class CharacterSelectionDB : ScriptableObject {
         + "科学を信仰する国で唯一、科学研究が許されず国の統括を任されている黒の政府。そこで生まれた彼女は、旧体制からの解放を目指す。",
     };
 
+    #region Serialized Fields
     [SerializeField] private List<string> _governmentNameTexts = null;
     [SerializeField] private List<Sprite> _governmentNameImages = null;
     [SerializeField, Multiline(2)] private List<string> _governmentDescriptions = null;
@@ -63,7 +64,9 @@ public class CharacterSelectionDB : ScriptableObject {
 
     [SerializeField] private List<Sprite> _explosionNames = null;
     [SerializeField] private List<string> _explosionDescriptions = null;
+    #endregion
 
+    #region Public Properties
     public List<string> CharacterDescriptions { get => _characterDescriptions; set => _characterDescriptions = value; }
     
     public List<string> GovernmentNameTexts { get => _governmentNameTexts; set => _governmentNameTexts = value; }
@@ -79,4 +82,5 @@ public class CharacterSelectionDB : ScriptableObject {
 
     public List<Sprite> ExplosionNames { get => _explosionNames; set => _explosionNames = value; }
     public List<string> ExplosionDescriptions { get => _explosionDescriptions; set => _explosionDescriptions = value; }
+    #endregion
 }

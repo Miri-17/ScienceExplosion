@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StageGenerator : MonoBehaviour {
-    #region
+    #region Serialized Fields
     [SerializeField] private CharactersDB _charactersDB = null;
     [SerializeField] private BattleDB _battleDB = null;
 
@@ -39,7 +39,7 @@ public class StageGenerator : MonoBehaviour {
 
         _exTexts[0].color = playerCharacter.UniqueColor;
         _exTexts[1].color = enemyCharacter.UniqueColor;
-        // TODO 良くないコードなので書き直すこと
+        // TODO 良くないコードなので書き直すこと.
         GameObject playerInfo = Instantiate(_battleDB.CharacterInfos[playerIndex], new Vector3(0, 0, 0), Quaternion.identity);
         playerInfo.transform.SetParent(_characterInfosOriginal.transform, false);
         playerInfo.transform.localPosition = new Vector3(-459, 800, 0);

@@ -3,15 +3,16 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 /// <summary>
-/// SettingsControllerとPauseMenuControllerに継承されるクラス
+/// SettingsControllerとPauseMenuControllerに継承されるクラス.
 /// </summary>
 public class AudioMixerController : MonoBehaviour {
+    #region Serialized Fields
     [SerializeField] private AudioMixer _audioMixer = null;
     [SerializeField] private Slider _masterSlider = null;
     [SerializeField] private Slider _bgmSlider = null;
     [SerializeField] private Slider _seSlider = null;
+    #endregion
 
-    // private void Start() {
     protected void Start() {
         Debug.Log("AudioMixerControllerのStart()が呼ばれた");
         _masterSlider.onValueChanged.AddListener((x) => ChangeMasterVolume(x));

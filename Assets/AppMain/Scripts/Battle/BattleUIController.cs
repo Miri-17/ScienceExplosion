@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleUIController : MonoBehaviour {
-    #region
+    #region Private Fields
     // private bool _isChangingScene = false;
     private Image _pauseMenuButtonImage = null;
 
@@ -19,7 +19,7 @@ public class BattleUIController : MonoBehaviour {
     private string _currentRank = "C";
     #endregion
     
-    #region
+    #region Serialized Fields
     [SerializeField] private GameObject _pauseMenuPanel = null;
     [SerializeField] private Button _pauseMenuButton = null;
     [SerializeField] private List<Sprite> _pauseMenuButtonSprites = new List<Sprite>();
@@ -35,9 +35,11 @@ public class BattleUIController : MonoBehaviour {
     [SerializeField] private List<Image> _ranks = null;
     #endregion
 
+    #region Public Properties
     public bool IsTimeUp { get => _isTimeUp; set => _isTimeUp = value; }
     public int CurrentScore { get => _currentScore; set => _currentScore = value; }
     public string CurrentRank { get => _currentRank; set => _currentRank = value; }
+    #endregion
 
     private void Start() {
         _pauseMenuButtonImage = _pauseMenuButton.GetComponent<Image>();
@@ -69,14 +71,37 @@ public class BattleUIController : MonoBehaviour {
         _timeText.text = _currentTime.ToString("00");
     }
 
+    private void OnPauseMenuButtonClicked() {
+        if (_pauseMenuPanel.activeSelf) {
+            // TODO 一時停止の方法をtimeScaleを使わないものに変更するかも.
+            Time.timeScale = 1;
+            _audioSource_BGM.UnPause();
+
+            _pauseMenuPanel.SetActive(false);
+            _pauseMenuButtonImage.sprite = _pauseMenuButtonSprites[0];
+        } else {
+            Time.timeScale = 0;
+            _audioSource_BGM.Pause();
+
+            _pauseMenuPanel.SetActive(true);
+            _pauseMenuButtonImage.sprite = _pauseMenuButtonSprites[1];
+        }
+    }
+
+    /// <summary>
+    /// 点数を加算する.
+    /// </summary>
+    /// <param name="puzzleCount"></param>
+    /// <param name="id"></param>
     public void AddScore(int puzzleCount, string id) {
-        // TODO マジックナンバー変更
+        // TODO 芸祭用に作ったシステム (プレイヤーの色のパズルは1.2倍のスコア).
+        // マジックナンバーは変更すること.
         if (id == GameDirector.Instance.PlayerCharacterIndex.ToString())
             _currentScore += (int)(puzzleCount * scorePerPuzzle * 1.2);
         else
             _currentScore += (int)puzzleCount * scorePerPuzzle;
         
-        // TODO あんまり考えずにやっちゃてるので書き直すこと (加算する感じで)
+        // TODO あんまり考えずにやっちゃてるので書き直すこと (加算する感じで).
         if (_currentScore <= _maxSliderValue) {
             _scoreSlider.value = _currentScore;
             switch (_currentRank) {
@@ -119,23 +144,6 @@ public class BattleUIController : MonoBehaviour {
             }
         } else {
             _scoreSlider.value = _maxSliderValue;
-        }
-    }
-
-    private void OnPauseMenuButtonClicked() {
-        if (_pauseMenuPanel.activeSelf) {
-            // TODO 一時停止の方法をtimeScaleを使わないものに変更するかも
-            Time.timeScale = 1;
-            _audioSource_BGM.UnPause();
-
-            _pauseMenuPanel.SetActive(false);
-            _pauseMenuButtonImage.sprite = _pauseMenuButtonSprites[0];
-        } else {
-            Time.timeScale = 0;
-            _audioSource_BGM.Pause();
-
-            _pauseMenuPanel.SetActive(true);
-            _pauseMenuButtonImage.sprite = _pauseMenuButtonSprites[1];
         }
     }
 }
