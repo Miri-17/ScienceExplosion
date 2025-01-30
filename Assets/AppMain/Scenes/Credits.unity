@@ -4307,7 +4307,7 @@ GameObject:
   - component: {fileID: 1303281019}
   - component: {fileID: 1303281018}
   m_Layer: 5
-  m_Name: SocietyLogo
+  m_Name: GameLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

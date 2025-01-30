@@ -733,7 +733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30C0\u30E1\u30FC\u30B8"
+  m_text: "\u4E0E\u30C0\u30E1\u30FC\u30B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
   m_sharedMaterial: {fileID: 2005856501988728280, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
@@ -6595,7 +6595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "EX\u30B2\u30FC\u30B8"
+  m_text: "EX\u767A\u52D5\u6761\u4EF6"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
   m_sharedMaterial: {fileID: 2005856501988728280, guid: 1b005332a59674547849b5986a6c22bc, type: 2}
